@@ -27,7 +27,7 @@ export class PlayerListComponent {
     {rank: 7, name: 'JC Latham', position: 'OT', heightWeight: '6-6 / 360', college: "Bama"},
     {rank: 8, name: 'Laiatu Latu', position: 'EDGE', heightWeight: '6-5 / 265', college: "UCLA"},
     {rank: 9, name: 'Jared Verse', position: 'EDGE', heightWeight: '6-4 / 260', college: "FSU"},
-    {rank: 10, name: 'Dallas Turner', position: 'EDGE', heightWeight: '6-4 / 252', college: "Bama"}
+    {rank: 10, name: 'Dallas Turner', position: 'EDGE', heightWeight: '6-4 / 252', college: "Bama"}  
   ];
 
   public datasource = new MatTableDataSource(this.tempPlayers);
