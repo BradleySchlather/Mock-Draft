@@ -1,0 +1,368 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<app-header title="2024 NFL Draft"></app-header>
+
+<br>
+
+<!--Need to work on making mat-select smaller with vw and vh so it can be responsive to different devices-->
+
+<h1>Round 1</h1>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BearsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 1</mat-label>
+        <mat-select [(ngModel)]="this.picks[0]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/CommandersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 2</mat-label>
+        <mat-select [(ngModel)]="this.picks[1]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/PatriotsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 3</mat-label>
+        <mat-select [(ngModel)]="this.picks[2]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/CardinalsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 4</mat-label>
+        <mat-select [(ngModel)]="this.picks[3]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/ChargersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 5</mat-label>
+        <mat-select [(ngModel)]="this.picks[4]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/GiantsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 6</mat-label>
+        <mat-select [(ngModel)]="this.picks[5]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/TitansLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 7</mat-label>
+        <mat-select [(ngModel)]="this.picks[6]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/FalconsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 8</mat-label>
+        <mat-select [(ngModel)]="this.picks[7]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BearsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 9</mat-label>
+        <mat-select [(ngModel)]="this.picks[8]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/JetsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 10</mat-label>
+        <mat-select [(ngModel)]="this.picks[9]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/VikingsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 11</mat-label>
+        <mat-select [(ngModel)]="this.picks[10]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BroncosLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 12</mat-label>
+        <mat-select [(ngModel)]="this.picks[11]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/RaidersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 13</mat-label>
+        <mat-select [(ngModel)]="this.picks[12]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/SaintsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 14</mat-label>
+        <mat-select [(ngModel)]="this.picks[13]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/ColtsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 15</mat-label>
+        <mat-select [(ngModel)]="this.picks[14]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/SeahawksLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 16</mat-label>
+        <mat-select [(ngModel)]="this.picks[15]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/JaguarsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 17</mat-label>
+        <mat-select [(ngModel)]="this.picks[16]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BengalsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 18</mat-label>
+        <mat-select [(ngModel)]="this.picks[17]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/RamsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 19</mat-label>
+        <mat-select [(ngModel)]="this.picks[18]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/SteelersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 20</mat-label>
+        <mat-select [(ngModel)]="this.picks[19]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/DolphinsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 21</mat-label>
+        <mat-select [(ngModel)]="this.picks[20]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/EaglesLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 22</mat-label>
+        <mat-select [(ngModel)]="this.picks[21]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/TexansLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 23</mat-label>
+        <mat-select [(ngModel)]="this.picks[22]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/CowboysLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 24</mat-label>
+        <mat-select [(ngModel)]="this.picks[23]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/PackersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 25</mat-label>
+        <mat-select [(ngModel)]="this.picks[24]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BuccaneersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 26</mat-label>
+        <mat-select [(ngModel)]="this.picks[25]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/CardinalsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 27</mat-label>
+        <mat-select [(ngModel)]="this.picks[26]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/BillsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 28</mat-label>
+        <mat-select [(ngModel)]="this.picks[27]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/LionsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 29</mat-label>
+        <mat-select [(ngModel)]="this.picks[28]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/RavensLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 30</mat-label>
+        <mat-select [(ngModel)]="this.picks[29]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/ChiefsLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 31</mat-label>
+        <mat-select [(ngModel)]="this.picks[30]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+</div>
+
+<div class="pick">
+    <img class="team-logos" src="../../assets/49ersLogo.gif">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick 32</mat-label>
+        <mat-select [(ngModel)]="this.picks[31]">
+            <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <!-- To Do: Trade button needs to be implemented that will open a trade dialog -->
+</div>
+
+<!-- To Do: Create an after the draft endpoint that allows for user to choose from a 1-10 selector of how good the pick was. Will also allow for user to make notes. -->
+
+<div class="save-container">
+<button mat-raised-button color="primary" class="save-button">Save</button>
+</div>
