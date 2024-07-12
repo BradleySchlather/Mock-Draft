@@ -4,12 +4,10 @@
 
 <br>
 
-<!--Need to work on making mat-select smaller with vw and vh so it can be responsive to different devices-->
-
 <h1>Round 1</h1>
 
 <div class="pick">
-    <img class="team-logos" src="../../assets/BearsLogo.gif">
+    <img class="team-logos" [src]="this.imageArr[0]" width="8vh">
     <mat-form-field class="pick-selector">
         <mat-label>Pick 1</mat-label>
         <mat-select [(ngModel)]="this.picks[0]">
