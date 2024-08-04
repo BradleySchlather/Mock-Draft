@@ -22,7 +22,10 @@ export class DraftComponent {
   `../../assets/${this.draftOrder[20]}Logo.gif`,`../../assets/${this.draftOrder[21]}Logo.gif`,`../../assets/${this.draftOrder[22]}Logo.gif`,`../../assets/${this.draftOrder[23]}Logo.gif`,`../../assets/${this.draftOrder[24]}Logo.gif`,
   `../../assets/${this.draftOrder[25]}Logo.gif`,`../../assets/${this.draftOrder[26]}Logo.gif`,`../../assets/${this.draftOrder[27]}Logo.gif`,`../../assets/${this.draftOrder[28]}Logo.gif`,`../../assets/${this.draftOrder[29]}Logo.gif`,
   `../../assets/${this.draftOrder[30]}Logo.gif`,`../../assets/${this.draftOrder[31]}Logo.gif`,`../../assets/${this.draftOrder[32]}Logo.gif`
-  ]
+  ];
+
+  
+
 
   onSave(): void{
     //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user
