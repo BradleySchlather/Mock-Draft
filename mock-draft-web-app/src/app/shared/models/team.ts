@@ -1,7 +1,7 @@
-import { picks } from "./picks";
+import { pick } from "./pick";
 
 export class Team {
     name!: string;
     image!: string;
-    draftPicks!: picks[];
+    draftPicks!: pick[];
 }
