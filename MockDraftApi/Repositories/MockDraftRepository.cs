@@ -7,7 +7,7 @@ namespace MockDraftApi.Repositories
 {
     public class MockDraftRepository
     {
-        private string conn { get; set; }
+        //private string conn { get; set; }
         //public MockDraftRepository(MockDraftConfiguration connection) {
         //    this.conn = connection.DbConnectionString; 
         //}

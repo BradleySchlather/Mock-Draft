@@ -1,6 +1,6 @@
 export class Player {
     rank!: number;
-    name!: string;
+    playerName!: string;
     position!: string;
     heightWeight!: string;
     college!: string;
