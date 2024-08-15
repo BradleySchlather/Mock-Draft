@@ -11,7 +11,6 @@ namespace MockDraftApi
             // Add services to the container.
 
             builder.Services.AddControllers();
-            //builder.Services.AddScoped(MockDraftRepository, );
             builder.Services.AddTransient<MockDraftRepository>();
             builder.Services.AddHealthChecks();
             builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);

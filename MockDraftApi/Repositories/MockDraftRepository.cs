@@ -11,13 +11,16 @@ namespace MockDraftApi.Repositories
         //public MockDraftRepository(MockDraftConfiguration connection) {
         //    this.conn = connection.DbConnectionString; 
         //}
-        //public IEnumerable<Team> GetTeams()
-        //{
-            //    using OdbcConnection connection = new OdbcConnection(this.conn);
-            //    var procedure = "CALL PROCNAME();"
+        public IEnumerable<Team> GetTeams()
+        {
+            //using OdbcConnection connection = new OdbcConnection(this.conn);
+            //var procedure = "CALL PROCNAME();"
             //    var result = connection.Query<Team>(procedure, CommandType.StoredProcedure);
-            //    return result;
-        //}
+            //return result;
+            return [
+                new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif", p}
+                ]
+        }
         public IEnumerable<Player> GetPlayers()
         {
             return [

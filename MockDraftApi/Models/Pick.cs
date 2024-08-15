@@ -2,7 +2,7 @@
 {
     public class Pick
     {
-        public int Number { get; set; }
-        public string PlayerName { get; set; }
+        public int? Number { get; set; }
+        public string? PlayerName { get; set; }
     }
 }
