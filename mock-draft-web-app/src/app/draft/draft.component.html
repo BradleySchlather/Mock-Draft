@@ -1,4 +1,4 @@
-picks<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <app-header title="2024 NFL Draft"></app-header>
 
@@ -21,7 +21,7 @@ picks<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <img class="team-logos" [src]="this.imageArr[1]">
     <mat-form-field class="pick-selector">
         <mat-label>Pick 2</mat-label>
-        <mat-select [(ngModel)]="this.picks[1]">
+        <mat-select [(ngModel)]="this.picks[1]" (selectionChange)="removePlayerFromList($event.value)">
             <mat-option style="font-size: 1rem; max-width: fit-content;" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
@@ -39,7 +39,7 @@ picks<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <button mat-raised-button color="primary" class="trade-button">Trade</button>
 </div>
 
-<div class="pick">
+<!-- <div class="pick">
     <img class="team-logos" [src]="this.imageArr[3]">
     <mat-form-field class="pick-selector">
         <mat-label>Pick 4</mat-label>
@@ -48,7 +48,7 @@ picks<meta name="viewport" content="width=device-width, initial-scale=1.0">
         </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary" class="trade-button">Trade</button>
-</div>
+</div> -->
 
 <!-- <div class="pick">
     <img class="team-logos" [src]="this.getImageString(4]">

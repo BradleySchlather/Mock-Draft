@@ -19,7 +19,11 @@ namespace MockDraftApi.Repositories
             //return result;
             return [
                 new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",
-                    PickNumbersNotAdjusted = "0,1,2", PickPlayersNotAdjusted = "" }
+                    PickNumbersNotAdjusted = "0", PickPlayersNotAdjusted = "" },
+                new Team { Name = "Cowboys", Image = "../../assets/CowboysLogo.gif",
+                    PickNumbersNotAdjusted = "1", PickPlayersNotAdjusted = "" },
+                new Team { Name = "Falcons", Image = "../../assets/FalconsLogo.gif",
+                    PickNumbersNotAdjusted = "2", PickPlayersNotAdjusted = "" },
                 ];
         }
         public IEnumerable<Player> GetPlayers()
