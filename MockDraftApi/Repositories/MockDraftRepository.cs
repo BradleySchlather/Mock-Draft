@@ -19,7 +19,7 @@ namespace MockDraftApi.Repositories
             //return result;
             return [
                 new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",
-                    PickNumbersNotAdjusted = "1,2,3", PickPlayersNotAdjusted = "" }
+                    PickNumbersNotAdjusted = "0,1,2", PickPlayersNotAdjusted = "" }
                 ];
         }
         public IEnumerable<Player> GetPlayers()

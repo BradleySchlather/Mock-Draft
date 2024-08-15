@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from '../shared/models/player';
+import { ApiService } from '../shared/services/api.service';
+import { Team } from '../shared/models/team';
 
 @Component({
   selector: 'app-draft',
@@ -8,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class DraftComponent implements OnInit {
   // public players = ['', 'Marvin Harrison Jr', 'Caleb Williams', 'Olumuyiwa', 'Brock Bowers', 'Joe Alt', 'Drake Maye', 'JC Latham',
   //   'Laiatu Latu', 'Jared Verse', 'Dallas Turner'];
-  // public picks = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
   // public draftOrder = ['Bears','Commanders','Patriots','Cardinals','Chargers','Giants','Titans','Falcons',
   // 'Bears','Jets','Vikings','Broncos','Raiders','Saints','Colts','Seahawks','Jaguars','Bengals', 'Rams',
   // 'Steelers','Dolphins','Eagles','Texans','Cowboys','Packers','Buccaneers','Cardinals','Bills','Lions',
@@ -24,14 +26,35 @@ export class DraftComponent implements OnInit {
   // ];
 
   public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
-  public players = [];
-  public draftOrder = [];
-  public imageArr = [];
+  public players: Player[] = [];
+  public teams: Team[] = [];
+  public draftOrder: string[] = [];
+  public imageArr: string[] = []
+  public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+
+  constructor(private apiService: ApiService) { }
+  //Need to take player off the list once player is picked && need to add player to list if player taken off list
 
   ngOnInit(): void {
     //Will set all arrays here
+    this.apiService.getPlayers().subscribe(data => {
+      this.players = data;
+    })
+    this.apiService.getTeams().subscribe(data => {
+      this.teams = data;
+      this.teams.forEach(element => {
+        let indexForPicks = 0
+        element.pickNumbers.forEach(pickNumbersElement => {
+          if (pickNumbersElement == indexForPicks) {
+            this.draftOrder.push(element.name);
+            this.imageArr.push(`../../assets/${element.name}Logo.gif`)
+            console.log('element.name')
+          }
+          indexForPicks++;
+        })
+      });
+    })
   }
-
 
   onSave(): void {
     //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user

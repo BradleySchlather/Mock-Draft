@@ -37,12 +37,12 @@ namespace MockDraftApi.Controllers
             return data;
         }
 
-        //[HttpGet]
-        //public IEnumerable<Team> GetTeams()
-        //{
-        //    return [
-        //        new Team { 'Bears',  }
-        //}
+        [HttpGet]
+        public IEnumerable<Team> GetTeams()
+        {
+            var data = _repo.GetTeams();
+            return data;
+        }
     }
 }
 
