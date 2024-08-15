@@ -18,8 +18,9 @@ namespace MockDraftApi.Repositories
             //    var result = connection.Query<Team>(procedure, CommandType.StoredProcedure);
             //return result;
             return [
-                new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif", p}
-                ]
+                new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",
+                    PickNumbersNotAdjusted = "1,2,3", PickPlayersNotAdjusted = "" }
+                ];
         }
         public IEnumerable<Player> GetPlayers()
         {
