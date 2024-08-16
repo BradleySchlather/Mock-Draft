@@ -5,7 +5,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ApiService } from '../shared/services/api.service';
-import { debug } from 'console';
 
 @Component({
   selector: 'app-player-list',
@@ -14,10 +13,11 @@ import { debug } from 'console';
 })
 export class PlayerListComponent implements OnInit {
 
-  //To Do: Allow user to drag and drop to change the player list
-  //To Do: Have a Bust Option. Could be a button or a select that has other options in it
-  //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
-  //To Do: 
+  //To Do: 1 - 10 Mat Select on How the player will fair in the league
+  //To Do: Have a Bust Option. Could be a button or a select that has other options in it. Should make the background of that element red.
+  //To Do: Have a Gem Option. Button that changes the background to green. Need to have a player notes section where the user can add notes about the player.
+  //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it.
+  //To Do: Add links to other websites that have data about players
 
   public loading = true;
   public players: Player[] = [];
@@ -53,7 +53,7 @@ export class PlayerListComponent implements OnInit {
     this.setDataSource(this.players);
   }
 
-  //To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One
-  //column will be userId, one will be players as a string, one will be draft picks
-  //To Do: Will need to pull the list
+  /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One
+  column will be userId, one will be players as a string, one will be draft picks */
+  //To Do: Will need to pull the list and organize for each user dynamically.
 }

@@ -6,8 +6,3 @@
 <nav><h3><a routerLink="/draft">Mock Draft Selection</a></h3></nav>
 
 <br>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    @for (movie of movies; track movie) {
-      <div class="example-box" cdkDrag>{{movie}}</div>
-    }
-  </div>
