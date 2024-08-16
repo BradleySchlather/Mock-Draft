@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from '../shared/models/player';
 import { ApiService } from '../shared/services/api.service';
 import { Team } from '../shared/models/team';
+import { pick } from '../shared/models/pick';
 
 @Component({
   selector: 'app-draft',
@@ -33,9 +34,8 @@ export class DraftComponent implements OnInit {
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
   constructor(private apiService: ApiService) { }
-  //Need to take player off the list once player is picked && need to add player to list if player taken off list
 
-  //To Do Now!!!: anything with index past 0 the image isn't being displayed
+  //To Do: Setup Trade Dialog
 
   ngOnInit(): void {
     //Will set all arrays here
@@ -49,8 +49,7 @@ export class DraftComponent implements OnInit {
         element.pickNumbers.forEach(pickNumbersElement => {
           if (pickNumbersElement == indexForPicks) {
             this.draftOrder.push(element.name);
-            this.imageArr.push(`../../assets/${element.name}Logo.gif`)
-            console.log('element.name')
+            this.imageArr.push(`../../assets/${element.name}Logo.gif`);
           }
           indexForPicks++;
         })
@@ -58,18 +57,8 @@ export class DraftComponent implements OnInit {
     })
   }
 
-  //Need to work on below
-  public removePlayerFromList(event: any): void {
-    //   for (let index = 0; index < this.players.length; index++) {
-    //     if (this.players[index].playerName == event.playerName) {
-    //       this.players.splice(index, 1);
-    //       break;
-    //     }
-    //   }
-  }
-
   public onSave(): void {
     //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user
-    //Need to create a player model and player data that I can use for the entire app
+    //To Do: need to prevent player from being added twice when I call onSave()
   }
 }

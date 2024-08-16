@@ -1,19 +1,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<app-header title="2024 NFL Draft"></app-header>
+<!-- <app-header title="2024 NFL Draft"></app-header> -->
 
 <!-- To Do: Might create filter for positions -->
 
 <div class="table-container" #tableContainer>
-    <table mat-table [dataSource]="this.dataSource" matSort
+    <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">
-
-    <!-- To Do: Get this to work first (This is from drag and drop on angular material) -->
-    <!-- <div cdkDropList [cdkDropListData]="players" (cdkDropListDropped)="drop($event)">
-        @for (player of players; track player) {
-          <div class="example-box" cdkDrag>{{players}}</div>
-        }
-      </div> -->
 
       <!-- When I get the above to work, I can potentially implement the image while dragging feature -->
       <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
@@ -51,7 +44,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
 
     </table>
 </div>

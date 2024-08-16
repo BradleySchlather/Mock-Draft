@@ -10,7 +10,7 @@ import { PlayerListComponent } from './player-list/player-list.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -45,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [
     provideClientHydration()
