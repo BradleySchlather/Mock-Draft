@@ -46,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterLink,
     RouterLinkActive,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration()

@@ -9,6 +9,7 @@
 }
 
 th {
+    //To Do: Fix headers.... they look horrible lol
     font-weight: bold !important;
     background-color: white !important;
 }
@@ -38,3 +39,16 @@ h1 {
   .cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+
+  .star-bust-buttons {
+    display: flex;
+    gap: .8vw;
+  }
+
+.star-button {
+    background-color: rgb(54, 151, 54) !important;
+}
+
+.bust-button {
+    background-color: rgb(232, 23, 23) !important;
+}

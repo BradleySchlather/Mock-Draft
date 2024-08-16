@@ -21,7 +21,7 @@ export class PlayerListComponent implements OnInit {
 
   public loading = true;
   public players: Player[] = [];
-  public displayedColumns: String[] = ['rank', 'playerName', 'position', 'heightWeight', 'college'];
+  public displayedColumns: String[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'bustOrGem'];
   public dataSource = new MatTableDataSource(this.players);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
