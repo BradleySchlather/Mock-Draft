@@ -1,18 +1,17 @@
 @use '@angular/material' as mat;
 
 .table-container {
-    width: 100%;
+    width: 98%;
     @include mat.elevation(4);
-    tr:nth-child(odd) {
-        background-color: lightgray;
-    }
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4vh;
 }
 
 th {
-    //To Do: Fix headers.... they look horrible lol
-    font-weight: bold !important;
     background-color: white !important;
 }
+
 
 h1 {
     text-align: center;

@@ -8,16 +8,6 @@
     <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">
 
-      <!-- When I get the above to work, I can potentially implement the image while dragging feature -->
-      <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        @for (movie of movies; track movie) {
-          <div class="example-box" cdkDrag>
-            {{movie.title}}
-            <img *cdkDragPreview [src]="movie.poster" [alt]="movie.title">
-          </div>
-        }
-      </div> -->
-
         <ng-container matColumnDef="rank">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>RK</th>
             <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
@@ -29,7 +19,14 @@
         </ng-container>
 
         <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pos</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              <mat-form-field>
+                <mat-select [(value)]="positionSelected" (selectionChange)="this.filterByPos()">
+                  <mat-option [value]="'All Pos'">All Pos</mat-option>
+                  <mat-option *ngFor="let pos of this.positions" [value]="pos">{{pos}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
         </ng-container>
 
