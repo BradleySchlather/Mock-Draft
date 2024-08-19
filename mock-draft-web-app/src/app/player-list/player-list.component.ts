@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ApiService } from '../shared/services/api.service';
-import { filter } from 'rxjs';
+import { elementAt, filter } from 'rxjs';
 
 @Component({
   selector: 'app-player-list',
@@ -14,13 +14,14 @@ import { filter } from 'rxjs';
 })
 export class PlayerListComponent implements OnInit {
 
-  //Currently working on: Need to find how to adjust rankings for players when filtering
+  //Currently working on: Need to find how to adjust rankings for players when filtering. Will need to use the main dataSource to switch users being selected
+  //by overall but I will also need to move around the filterData so that it reflects
+  //the proper rank when still sorting, but I won't send that rank to the database
   //To Do: Have a Bust Option. Could be a button or a select that has other options in it. Should make the background of that element red
   //To Do: Have a Gem Option. Button that changes the background to green. Need to have a player notes section where the user can add notes about the player
   //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
   //To Do: Add links to other websites that have data about players
-  //To Do: Filter by position only. Will need to use the main dataSource to switch users being selected by overall but I will also need to move around the filterData so that it reflects
-  //the proper rank when still sorting, but I won't send that rank to the database
+
 
   public loading = true;
   public positionSelected = 'All Pos';
@@ -50,13 +51,28 @@ export class PlayerListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  public resetRank(players: Player[]): void {
+    let rank = 1;
+    players.forEach(element => {
+      element.rank = rank;
+      rank++;
+    });
+  }
+
   public drop(event: CdkDragDrop<any[], any[], any>) {
     moveItemInArray(this.filterPlayers, event.previousIndex, event.currentIndex);
-    let rank = 1;
-    this.filterPlayers.forEach(element => {
-      element.rank = rank;
-      rank++
-    });
+    this.resetRank(this.filterPlayers);
+    if (this.positionSelected == 'All Pos')
+      this.masterPlayers = [...this.filterPlayers];
+    // else {
+    //   Need to get player indexes f/master
+    //   this.masterPlayers[] = this.filterPlayers[event.previousIndex];
+    //   this.masterPlayers[event.currentIndex] = this.filterPlayers[event.currentIndex];
+    //   this.masterPlayers.forEach(element => {
+    //     element.rank = rank;
+    //     rank++
+    //   })
+    // }
     this.setDataSource(this.filterPlayers);
   }
 
@@ -67,6 +83,7 @@ export class PlayerListComponent implements OnInit {
     else {
       filterObject = filterObject.filter(player => player.position.toLowerCase().trim() == this.positionSelected.toLowerCase().trim());
       this.filterPlayers = [...filterObject];
+      this.resetRank(this.filterPlayers);
     }
     this.setDataSource(this.filterPlayers);
   }
