@@ -9,7 +9,7 @@ cdkDragHandle>
 <div class="tradingTeams">
     <mat-form-field>
         <mat-label>Team 1</mat-label>
-        <mat-select required [(ngModel)]="team1">
+        <mat-select required [(ngModel)]="team1Name">
           <mat-option *ngFor="let team of teams" [value]="team.name">
             {{team.name}}
           </mat-option>
@@ -18,7 +18,7 @@ cdkDragHandle>
 
     <mat-form-field>
     <mat-label>Team 2</mat-label>
-    <mat-select required [(ngModel)]="team2">
+    <mat-select required [(ngModel)]="team2Name">
         <mat-option *ngFor="let team of teams" [value]="team.name">
         {{team.name}}
         </mat-option>

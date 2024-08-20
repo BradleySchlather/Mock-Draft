@@ -26,7 +26,6 @@ export class DraftComponent implements OnInit {
   //To Do: Setup Trade Dialog
 
   ngOnInit(): void {
-    //Will set all arrays here
     this.apiService.getPlayers().subscribe(data => {
       this.players = data;
     })
@@ -52,7 +51,7 @@ export class DraftComponent implements OnInit {
     }).afterClosed().subscribe(confirmed => {
       if (confirmed)
         //To Do: This is where I'll need to get the teams again, which will populate the correct order following the trade
-        console.log('Replacement for getting Teams List')
+        console.log('Replacement for getting Teams List');
     })
   }
 
