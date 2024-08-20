@@ -79,20 +79,20 @@ export class PlayerListComponent implements OnInit {
         this.filterPlayers[index].rank = rankArr[index];
       }
       this.setDataSource(this.filterPlayers)
-      this.reorderPlayerArr();
+      this.reorderPlayerArr(this.masterPlayers);
     }
   }
 
-  private reorderPlayerArr() {
+  private reorderPlayerArr(playerArr: Player[]) {
     let rank = 1;
     let tempPlayerArr: Player[] = [];
     while (rank < this.masterPlayers.length + 2) {
-      this.masterPlayers.forEach(element => {
+      playerArr.forEach(element => {
         element.rank == rank ? tempPlayerArr.push(element) : null;
       });
       rank++;
     }
-    this.masterPlayers = [...tempPlayerArr];
+    playerArr = [...tempPlayerArr];
   }
 
   public drop(event: CdkDragDrop<any[], any[], any>) {
@@ -110,6 +110,7 @@ export class PlayerListComponent implements OnInit {
     else {
       filterObject = filterObject.filter(player => player.position.toLowerCase().trim() == this.positionSelected.toLowerCase().trim());
       this.filterPlayers = [...filterObject];
+      this.reorderPlayerArr(this.filterPlayers);
       this.isFiltered = true;
     }
     this.setDataSource(this.filterPlayers);
