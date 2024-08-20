@@ -15,7 +15,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" class="trade-button" (click)="this.openTradeDialog(0)">Trade</button>
 </div>
 
 <div class="pick">

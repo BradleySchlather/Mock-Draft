@@ -1,4 +1,4 @@
-export class pick {
+export class Pick {
     number!: number;
     playerName!: string;
 }

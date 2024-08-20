@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from '../shared/models/player';
 import { ApiService } from '../shared/services/api.service';
 import { Team } from '../shared/models/team';
-import { pick } from '../shared/models/pick';
+import { Pick } from '../shared/models/pick';
+import { MatDialog } from '@angular/material/dialog';
+import { TradeDialogComponent } from '../shared/dialogs/trade-dialog/trade-dialog.component';
+import { TradeDataToDialog } from '../shared/models/trade';
 
 @Component({
   selector: 'app-draft',
@@ -10,30 +13,15 @@ import { pick } from '../shared/models/pick';
   styleUrl: './draft.component.scss'
 })
 export class DraftComponent implements OnInit {
-  // public players = ['', 'Marvin Harrison Jr', 'Caleb Williams', 'Olumuyiwa', 'Brock Bowers', 'Joe Alt', 'Drake Maye', 'JC Latham',
-  //   'Laiatu Latu', 'Jared Verse', 'Dallas Turner'];
-  // public draftOrder = ['Bears','Commanders','Patriots','Cardinals','Chargers','Giants','Titans','Falcons',
-  // 'Bears','Jets','Vikings','Broncos','Raiders','Saints','Colts','Seahawks','Jaguars','Bengals', 'Rams',
-  // 'Steelers','Dolphins','Eagles','Texans','Cowboys','Packers','Buccaneers','Cardinals','Bills','Lions',
-  // 'Ravens','49ers','Chiefs'];
-  // public imageArr = [
-  // `../../assets/${this.draftOrder[0]}Logo.gif`, `../../assets/${this.draftOrder[1]}Logo.gif`, `../../assets/${this.draftOrder[2]}Logo.gif`, `../../assets/${this.draftOrder[3]}Logo.gif`, `../../assets/${this.draftOrder[4]}Logo.gif`,
-  // `../../assets/${this.draftOrder[5]}Logo.gif`, `../../assets/${this.draftOrder[6]}Logo.gif`, `../../assets/${this.draftOrder[7]}Logo.gif`, `../../assets/${this.draftOrder[8]}Logo.gif`, `../../assets/${this.draftOrder[9]}Logo.gif`,
-  // `../../assets/${this.draftOrder[10]}Logo.gif`,`../../assets/${this.draftOrder[11]}Logo.gif`,`../../assets/${this.draftOrder[12]}Logo.gif`,`../../assets/${this.draftOrder[13]}Logo.gif`,`../../assets/${this.draftOrder[14]}Logo.gif`,
-  // `../../assets/${this.draftOrder[15]}Logo.gif`,`../../assets/${this.draftOrder[16]}Logo.gif`,`../../assets/${this.draftOrder[17]}Logo.gif`,`../../assets/${this.draftOrder[18]}Logo.gif`,`../../assets/${this.draftOrder[19]}Logo.gif`,
-  // `../../assets/${this.draftOrder[20]}Logo.gif`,`../../assets/${this.draftOrder[21]}Logo.gif`,`../../assets/${this.draftOrder[22]}Logo.gif`,`../../assets/${this.draftOrder[23]}Logo.gif`,`../../assets/${this.draftOrder[24]}Logo.gif`,
-  // `../../assets/${this.draftOrder[25]}Logo.gif`,`../../assets/${this.draftOrder[26]}Logo.gif`,`../../assets/${this.draftOrder[27]}Logo.gif`,`../../assets/${this.draftOrder[28]}Logo.gif`,`../../assets/${this.draftOrder[29]}Logo.gif`,
-  // `../../assets/${this.draftOrder[30]}Logo.gif`,`../../assets/${this.draftOrder[31]}Logo.gif`,`../../assets/${this.draftOrder[32]}Logo.gif`
-  // ];
 
   public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
   public players: Player[] = [];
-  public teams: Team[] = [];
+  public teams!: Team[];
   public draftOrder: string[] = [];
   public imageArr: string[] = [];
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   //To Do: Setup Trade Dialog
 
@@ -54,6 +42,17 @@ export class DraftComponent implements OnInit {
           indexForPicks++;
         })
       });
+    })
+  }
+
+  public openTradeDialog(index: number, teams: Team[] = this.teams) {
+    let dataToPass: TradeDataToDialog = { index, teams }
+    this.dialog.open(TradeDialogComponent, {
+      data: dataToPass
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed)
+        //To Do: This is where I'll need to get the teams again, which will populate the correct order following the trade
+        console.log('Replacement for getting Teams List')
     })
   }
 

@@ -1,0 +1,34 @@
+<div class="header"
+cdkDrag
+cdkDragRootElement=".cdk-overlay-pane"
+cdkDragHandle>
+    <h1 mat-dialog-title>Add Item</h1>
+    <div class="exit"><button class = "exit-button" mat-stroked-button color="disabled" (click)="closeDialog(false)">X</button></div>
+</div>
+
+<div class="tradingTeams">
+    <mat-form-field>
+        <mat-label>Team 1</mat-label>
+        <mat-select required [(ngModel)]="team1">
+          <mat-option *ngFor="let team of teams" [value]="team.name">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Team 2</mat-label>
+    <mat-select required [(ngModel)]="team2">
+        <mat-option *ngFor="let team of teams" [value]="team.name">
+        {{team.name}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="submit-cancel">
+    <div class="cancel"><button mat-raised-button color="warn"(click)="closeDialog(false)">Cancel</button></div>
+  
+    <div class="submit"><button mat-raised-button color="success" (click)="addTrade()" 
+      [disabled]="">Submit</button></div>
+  </div>
