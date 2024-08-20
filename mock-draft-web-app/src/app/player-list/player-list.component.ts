@@ -22,9 +22,9 @@ export class PlayerListComponent implements OnInit {
   //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
   //To Do: Add links to other websites that have data about players
 
-
   public loading = true;
   public positionSelected = 'All Pos';
+  public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
   public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'bustOrGem'];
@@ -51,39 +51,66 @@ export class PlayerListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  public resetRank(players: Player[]): void {
+  public resetRank(players: Player[], previousIndex: number, currentIndex: number): void {
+    if (!this.isFiltered) {
+      let rank = 1;
+      players.forEach(element => {
+        element.rank = rank;
+        rank++;
+      });
+    }
+    else {
+      let rankArr: number[] = [];
+      players.forEach(element => {
+        rankArr.push(element.rank);
+      });
+      rankArr.sort((a, b) => a - b);
+      let lowerIndex = 0;
+      let higherIndex = 0;
+      if (previousIndex < currentIndex) {
+        lowerIndex = previousIndex;
+        higherIndex = currentIndex;
+      }
+      else {
+        lowerIndex = currentIndex;
+        higherIndex = previousIndex;
+      }
+      for (let index = lowerIndex; index < higherIndex + 1; index++) {
+        this.filterPlayers[index].rank = rankArr[index];
+      }
+      this.setDataSource(this.filterPlayers)
+      this.reorderPlayerArr();
+    }
+  }
+
+  private reorderPlayerArr() {
     let rank = 1;
-    players.forEach(element => {
-      element.rank = rank;
+    let tempPlayerArr: Player[] = [];
+    while (rank < this.masterPlayers.length + 2) {
+      this.masterPlayers.forEach(element => {
+        element.rank == rank ? tempPlayerArr.push(element) : null;
+      });
       rank++;
-    });
+    }
+    this.masterPlayers = [...tempPlayerArr];
   }
 
   public drop(event: CdkDragDrop<any[], any[], any>) {
     moveItemInArray(this.filterPlayers, event.previousIndex, event.currentIndex);
-    this.resetRank(this.filterPlayers);
-    if (this.positionSelected == 'All Pos')
-      this.masterPlayers = [...this.filterPlayers];
-    // else {
-    //   Need to get player indexes f/master
-    //   this.masterPlayers[] = this.filterPlayers[event.previousIndex];
-    //   this.masterPlayers[event.currentIndex] = this.filterPlayers[event.currentIndex];
-    //   this.masterPlayers.forEach(element => {
-    //     element.rank = rank;
-    //     rank++
-    //   })
-    // }
+    this.resetRank(this.filterPlayers, event.previousIndex, event.currentIndex);
     this.setDataSource(this.filterPlayers);
   }
 
   public filterByPos(): void {
     let filterObject = this.masterPlayers;
-    if (this.positionSelected == 'All Pos')
+    if (this.positionSelected == 'All Pos') {
       this.filterPlayers = [...this.masterPlayers];
+      this.isFiltered = false;
+    }
     else {
       filterObject = filterObject.filter(player => player.position.toLowerCase().trim() == this.positionSelected.toLowerCase().trim());
       this.filterPlayers = [...filterObject];
-      this.resetRank(this.filterPlayers);
+      this.isFiltered = true;
     }
     this.setDataSource(this.filterPlayers);
   }
