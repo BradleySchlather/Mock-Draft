@@ -14,7 +14,7 @@ export class TradeDialogComponent implements OnInit {
 
   constructor(private dialog: MatDialogRef<TradeDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: TradeDataToDialog, private apiService: ApiService) { }
 
-  public team1Name: string = ''
+  public team1Name: string = '';
   public team2Name: string = '';
   public teams: Team[] = [];
 

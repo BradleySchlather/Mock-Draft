@@ -8,4 +8,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: auto;
 }
 
+.mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before {
+    min-height: unset !important;
+    max-height: 0 !important;
+  }
+
 //To Do: make background black and will need to get new team logos

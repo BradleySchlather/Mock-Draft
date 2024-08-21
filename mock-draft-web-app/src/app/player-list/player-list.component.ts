@@ -14,11 +14,7 @@ import { elementAt, filter } from 'rxjs';
 })
 export class PlayerListComponent implements OnInit {
 
-  //Currently working on: Need to find how to adjust rankings for players when filtering. Will need to use the main dataSource to switch users being selected
-  //by overall but I will also need to move around the filterData so that it reflects
-  //the proper rank when still sorting, but I won't send that rank to the database
-  //To Do: Have a Bust Option. Could be a button or a select that has other options in it. Should make the background of that element red
-  //To Do: Have a Gem Option. Button that changes the background to green. Need to have a player notes section where the user can add notes about the player
+  //To Do: Give option for user to remove star/bust
   //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
   //To Do: Add links to other websites that have data about players
 
@@ -79,20 +75,20 @@ export class PlayerListComponent implements OnInit {
         this.filterPlayers[index].rank = rankArr[index];
       }
       this.setDataSource(this.filterPlayers)
-      this.reorderPlayerArr(this.masterPlayers);
+      this.masterPlayers = this.reorderPlayerArr(this.masterPlayers);
     }
   }
 
-  private reorderPlayerArr(playerArr: Player[]) {
+  private reorderPlayerArr(playerArr: Player[]): Player[] {
     let rank = 1;
     let tempPlayerArr: Player[] = [];
-    while (rank < this.masterPlayers.length + 2) {
+    while (rank < this.masterPlayers.length + 1) {
       playerArr.forEach(element => {
         element.rank == rank ? tempPlayerArr.push(element) : null;
       });
       rank++;
     }
-    playerArr = [...tempPlayerArr];
+    return tempPlayerArr;
   }
 
   public drop(event: CdkDragDrop<any[], any[], any>) {
@@ -104,16 +100,27 @@ export class PlayerListComponent implements OnInit {
   public filterByPos(): void {
     let filterObject = this.masterPlayers;
     if (this.positionSelected == 'All Pos') {
+      this.masterPlayers = this.reorderPlayerArr(this.masterPlayers);
       this.filterPlayers = [...this.masterPlayers];
       this.isFiltered = false;
     }
     else {
       filterObject = filterObject.filter(player => player.position.toLowerCase().trim() == this.positionSelected.toLowerCase().trim());
       this.filterPlayers = [...filterObject];
-      this.reorderPlayerArr(this.filterPlayers);
+      this.filterPlayers = this.reorderPlayerArr(this.filterPlayers);
       this.isFiltered = true;
     }
     this.setDataSource(this.filterPlayers);
+  }
+
+  public changeColorToBust(player: Player): void {
+    player.isBust = true;
+    player.isStar = false;
+  }
+
+  public changeColorToStar(player: Player): void {
+    player.isStar = true;
+    player.isBust = false;
   }
 
   /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One
