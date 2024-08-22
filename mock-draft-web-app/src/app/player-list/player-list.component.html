@@ -4,6 +4,8 @@
 
 <!-- To Do: Might create filter for positions -->
 
+<app-header title="Pro Football Focus"></app-header>
+
 <div class="table-container" #tableContainer>
     <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">

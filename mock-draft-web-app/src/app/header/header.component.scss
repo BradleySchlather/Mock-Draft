@@ -3,9 +3,18 @@ h1{
     padding-left: 20px;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+    font-size: smaller !important;
+    font-weight: 500;
+}
+
 .banner{
     display: flex;
     height: 60px;
     text-align: left;
     align-items: center;
+    background-color: rgb(25, 75, 104) !important;
+    gap: 2vw;
 }

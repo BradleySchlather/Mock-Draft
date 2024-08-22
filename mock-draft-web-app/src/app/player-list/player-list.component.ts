@@ -16,6 +16,7 @@ export class PlayerListComponent implements OnInit {
 
   //To Do: Give option for user to remove star/bust
   //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
+  //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
 
   public loading = true;

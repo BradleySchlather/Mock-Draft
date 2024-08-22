@@ -8,3 +8,5 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() title: string = "Title Placeholder"
 }
+
+//To Do: Change Background of each clickable section of the banner

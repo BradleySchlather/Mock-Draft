@@ -31,7 +31,7 @@ export class DraftComponent implements OnInit {
     })
     this.apiService.getTeams().subscribe(data => {
       this.teams = data;
-      let indexForPicks = 0
+      let indexForPicks = 0;
       this.teams.forEach(element => {
         element.pickNumbers.forEach(pickNumbersElement => {
           if (pickNumbersElement == indexForPicks) {

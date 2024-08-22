@@ -4,7 +4,6 @@ import { TradeDataToDialog } from '../../models/trade';
 import { ApiService } from '../../services/api.service';
 import { Team } from '../../models/team';
 
-
 @Component({
   selector: 'app-trade-dialog',
   templateUrl: './trade-dialog.component.html',
@@ -17,6 +16,9 @@ export class TradeDialogComponent implements OnInit {
   public team1Name: string = '';
   public team2Name: string = '';
   public teams: Team[] = [];
+
+  //To Do: Add save button on top as well
+  //To Do: Switch to default button
 
   ngOnInit(): void {
     this.teams = this.data.teams;
