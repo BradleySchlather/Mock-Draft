@@ -58,5 +58,6 @@ export class DraftComponent implements OnInit {
   public onSave(): void {
     //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user
     //To Do: need to prevent player from being added twice when I call onSave()
+    //To Do: will send user to account creation screen if user doesn't have an account
   }
 }

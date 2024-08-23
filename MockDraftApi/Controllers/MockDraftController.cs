@@ -43,6 +43,13 @@ namespace MockDraftApi.Controllers
             var data = _repo.GetTeams();
             return data;
         }
+
+        [HttpGet]
+        public IEnumerable<Scoreboard> GetScoreboard()
+        {
+            var data = _repo.GetScoreboard();
+            return data;
+        }
     }
 }
 

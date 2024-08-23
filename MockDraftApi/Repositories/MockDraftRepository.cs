@@ -41,5 +41,23 @@ namespace MockDraftApi.Repositories
                 new Player { Rank = 10, PlayerName = "Dallas Turner", Position = "EDGE", HeightWeight = "6-4 / 252", College = "Bama", IsStar = false, IsBust = false }
             ];
         }
+
+        public IEnumerable<Scoreboard> GetScoreboard()
+        {
+            return [
+                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
+            ];
+        }
     }
 }
