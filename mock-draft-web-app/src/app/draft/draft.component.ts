@@ -22,11 +22,13 @@ export class DraftComponent implements OnInit {
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
   private tradeTeam1 = '';
   private tradeTeam2 = '';
-  private tradeTeam1Index = 0;
+  public tradeTeam1Index = 0;
+  public tradeIsActive = false;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService) { }
 
-  //To Do: Setup Trade Dialog
+  //To Do Right now: working on html line 20 to get button to change color when button is clicked
+  //To Do: Add save button on top as well
 
   ngOnInit(): void {
     this.apiService.getPlayers().subscribe(data => {
@@ -51,6 +53,7 @@ export class DraftComponent implements OnInit {
     if (this.tradeTeam1 == '') {
       this.tradeTeam1 = this.draftOrder[index];
       this.tradeTeam1Index = index;
+      this.tradeIsActive = true;
     }
     else {
       this.tradeTeam2 = this.draftOrder[index];
@@ -58,6 +61,8 @@ export class DraftComponent implements OnInit {
       this.imageArr[index] = `../../assets/${this.tradeTeam1}Logo.gif`;
       this.draftOrder[this.tradeTeam1Index] = this.tradeTeam2;
       this.imageArr[this.tradeTeam1Index] = `../../assets/${this.tradeTeam2}Logo.gif`;
+      this.tradeTeam1 = '';
+      this.tradeIsActive = false;
     }
   }
 

@@ -17,7 +17,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button" (click)="this.trade(0)">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 0 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 0 || !this.tradeIsActive" (click)="this.trade(0)">Trade</button>
 </div>
 
 <div class="pick">

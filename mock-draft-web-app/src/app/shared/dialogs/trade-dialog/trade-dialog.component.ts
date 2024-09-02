@@ -17,7 +17,7 @@ export class TradeDialogComponent implements OnInit {
   public team2Name: string = '';
   public teams: Team[] = [];
 
-  //To Do: Add save button on top as well
+
   //To Do: Switch to default button
 
   ngOnInit(): void {
