@@ -3,9 +3,6 @@ import { Player } from '../shared/models/player';
 import { ApiService } from '../shared/services/api.service';
 import { Team } from '../shared/models/team';
 import { Pick } from '../shared/models/pick';
-import { MatDialog } from '@angular/material/dialog';
-import { TradeDialogComponent } from '../shared/dialogs/trade-dialog/trade-dialog.component';
-import { TradeDataToDialog } from '../shared/models/trade';
 
 @Component({
   selector: 'app-draft',
@@ -27,7 +24,6 @@ export class DraftComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
-  //To Do Right now: working on html line 20 to get button to change color when button is clicked
   //To Do: Add save button on top as well
 
   ngOnInit(): void {
@@ -65,17 +61,6 @@ export class DraftComponent implements OnInit {
       this.tradeIsActive = false;
     }
   }
-
-  // public openTradeDialog(index: number, teams: Team[] = this.teams) {
-  //   let dataToPass: TradeDataToDialog = { index, teams }
-  //   this.dialog.open(TradeDialogComponent, {
-  //     data: dataToPass
-  //   }).afterClosed().subscribe(confirmed => {
-  //     if (confirmed)
-  //       //To Do: This is where I'll need to get the teams again, which will populate the correct order following the trade
-  //       console.log('Replacement for getting Teams List');
-  //   })
-  // }
 
   public onSave(): void {
     //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user

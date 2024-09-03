@@ -20,7 +20,6 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TradeDialogComponent } from './shared/dialogs/trade-dialog/trade-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { TradeDialogComponent } from './shared/dialogs/trade-dialog/trade-dialog
     DraftComponent,
     PlayerListComponent,
     ScoreboardComponent,
-    TradeDialogComponent
   ],
   imports: [
     BrowserModule,
