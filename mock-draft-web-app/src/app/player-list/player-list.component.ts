@@ -115,13 +115,21 @@ export class PlayerListComponent implements OnInit {
   }
 
   public changeColorToBust(player: Player): void {
-    player.isBust = true;
-    player.isStar = false;
+    if (player.isBust)
+      player.isBust = false;
+    else {
+      player.isBust = true;
+      player.isStar = false;
+    }
   }
 
   public changeColorToStar(player: Player): void {
-    player.isStar = true;
-    player.isBust = false;
+    if (player.isStar)
+      player.isStar = false;
+    else {
+      player.isStar = true;
+      player.isBust = false;
+    }
   }
 
   /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One

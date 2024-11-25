@@ -24,7 +24,7 @@ export class DraftComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
-  //To Do: Add save button on top as well
+  //To Do: Ensure save button populates on the bottom of the page and stays there as the user scrolls when user makes a change
 
   ngOnInit(): void {
     this.apiService.getPlayers().subscribe(data => {

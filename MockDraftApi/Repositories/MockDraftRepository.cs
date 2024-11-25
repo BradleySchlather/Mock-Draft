@@ -15,7 +15,7 @@ namespace MockDraftApi.Repositories
         {
             //using OdbcConnection connection = new OdbcConnection(this.conn);
             //var procedure = "CALL PROCNAME();"
-            //    var result = connection.Query<Team>(procedure, CommandType.StoredProcedure);
+            //var result = connection.Query<Team>(procedure, CommandType.StoredProcedure);
             //return result;
             return [
                 new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",

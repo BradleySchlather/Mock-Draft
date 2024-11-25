@@ -14,5 +14,4 @@ export class HomeComponent {
   //To Do: Add an option to upgrade the user's account for a small subscription fee.
   //To Do: Also need to add week by week options to pick who they think will win.
   //To Do: Also need to allow them to make predictions prior to season start, such as SB winner, playoff teams, and other things of the like.
-
 }
