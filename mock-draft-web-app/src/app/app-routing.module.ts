@@ -10,7 +10,6 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
-
   {
     path: 'draft',
     component: DraftComponent
@@ -22,6 +21,10 @@ const routes: Routes = [
   },
   {
     path: 'scoreboard',
+    component: ScoreboardComponent
+  },
+  {
+    path: 'user',
     component: ScoreboardComponent
   }
 
