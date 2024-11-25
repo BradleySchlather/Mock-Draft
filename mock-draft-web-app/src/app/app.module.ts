@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './shared/dialogs/login/login.component';
 import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatMenuModule } from '@angular/material/menu';
     HttpClientModule,
     DragDropModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration()

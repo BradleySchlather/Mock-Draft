@@ -9,10 +9,10 @@
     </div>
     <div class="user">
         <button mat-button [mat-menu-trigger-for]="menu">
-            <nav><h1><a routerLink="/login"><img src="../../assets/AccountCircle.svg"></a></h1></nav>
+            <a><img src="../../assets/AccountCircle.svg"></a>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>Login</button>
+            <button mat-menu-item (click)="this.openLogin()">Login</button>
             <button mat-menu-item>Create Account</button>
         </mat-menu>
     </div>

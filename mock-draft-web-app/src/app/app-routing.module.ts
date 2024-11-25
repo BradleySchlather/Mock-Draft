@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { DraftComponent } from './draft/draft.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { LoginComponent } from './shared/dialogs/login/login.component';
+import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'user',
     component: ScoreboardComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
   }
 
 ];
