@@ -1,5 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<app-header title="Pro Football Forecast"></app-header>
+
 <div class="table-container" #tableContainer>
     <table mat-table [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">
@@ -15,7 +17,7 @@
         </ng-container>
 
         <ng-container matColumnDef="score">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Score </th>
             <td mat-cell *matCellDef="let element"> {{element.score}} </td>
         </ng-container>
 

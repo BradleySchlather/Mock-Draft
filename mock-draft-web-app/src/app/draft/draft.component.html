@@ -7,8 +7,19 @@
 <h1>NFL Draft Predictions</h1>
 
 <h2>Round 1</h2>
+<div class="pick" *ngFor="let pick of this.picks; let i = index">
+    <img class="team-logos" [src]="this.imageArr[i]" width="8vh">
+    <mat-form-field class="pick-selector">
+        <mat-label>Pick {{i + 1}}</mat-label>
+        <mat-select [(ngModel)]="this.picks[i]">
+            <mat-option style="font-size: 1rem" [value]=""></mat-option>
+            <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == i && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != i || !this.tradeIsActive" (click)="this.trade(i)">Trade</button>
+</div>
 
-<div class="pick">
+<!-- <div class="pick">
     <img class="team-logos" [src]="this.imageArr[0]" width="8vh">
     <mat-form-field class="pick-selector">
         <mat-label>Pick 1</mat-label>
@@ -29,7 +40,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button" (click)="this.trade(1)">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 1 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 1 || !this.tradeIsActive" (click)="this.trade(1)">Trade</button>
 </div>
 
 <div class="pick">
@@ -41,7 +52,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button" (click)="this.trade(2)">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 2 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 2 || !this.tradeIsActive" (click)="this.trade(2)">Trade</button>
 </div>
 
 <div class="pick">
@@ -52,7 +63,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 3 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 3 || !this.tradeIsActive" (click)="this.trade(3)">Trade</button>
 </div>
 
 <div class="pick">
@@ -63,7 +74,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 4 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 4 || !this.tradeIsActive" (click)="this.trade(4)">Trade</button>
 </div>
 
 <div class="pick">
@@ -74,7 +85,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 5 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 5 || !this.tradeIsActive" (click)="this.trade(5)">Trade</button>
 </div>
 
 <div class="pick">
@@ -85,7 +96,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 6 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 6 || !this.tradeIsActive" (click)="this.trade(6)">Trade</button>
 </div>
 
 <div class="pick">
@@ -96,7 +107,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 7 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 7 || !this.tradeIsActive" (click)="this.trade(7)">Trade</button>
 </div>
 
 <div class="pick">
@@ -107,7 +118,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 8 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 8 || !this.tradeIsActive" (click)="this.trade(8)">Trade</button>
 </div>
 
 <div class="pick">
@@ -118,7 +129,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 9 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 9 || !this.tradeIsActive" (click)="this.trade(9)">Trade</button>
 </div>
 
 <div class="pick">
@@ -129,7 +140,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 10 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 10 || !this.tradeIsActive" (click)="this.trade(10)">Trade</button>
 </div>
 
 <div class="pick">
@@ -140,7 +151,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 11 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 11 || !this.tradeIsActive" (click)="this.trade(11)">Trade</button>
 </div>
 
 <div class="pick">
@@ -151,7 +162,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 12 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 12 || !this.tradeIsActive" (click)="this.trade(12)">Trade</button>
 </div>
 
 <div class="pick">
@@ -162,7 +173,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 13 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 13 || !this.tradeIsActive" (click)="this.trade(13)">Trade</button>
 </div>
 
 <div class="pick">
@@ -173,7 +184,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 14 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 14 || !this.tradeIsActive" (click)="this.trade(14)">Trade</button>
 </div>
 
 <div class="pick">
@@ -184,7 +195,7 @@
             <mat-option style="font-size: 1rem" *ngFor="let player of players" [value]="player">{{player.playerName}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="trade-button">Trade</button>
+    <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == 15 && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != 15 || !this.tradeIsActive" (click)="this.trade(15)">Trade</button>
 </div>
 
 <div class="pick">
@@ -361,7 +372,7 @@
         </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary" class="trade-button">Trade</button>
-</div>
+</div> -->
 
 <!-- To Do: Create an after the draft endpoint that allows for user to choose from a 1-10 selector of how good the pick was. Will also allow for user to make notes.-->
 
