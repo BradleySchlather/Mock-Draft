@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './shared/dialogs/login/login.component';
 import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
     RouterLinkActive,
     HttpClientModule,
     DragDropModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration()

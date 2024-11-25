@@ -8,6 +8,12 @@
         <nav><h3><a routerLink="/scoreboard">Scoreboard</a></h3></nav>
     </div>
     <div class="user">
-        <nav><h1><a routerLink="/login"><img src="../../assets/AccountCircle.svg"></a></h1></nav>
+        <button mat-button [mat-menu-trigger-for]="menu">
+            <nav><h1><a routerLink="/login"><img src="../../assets/AccountCircle.svg"></a></h1></nav>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Login</button>
+            <button mat-menu-item>Create Account</button>
+        </mat-menu>
     </div>
 </div>
