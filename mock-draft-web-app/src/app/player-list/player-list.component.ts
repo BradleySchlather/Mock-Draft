@@ -24,7 +24,7 @@ export class PlayerListComponent implements OnInit {
   public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
-  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'class', 'bustOrGem'];
+  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'class', 'bustOrGem', 'notes'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
 
@@ -130,6 +130,10 @@ export class PlayerListComponent implements OnInit {
       player.isStar = true;
       player.isBust = false;
     }
+  }
+
+  public openNotesDialog(player: Player): void {
+    //To Do: OpenNotesDialogLogic
   }
 
   /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One

@@ -7,4 +7,5 @@ export class Player {
     class!: string;
     isStar!: boolean;
     isBust!: boolean;
+    notes!: boolean;
 }

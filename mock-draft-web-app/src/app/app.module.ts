@@ -24,6 +24,7 @@ import { LoginComponent } from './shared/dialogs/login/login.component';
 import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { NotesComponent } from './shared/dialogs/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     ScoreboardComponent,
     LoginComponent,
     SignUpComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
