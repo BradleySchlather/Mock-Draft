@@ -2,6 +2,8 @@
 
 <app-header title="Pro Football Forecast"></app-header>
 
+<h2>2025 Player List (Drag & Drop)</h2>
+
 <div class="table-container" #tableContainer>
     <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">

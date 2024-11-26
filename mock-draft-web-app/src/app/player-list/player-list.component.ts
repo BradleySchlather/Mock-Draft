@@ -14,7 +14,8 @@ import { elementAt, filter } from 'rxjs';
 })
 export class PlayerListComponent implements OnInit {
 
-  //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
+  //To Do: Add Drag and Drop Icon
+  //To Do: Add Notes Section for comments
   //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
 
