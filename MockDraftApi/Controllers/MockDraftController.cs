@@ -40,27 +40,3 @@ namespace MockDraftApi.Controllers
         }
     }
 }
-
-//namespace MockDraftApi.Controllers
-//{
-//    [ApiController]
-//    [Route("[controller]")]
-//    public class WeatherForecastController : ControllerBase
-//    {
-
-//        private readonly MockDraftRepository _repo;
-//        private readonly ILogger<WeatherForecastController> _logger;
-
-//        public WeatherForecastController(ILogger<WeatherForecastController> logger, MockDraftRepository repo)
-//        {
-//            _logger = logger;
-//            _repo = repo;
-//        }
-
-//        [HttpGet(Name = "GetWeatherForecast")]
-//        public IEnumerable<WeatherForecast> Get()
-//        {
-//            return _repo.Get();
-//        }
-//    }
-//}

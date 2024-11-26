@@ -7,6 +7,7 @@
         public string? Position { get; set; }
         public string? HeightWeight { get; set; }
         public string? College { get; set; }
+        public string? Class { get; set; }
         public bool IsStar { get; set; }
         public bool IsBust { get; set; }
     }

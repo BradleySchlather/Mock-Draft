@@ -38,6 +38,11 @@
             <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.college}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="class">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Class</th>
+            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.class}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="bustOrGem">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Star / Bust</th>
             <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">

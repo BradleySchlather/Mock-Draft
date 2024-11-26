@@ -23,7 +23,7 @@ export class PlayerListComponent implements OnInit {
   public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
-  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'bustOrGem'];
+  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'class', 'bustOrGem'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
 
