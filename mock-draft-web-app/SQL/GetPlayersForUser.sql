@@ -1,0 +1,2 @@
+--Database will have a players table that holds all player data
+--Database will have a users_players table that has a long string of players separated by commas that has the users username as the primary key
