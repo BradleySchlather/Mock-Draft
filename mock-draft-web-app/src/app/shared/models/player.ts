@@ -4,6 +4,8 @@ export class Player {
     position!: string;
     heightWeight!: string;
     college!: string;
+    class!: string;
     isStar!: boolean;
     isBust!: boolean;
+    notes!: boolean;
 }

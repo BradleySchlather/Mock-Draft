@@ -20,6 +20,12 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './shared/dialogs/login/login.component';
+import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { NotesComponent } from './shared/dialogs/notes/notes.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     DraftComponent,
     PlayerListComponent,
     ScoreboardComponent,
+    LoginComponent,
+    SignUpComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,10 @@ import { HttpClientModule } from '@angular/common/http';
     RouterLinkActive,
     HttpClientModule,
     DragDropModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [
     provideClientHydration()

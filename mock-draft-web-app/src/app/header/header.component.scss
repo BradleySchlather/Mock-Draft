@@ -1,4 +1,4 @@
-h1{
+h1 {
     color: white;
     padding-left: 20px;
 }
@@ -16,5 +16,18 @@ a {
     text-align: left;
     align-items: center;
     background-color: rgb(25, 75, 104) !important;
-    gap: 2vw;
+    gap: 60vw;
+    .banner-main-links {
+        display: flex;
+        gap: 2vw;
+        align-items: center;
+    }
+    .user {
+        h1 {
+            top: 1vh !important;
+        }
+        a {
+            top: 1vh !important;
+        }
+    }
 }

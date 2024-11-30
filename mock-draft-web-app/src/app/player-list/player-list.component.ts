@@ -14,8 +14,8 @@ import { elementAt, filter } from 'rxjs';
 })
 export class PlayerListComponent implements OnInit {
 
-  //To Do: Give option for user to remove star/bust
-  //To Do: Add a Freshman to Senior column that also indicates if player has been redshirted. See what cfb25 calls it
+  //To Do: Add Drag and Drop Icon
+  //To Do: Add Notes Section for comments
   //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
 
@@ -24,7 +24,7 @@ export class PlayerListComponent implements OnInit {
   public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
-  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'bustOrGem'];
+  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'class', 'bustOrGem', 'notes'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
 
@@ -115,13 +115,25 @@ export class PlayerListComponent implements OnInit {
   }
 
   public changeColorToBust(player: Player): void {
-    player.isBust = true;
-    player.isStar = false;
+    if (player.isBust)
+      player.isBust = false;
+    else {
+      player.isBust = true;
+      player.isStar = false;
+    }
   }
 
   public changeColorToStar(player: Player): void {
-    player.isStar = true;
-    player.isBust = false;
+    if (player.isStar)
+      player.isStar = false;
+    else {
+      player.isStar = true;
+      player.isBust = false;
+    }
+  }
+
+  public openNotesDialog(player: Player): void {
+    //To Do: OpenNotesDialogLogic
   }
 
   /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One
