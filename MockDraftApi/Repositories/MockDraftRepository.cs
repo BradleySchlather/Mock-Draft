@@ -18,10 +18,7 @@ namespace MockDraftApi.Repositories
         }
         public IEnumerable<Team> GetTeams()
         {
-            //using OdbcConnection connection = new OdbcConnection(this.conn);
-            //var procedure = "CALL PROCNAME();"
-            //    var result = connection.Query<Team>(procedure, CommandType.StoredProcedure);
-            //return result;
+ 
             Team[] teams = new Team[3]
                 { new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",
                     PickNumbersNotAdjusted = "0", PickPlayersNotAdjusted = "" },
@@ -52,6 +49,7 @@ namespace MockDraftApi.Repositories
                             {
                                 PlayerId = reader.GetInt32("player_id"),
                                 PlayerName = reader.GetString("player_name"),
+                                PlayerRank = reader.GetInt32("player_rank"),
                                 Position = reader.GetString("player_position"),
                                 Height = reader.GetString("height"),
                                 Weight = reader.GetInt32("weight"),

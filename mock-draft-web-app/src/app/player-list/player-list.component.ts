@@ -18,6 +18,7 @@ export class PlayerListComponent implements OnInit {
   //To Do: Add Notes Section for comments
   //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
+  //To Do: Currently there's a bug that's preventing the filter from working unless a player is moved on the list. The list is probably not being set initially
 
   public loading = true;
   public positionSelected = 'All Pos';

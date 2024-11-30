@@ -62,36 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MockDraftRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\MockDraftRepository.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
-              "RelativeToolTip": "Repositories\\MockDraftRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.62Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
-              "RelativeDocumentMoniker": "Models\\Player.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
-              "RelativeToolTip": "Models\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.625Z"
             },
             {
               "$type": "Document",
@@ -125,9 +100,35 @@
               "RelativeDocumentMoniker": "Controllers\\MockDraftController.cs",
               "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
               "RelativeToolTip": "Controllers\\MockDraftController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAYwCMAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.618Z"
+              "WhenOpened": "2024-10-12T21:46:29.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Models\\Player.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
+              "RelativeToolTip": "Models\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T21:46:29.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MockDraftRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MockDraftRepository.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
+              "RelativeToolTip": "Repositories\\MockDraftRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T21:46:29.62Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
