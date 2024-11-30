@@ -2,6 +2,6 @@
 {
     public class MockDraftConfiguration
     {
-        //public string DbConnectionString = "ConnectionString";
+        public string DbConnectionString = "ConnectionString";
     }
 }

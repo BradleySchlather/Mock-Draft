@@ -19,7 +19,7 @@ namespace MockDraftApi.Controllers
             _repo = repo;
         }
         [HttpGet]
-        public IEnumerable<Player> GetPlayers()
+        public async Task<IEnumerable<Player>> GetPlayers()
         {
             //return [
             //    new Player { Rank = 1, PlayerName = "Marvin Harrison Jr.", Position = "WR", HeightWeight = "6-4 / 205", College = "Ohio St" },
@@ -33,7 +33,7 @@ namespace MockDraftApi.Controllers
             //    new Player { Rank = 9, PlayerName = "Jared Verse", Position = "EDGE", HeightWeight = "6-4 / 260", College = "FSU" },
             //    new Player { Rank = 10, PlayerName = "Dallas Turner", Position = "EDGE", HeightWeight = "6-4 / 252", College = "Bama" }
             //];
-            var data = _repo.GetPlayers();
+            var data = await _repo.GetPlayers();
             return data;
         }
 

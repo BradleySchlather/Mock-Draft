@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "bFTUp55LKBG8cVQn6oNmGOHu1a7HgLNf/Q9t37xIq3k=",
+  "Source": "MockDraftApi",
+  "BasePath": "_content/MockDraftApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

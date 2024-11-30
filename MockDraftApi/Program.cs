@@ -1,4 +1,8 @@
 using MockDraftApi.Repositories;
+using MockDraftApi.Models;
+using MockDraftApi.Configuration;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace MockDraftApi
 {
@@ -18,6 +22,10 @@ namespace MockDraftApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddCors();
+            //builder.Services.Add(new ServiceDescriptor(typeof(AppDbContext), new AppDbContext(Configuration.Get("DefaultConnection"))));
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+            new MySqlServerVersion(new Version(8,0,38))));
 
             var app = builder.Build();
 
