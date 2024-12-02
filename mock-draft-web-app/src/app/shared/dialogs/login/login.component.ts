@@ -10,13 +10,11 @@ export class LoginComponent {
 
   public title = 'Log In';
   public errorExists = false;
-  public userName = '';
+  public email = '';
   public password = '';
-
 
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>) { }
-
   //To Do: Need to add auth
 
   public logIn(): void {

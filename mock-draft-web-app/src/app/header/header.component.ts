@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../shared/dialogs/login/login.component';
+import { SignUpComponent } from '../shared/dialogs/sign-up/sign-up.component';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,16 @@ export class HeaderComponent {
     }).afterClosed().subscribe(confirmed => {
       if (confirmed) {
         //To Do: 'Login Successful' Message to user
+      }
+    })
+  }
+
+  public openCreateAccount(): void {
+    this.dialog.open(SignUpComponent, {
+      width: '600px',
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        //To Do: 'Create Account Successful' Message to user
       }
     })
   }

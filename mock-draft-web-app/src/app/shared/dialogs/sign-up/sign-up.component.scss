@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    justify-content: right;
+  
+    h1{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .exit{
+      justify-content: right !important;
+      display: flex;
+      margin-top: 1vh;
+      margin-right: 1vh;
+      top: 0;
+    
+      .exit-button{
+        min-width: 1.5vw;
+      }
+    }
+  }
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.submit-cancel{
+    display: flex;
+    gap: 70%;
+    justify-content: center;
+    margin-bottom: 2vh;
+    margin-top: 3vh;
+    margin-left: 3%;
+    margin-right: 3%;
+}
