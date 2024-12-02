@@ -19,7 +19,7 @@ export class NotesComponent implements OnInit {
 
   ngOnInit() {
     this.player = this.data;
-    this.title = `Notes for ${this.player.playerName}`;
+    this.title = `${this.player.playerName}`;
   }
 
   public close(): void {
