@@ -14,9 +14,11 @@ export class SignUpComponent {
   public userName = '';
   public password = '';
 
+  //To Do: On account creation there will be an active column in the table that will automatically be set to false or 0. 
+  //Email user on account creation. This will contain a link to confirm their account.
+
   constructor(
     private dialogRef: MatDialogRef<SignUpComponent>) { }
-  //To Do: Need to add auth
 
   public logIn(): void {
     //To Do: login logic
@@ -29,4 +31,5 @@ export class SignUpComponent {
   public confirm(): void {
     this.dialogRef.close(true);
   }
+
 }

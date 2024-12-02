@@ -24,8 +24,6 @@
     <div class="submit-cancel">
         <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
       
-        <p class="error" *ngIf="this.errorExists">Email not found or password is incorrect</p>
-      
         <div class="submit"><button mat-raised-button color="success" (click)="logIn()" 
           [disabled]="!this.userName || !this.email || !this.password">Submit</button></div>
     </div>

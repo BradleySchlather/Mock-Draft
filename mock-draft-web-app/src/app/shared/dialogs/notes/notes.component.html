@@ -1,1 +1,22 @@
-<p>notes works!</p>
+<div class="notesDialog">
+
+    <div class="header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+        <h1 mat-dialog-title>{{this.title}}</h1>
+        <div class="exit"><button class="exit-button" mat-stroked-button color="disabled" (click)="close()">X</button></div>
+    </div>
+    <br>
+    <br>
+    <div class="inputs">
+        <mat-form-field class="note">
+            <mat-label>Notes</mat-label>
+            <input matInput [(ngModel)]="this.note">
+        </mat-form-field>
+    </div>
+
+    <div class="submit-cancel">
+        <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
+      
+        <div class="submit"><button mat-raised-button color="success" (click)="saveNote()"
+          [disabled]="!this.note">Submit</button></div>
+    </div>
+</div>
