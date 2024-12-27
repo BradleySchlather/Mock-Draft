@@ -1,0 +1,7 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user`(
+password_input varchar(45),
+username_input varchar(45) )
+BEGIN
+	INSERT INTO mock_draft.users (password, username)
+    values (password_input, username_input) ;
+END

@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_players`()
+BEGIN
+	select * from `players`;
+END

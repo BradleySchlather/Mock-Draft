@@ -1,0 +1,20 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `set_users_teams`(
+in_teams VARCHAR(200),
+in_user_id int )
+BEGIN
+DECLARE user_exists int ;
+
+SET user_exists = ifnull((SELECT COUNT(*) from mock_draft . user_selections WHERE in_user_id = user_id), 0);
+
+CASE WHEN user_exists > 0 THEN
+UPDATE mock_draft . user_selections
+SET teams = in_teams
+WHERE in_user_id = user_id;
+
+ELSE
+INSERT INTO mock_draft . user_selections
+VALUES (in_user_id, in_teams, '');
+
+END CASE;
+
+END

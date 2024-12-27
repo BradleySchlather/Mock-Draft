@@ -1,0 +1,5 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_user_selections`(
+in_user_id int)
+BEGIN
+SELECT players, teams FROM mock_draft.user_selections where user_id = in_user_id;
+END

@@ -1,0 +1,8 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_player_notes`(
+in_user_id int)
+BEGIN
+
+select * FROM mock_draft.player_notes
+where user_id = in_user_id;
+
+END

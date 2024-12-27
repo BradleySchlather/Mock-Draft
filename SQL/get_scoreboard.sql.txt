@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_scoreboard`()
+BEGIN
+SELECT * FROM mock_draft . scoreboard ;
+END

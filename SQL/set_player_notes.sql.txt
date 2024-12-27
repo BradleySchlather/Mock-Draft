@@ -1,0 +1,22 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `set_player_notes`(
+in_user_id int,
+in_player_id int,
+in_player_note varchar (400) )
+BEGIN
+
+DECLARE user_player_exists int ;
+
+SET user_player_exists = ifnull((SELECT COUNT(*) from mock_draft . player_notes WHERE in_user_id = user_id AND in_player_id = player_id), 0);
+
+CASE WHEN user_player_exists > 0 THEN
+UPDATE mock_draft . player_notes
+SET player_note = in_player_note
+WHERE in_user_Id = user_id AND in_player_id = player_id;
+
+ELSE
+INSERT INTO mock_draft . player_notes
+VALUES(in_user_id, in_player_id, in_player_note, 0, 0);
+
+END CASE;
+
+END

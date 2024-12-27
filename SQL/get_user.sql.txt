@@ -1,0 +1,7 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_user`(
+IN username_input varchar(45) ,
+IN password_input varchar(45) )
+BEGIN
+SELECT user_id, username FROM mock_draft.users
+WHERE username = username_input and password = password_input;
+END
