@@ -8,15 +8,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class LoginComponent {
 
+  //To Do: Create a post login and post account creation success message
+
   public title = 'Log In';
   public errorExists = false;
-  public userName = '';
+  public email = '';
   public password = '';
-
 
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>) { }
-
   //To Do: Need to add auth
 
   public logIn(): void {
