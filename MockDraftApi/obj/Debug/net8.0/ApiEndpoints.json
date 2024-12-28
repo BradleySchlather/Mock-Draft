@@ -1,6 +1,28 @@
 [
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "CreateUser",
+    "RelativePath": "api/createuser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "MockDraftApi.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetPlayers",
     "RelativePath": "api/getplayers",
     "HttpMethod": "GET",
@@ -41,15 +63,21 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
-    "Method": "GetTeams",
-    "RelativePath": "api/getteams",
-    "HttpMethod": "GET",
+    "Method": "GetUser",
+    "RelativePath": "api/getuser",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userSignIn",
+        "Type": "MockDraftApi.Models.User",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MockDraftApi.Models.Team, MockDraftApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "MockDraftApi.Models.User",
         "MediaTypes": [
           "text/plain",
           "application/json",

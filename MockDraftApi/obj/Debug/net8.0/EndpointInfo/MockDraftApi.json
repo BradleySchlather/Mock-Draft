@@ -43,44 +43,6 @@
         }
       }
     },
-    "/api/getteams": {
-      "get": {
-        "tags": [
-          "MockDraft"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Team"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Team"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Team"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/getscoreboard": {
       "get": {
         "tags": [
@@ -112,6 +74,85 @@
                   "items": {
                     "$ref": "#/components/schemas/Scoreboard"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/createuser": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/getuser": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -200,41 +241,24 @@
         },
         "additionalProperties": false
       },
-      "Team": {
+      "User": {
         "type": "object",
         "properties": {
-          "name": {
+          "email": {
             "type": "string",
             "nullable": true
           },
-          "image": {
+          "password": {
             "type": "string",
             "nullable": true
           },
-          "pickNumbersNotAdjusted": {
+          "username": {
             "type": "string",
             "nullable": true
           },
-          "pickNumbers": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "nullable": true,
-            "readOnly": true
-          },
-          "pickPlayersNotAdjusted": {
-            "type": "string",
-            "nullable": true
-          },
-          "pickPlayers": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true,
-            "readOnly": true
+          "userId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
