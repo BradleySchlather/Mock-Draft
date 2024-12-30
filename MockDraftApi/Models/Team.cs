@@ -2,16 +2,21 @@
 {
     public class Team
     {
+        public int? Id { get; set; }
         public string? Name { get; set; }
-        public string? Image {  get; set; }
         public string? PickNumbersNotAdjusted { get; set; }
-        //Will use listagg in the stored proc to pull this
         public int[]? PickNumbers =>
-            PickNumbersNotAdjusted != "" ? PickNumbersNotAdjusted?.Split(',').Select(int.Parse).ToArray()
+            PickNumbersNotAdjusted != "" && PickNumbersNotAdjusted != null ? PickNumbersNotAdjusted?.Split(',').Select(int.Parse).ToArray()
             : null;
-        //Will use listagg in the stored proc to pull this
         public string? PickPlayersNotAdjusted { get; set; }
         public string[]? PickPlayers =>
-            PickPlayersNotAdjusted != "" ? PickPlayersNotAdjusted?.Split(',').ToArray() : null;
+            PickPlayersNotAdjusted != "" && PickPlayersNotAdjusted != null ? PickPlayersNotAdjusted?.Split(',').ToArray() : null;
+        public string? ActualPickNumbersNotAdjusted { get; set; }
+        public int[]? ActualPickNumbers =>
+            ActualPickNumbersNotAdjusted != "" && ActualPickNumbersNotAdjusted != null ? ActualPickNumbersNotAdjusted?.Split(',').Select(int.Parse).ToArray()
+            : null;
+        public string? ActualPickPlayersNotAdjusted { get; set; }
+        public int[]? ActualPickPlayers =>
+            ActualPickPlayersNotAdjusted != "" && ActualPickPlayersNotAdjusted != null ? ActualPickPlayersNotAdjusted?.Split(',').Select(int.Parse).ToArray() : null;
     }
 }

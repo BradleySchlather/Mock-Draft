@@ -23,6 +23,32 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetPlayerNotes",
+    "RelativePath": "api/getplayernotes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MockDraftApi.Models.PlayerNotes, MockDraftApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetPlayers",
     "RelativePath": "api/getplayers",
     "HttpMethod": "GET",
@@ -63,6 +89,26 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetTeams",
+    "RelativePath": "api/getteams",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MockDraftApi.Models.Team, MockDraftApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetUser",
     "RelativePath": "api/getuser",
     "HttpMethod": "POST",
@@ -78,6 +124,32 @@
     "ReturnTypes": [
       {
         "Type": "MockDraftApi.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetUserSelections",
+    "RelativePath": "api/getuserselections",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MockDraftApi.Models.UserSelections, MockDraftApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

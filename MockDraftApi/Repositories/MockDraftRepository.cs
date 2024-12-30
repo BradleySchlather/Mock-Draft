@@ -19,18 +19,6 @@ namespace MockDraftApi.Repositories
             _conn = configuration.GetConnectionString("DefaultConnection");
             
         }
-        //public IEnumerable<Team> GetTeams()
-        //{
- 
-        //    Team[] teams = new Team[3]
-        //        { new Team { Name = "Bears", Image = "../../assets/BearsLogo.gif",
-        //            PickNumbersNotAdjusted = "0", PickPlayersNotAdjusted = "" },
-        //        new Team { Name = "Cowboys", Image = "../../assets/CowboysLogo.gif",
-        //            PickNumbersNotAdjusted = "1", PickPlayersNotAdjusted = "" },
-        //        new Team { Name = "Falcons", Image = "../../assets/FalconsLogo.gif",
-        //            PickNumbersNotAdjusted = "2", PickPlayersNotAdjusted = "" } };
-        //    return teams;
-        //}
 
         public async Task<IEnumerable<Player>> GetPlayers()
         {
@@ -117,15 +105,134 @@ namespace MockDraftApi.Repositories
             }
         }
 
+        //To do: need to get the default team data from the database and tie that data to the users selections in a service
+        public async Task<IEnumerable<Team>> GetDefaultTeamData()
+        {
+            var teams = new List<Team>();
 
-            
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("get_teams", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            teams.Add(new Team
+                            {
+                                Id = reader.GetInt32("team_id"),
+                                Name = reader.GetString("team_name"),
+                                ActualPickNumbersNotAdjusted = reader.GetString("draft_position"),
+                                ActualPickPlayersNotAdjusted = reader.GetString("draft_pick")
+                            });
+                        }
+                    }
+
+                }
+                return teams;
+            }
+        }
+
+        public async Task<IEnumerable<UserSelections>> GetUserSelections(int userId)
+        {
+            var userSelections = new List<UserSelections>();
+
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("get_user_selections", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_user_id", userId);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            userSelections.Add(new UserSelections
+                            {
+                                TeamsDraftOrderNotAdjusted = reader.GetString("teams_draft_order"),
+                                PlayersListOrderNotAdjusted = reader.GetString("players_list_order"),
+                                PlayerDraftOrderNotAdjusted = reader.GetString("player_draft_order")
+                            });
+                        }
+                    }
+                }
+                return userSelections;
+            }
+        }
+
+        public async Task<IEnumerable<Team>> GetDefaultPlayerData()
+        {
+            var teams = new List<Team>();
+
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("get_teams", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            teams.Add(new Team
+                            {
+                                Id = reader.GetInt32("team_id"),
+                                Name = reader.GetString("team_name"),
+                                ActualPickNumbersNotAdjusted = reader.GetString("draft_position"),
+                                ActualPickPlayersNotAdjusted = reader.GetString("draft_pick")
+                            });
+                        }
+                    }
+                }
+                return teams;
+            }
+        }
 
 
+        public async Task<IEnumerable<PlayerNotes>> GetPlayerNotes(int userId)
+        {
+            var playerNotes = new List<PlayerNotes>();
 
-        //To Do: get_teams
-        //To Do: get_user_selections
-        //To Do: get_player_notes
-        //To Do: get_players
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("get_player_notes", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_user_id", userId);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            playerNotes.Add(new PlayerNotes
+                            {
+                                PlayerId = reader.GetInt32("player_id"),
+                                Note = reader.GetString("player_note"),
+                                IsStar = reader.GetBoolean("is_star"),
+                                IsBust = reader.GetBoolean("is_bust")
+
+                            });
+                        }
+                    }
+                }
+                return playerNotes;
+            }
+        }
+
+        //To Do: create procs for set_is_star and set_is_bust
         //To Do: get_scoreboard
         //To Do: set_user_players
         //To Do: set_user_teams

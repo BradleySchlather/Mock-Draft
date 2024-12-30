@@ -18,6 +18,7 @@ namespace MockDraftApi.Controllers
             _logger = logger;
             _repo = repo;
         }
+
         [HttpGet]
         public async Task<IEnumerable<Player>> GetPlayers()
         {
@@ -25,12 +26,26 @@ namespace MockDraftApi.Controllers
             return data;
         }
 
-        //[HttpGet]
-        //public IEnumerable<Team> GetTeams()
-        //{
-        //    var data = _repo.GetTeams();
-        //    return data;
-        //}
+        [HttpGet]
+        public async Task<IEnumerable<Team>> GetTeams()
+        {
+            var data = await _repo.GetDefaultTeamData();
+            return data;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<UserSelections>> GetUserSelections(int userId)
+        {
+            var data = await _repo.GetUserSelections(userId);
+            return data;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<PlayerNotes>> GetPlayerNotes(int userId)
+        {
+            var data = await _repo.GetPlayerNotes(userId);
+            return data;
+        }
 
         [HttpGet]
         public IEnumerable<Scoreboard> GetScoreboard()
@@ -40,7 +55,7 @@ namespace MockDraftApi.Controllers
         }
 
         [HttpPost]
-        public async void CreateUser(User user)
+        public void CreateUser(User user)
         {
             _repo.CreateUser(user);
         }
