@@ -65,6 +65,25 @@ namespace MockDraftApi.Controllers
         {
             var data = await _repo.GetUser(userSignIn);
             return data;
-        } 
+        }
+
+        [HttpPost]
+        public void SetUserPlayersDraftOrder (SetUsersPlayersOrTeams data)
+        {
+            _repo.SetUsersPlayersDraftOrder(data);
+        }
+
+        [HttpPost]
+        public void SetUsersPlayersList (SetUsersPlayersOrTeams data)
+        {
+            _repo.SetUsersPlayersList(data);
+        }
+
+        [HttpPost]
+        public void SetUsersTeams (SetUsersPlayersOrTeams data)
+        {
+            _repo.SetUsersTeams(data);
+        }
+
     }
 }

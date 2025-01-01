@@ -232,10 +232,62 @@ namespace MockDraftApi.Repositories
             }
         }
 
+        public async void SetUsersPlayersDraftOrder(SetUsersPlayersOrTeams data)
+        {
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("set_users_players_draft_order", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_players", data.PlayersOrTeams);
+                    command.Parameters.AddWithValue("in_user_id", data.UserId);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+        public async void SetUsersPlayersList(SetUsersPlayersOrTeams data)
+        {
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("set_users_players_list", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_players", data.PlayersOrTeams);
+                    command.Parameters.AddWithValue("in_user_id", data.UserId);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+        public async void SetUsersTeams(SetUsersPlayersOrTeams data)
+        {
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("set_users_teams", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_teams", data.PlayersOrTeams);
+                    command.Parameters.AddWithValue("in_user_id", data.UserId);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
         //To Do: create procs for set_is_star and set_is_bust
         //To Do: get_scoreboard
-        //To Do: set_user_players
-        //To Do: set_user_teams
         //To Do: set_player_notes
 
         public IEnumerable<Scoreboard> GetScoreboard()

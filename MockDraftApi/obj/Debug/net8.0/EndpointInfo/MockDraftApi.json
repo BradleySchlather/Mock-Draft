@@ -293,6 +293,99 @@
           }
         }
       }
+    },
+    "/api/setuserplayersdraftorder": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/setusersplayerslist": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/setusersteams": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUsersPlayersOrTeams"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -389,6 +482,20 @@
             "format": "double"
           },
           "predictedTrades": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SetUsersPlayersOrTeams": {
+        "type": "object",
+        "properties": {
+          "playersOrTeams": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
             "type": "integer",
             "format": "int32"
           }

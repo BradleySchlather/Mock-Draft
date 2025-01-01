@@ -158,5 +158,71 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "SetUserPlayersDraftOrder",
+    "RelativePath": "api/setuserplayersdraftorder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "MockDraftApi.Models.SetUsersPlayersOrTeams",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "SetUsersPlayersList",
+    "RelativePath": "api/setusersplayerslist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "MockDraftApi.Models.SetUsersPlayersOrTeams",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "SetUsersTeams",
+    "RelativePath": "api/setusersteams",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "MockDraftApi.Models.SetUsersPlayersOrTeams",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
