@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ApiService } from '../shared/services/api.service';
 import { elementAt, filter } from 'rxjs';
+import { NotesComponent } from '../shared/dialogs/notes/notes.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-player-list',
@@ -33,10 +35,10 @@ export class PlayerListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild("tableContainer", { read: ElementRef }) tableContainer!: ElementRef;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.apiService.getPlayers().subscribe(data => {
+    this.apiService.getPlayerList(1).subscribe(data => {
       this.masterPlayers = data;
       this.filterPlayers = data;
       this.setDataSource(this.filterPlayers);
@@ -134,7 +136,14 @@ export class PlayerListComponent implements OnInit {
   }
 
   public openNotesDialog(player: Player): void {
-    //To Do: OpenNotesDialogLogic
+    this.dialog.open(NotesComponent, {
+      width: '600px',
+      data: player
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        //To Do: 'Create Account Successful' Message to user
+      }
+    })
   }
 
   /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One

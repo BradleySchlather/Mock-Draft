@@ -13,6 +13,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  public getPlayerList(userId: number): Observable<Player[]> {
+    return this.http.get<Player[]>(`${environment.apiUrl}/getplayerlist?userId=${userId}`);
+  }
+
   public getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(`${environment.apiUrl}/getplayers`);
   }

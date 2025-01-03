@@ -15,6 +15,7 @@ export class DraftComponent implements OnInit {
   public players: Player[] = [];
   public teams!: Team[];
   public draftOrder: string[] = [];
+  public imageArr: string[] = [];
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
   private tradeTeam1 = '';
   private tradeTeam2 = '';
