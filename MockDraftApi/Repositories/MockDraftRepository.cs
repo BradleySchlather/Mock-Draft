@@ -17,7 +17,6 @@ namespace MockDraftApi.Repositories
         public MockDraftRepository(IConfiguration configuration) {
 
             _conn = configuration.GetConnectionString("DefaultConnection");
-            
         }
 
         public async Task<IEnumerable<Player>> GetPlayers()
@@ -167,34 +166,39 @@ namespace MockDraftApi.Repositories
                 return userSelections;
             }
         }
-
-        public async Task<IEnumerable<Team>> GetDefaultPlayerData()
+        //To do: need to get the default player data from the database and tie that data to the users selections in a service
+        public async Task<IEnumerable<Player>> GetDefaultPlayerData()
         {
-            var teams = new List<Team>();
+            var players = new List<Player>();
 
             using (var connection = new MySqlConnection(_conn))
             {
                 await connection.OpenAsync();
 
-                using (var command = new MySqlCommand("get_teams", connection))
+                using (var command = new MySqlCommand("get_players", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            teams.Add(new Team
+                            players.Add(new Player
                             {
-                                Id = reader.GetInt32("team_id"),
-                                Name = reader.GetString("team_name"),
-                                ActualPickNumbersNotAdjusted = reader.GetString("draft_position"),
-                                ActualPickPlayersNotAdjusted = reader.GetString("draft_pick")
+                                PlayerId = reader.GetInt32("player_id"),
+                                PlayerName = reader.GetString("player_name"),
+                                PlayerRank = reader.GetInt32("player_rank"),
+                                Position = reader.GetString("player_position"),
+                                Height = reader.GetString("height"),
+                                Weight = reader.GetInt32("weight"),
+                                College = reader.GetString("college"),
+                                PlayerClass = reader.GetString("player_class")
                             });
                         }
                     }
                 }
-                return teams;
+                return players;
             }
         }
 
@@ -285,27 +289,64 @@ namespace MockDraftApi.Repositories
                 }
             }
         }
+        public async void SetPlayerNotes(PlayerNotes data)
+        {
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
 
-        //To Do: create procs for set_is_star and set_is_bust
+                using (var command = new MySqlCommand("set_player_notes", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_user_id", data.UserId);
+                    command.Parameters.AddWithValue("in_player_id", data.PlayerId);
+                    command.Parameters.AddWithValue("in_player_note", data.Note);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+        public async void SetPlayerIsBustOrStar(PlayerNotes data)
+        {
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("set_player_is_star_bust", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("in_user_id", data.UserId);
+                    command.Parameters.AddWithValue("in_player_id", data.PlayerId);
+                    command.Parameters.AddWithValue("in_is_bust", data.IsBust);
+                    command.Parameters.AddWithValue("in_is_star", data.IsStar);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
         //To Do: get_scoreboard
-        //To Do: set_player_notes
+        //To Do: set_scoreboard
 
         public IEnumerable<Scoreboard> GetScoreboard()
         {
             Scoreboard[] scoreboard = new Scoreboard[12]
                 {
-                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
-                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
-                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
-                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
-                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
-                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
-                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
-                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
-                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
-                new Scoreboard { Ranking = 1, UserName = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectFirstRoundPicks = 32, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 100, PredictedTrades = 2 },
-                new Scoreboard { Ranking = 2, UserName = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectFirstRoundPicks = 12, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 28, PredictedTrades = 1 },
-                new Scoreboard { Ranking = 3, UserName = "BradfordTheClassless", Score = 1, CorrectFirstRoundPicks = 1, TotalFirstRoundPredictions = 32, TotalPredicionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
+                new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
+                new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
+                new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
             };
             return scoreboard;
         }

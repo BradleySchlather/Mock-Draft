@@ -129,6 +129,44 @@
         }
       }
     },
+    "/api/getdefaultplayerdata": {
+      "get": {
+        "tags": [
+          "MockDraft"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/getplayernotes": {
       "get": {
         "tags": [
@@ -386,6 +424,68 @@
           }
         }
       }
+    },
+    "/api/setplayernotes": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/setplayerisbustorisstar": {
+      "post": {
+        "tags": [
+          "MockDraft"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerNotes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -437,19 +537,27 @@
       "PlayerNotes": {
         "type": "object",
         "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "playerId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "note": {
             "type": "string",
             "nullable": true
           },
           "isStar": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
           },
           "isBust": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -457,33 +565,43 @@
       "Scoreboard": {
         "type": "object",
         "properties": {
-          "ranking": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userName": {
+          "username": {
             "type": "string",
             "nullable": true
           },
           "score": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
-          "correctFirstRoundPicks": {
+          "correctPicks": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "correctOffenseDefense": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "correctPosition": {
             "type": "integer",
             "format": "int32"
           },
           "totalFirstRoundPredictions": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "totalPredicionPercentage": {
+          "totalPredictionPercentage": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "predictedTrades": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -2,12 +2,13 @@
 {
     public class Scoreboard
     {
-        public int Ranking { get; set; }
-        public string? UserName { get; set; }
-        public long Score {  get; set; }
-        public int CorrectFirstRoundPicks { get; set; }
-        public int TotalFirstRoundPredictions { get; set; }
-        public double TotalPredicionPercentage { get; set; }
-        public int PredictedTrades { get; set; }
+        public string? Username { get; set; }
+        public long? Score {  get; set; }
+        public int? CorrectPicks { get; set; }
+        public int? CorrectOffenseDefense { get; set; }
+        public int CorrectPosition {  get; set; }
+        public int? TotalFirstRoundPredictions { get; set; }
+        public double? TotalPredictionPercentage { get; set; }
+        public int? PredictedTrades { get; set; }
     }
 }

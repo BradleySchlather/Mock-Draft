@@ -23,6 +23,26 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetDefaultPlayerData",
+    "RelativePath": "api/getdefaultplayerdata",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MockDraftApi.Models.Player, MockDraftApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetPlayerNotes",
     "RelativePath": "api/getplayernotes",
     "HttpMethod": "GET",
@@ -155,6 +175,50 @@
           "application/json",
           "text/json"
         ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "SetPlayerIsBustOrIsStar",
+    "RelativePath": "api/setplayerisbustorisstar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "MockDraftApi.Models.PlayerNotes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "SetPlayerNotes",
+    "RelativePath": "api/setplayernotes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "MockDraftApi.Models.PlayerNotes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]

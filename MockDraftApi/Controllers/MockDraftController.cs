@@ -41,6 +41,13 @@ namespace MockDraftApi.Controllers
         }
 
         [HttpGet]
+        public async Task<IEnumerable<Player>> GetDefaultPlayerData()
+        {
+            var data = await _repo.GetDefaultPlayerData();
+            return data;
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<PlayerNotes>> GetPlayerNotes(int userId)
         {
             var data = await _repo.GetPlayerNotes(userId);
@@ -83,6 +90,18 @@ namespace MockDraftApi.Controllers
         public void SetUsersTeams (SetUsersPlayersOrTeams data)
         {
             _repo.SetUsersTeams(data);
+        }        
+        
+        [HttpPost]
+        public void SetPlayerNotes (PlayerNotes data)
+        {
+            _repo.SetPlayerNotes(data);
+        }
+        
+        [HttpPost]
+        public void SetPlayerIsBustOrIsStar (PlayerNotes data)
+        {
+            _repo.SetPlayerIsBustOrStar(data);
         }
 
     }
