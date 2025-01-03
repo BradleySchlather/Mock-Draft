@@ -15,7 +15,6 @@ export class DraftComponent implements OnInit {
   public players: Player[] = [];
   public teams!: Team[];
   public draftOrder: string[] = [];
-  public imageArr: string[] = [];
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
   private tradeTeam1 = '';
   private tradeTeam2 = '';
@@ -37,7 +36,6 @@ export class DraftComponent implements OnInit {
         element.pickNumbers.forEach(pickNumbersElement => {
           if (pickNumbersElement == indexForPicks) {
             this.draftOrder.push(element.name);
-            this.imageArr.push(`../../assets/${element.name}Logo.gif`);
           }
           indexForPicks++;
         })
@@ -54,9 +52,7 @@ export class DraftComponent implements OnInit {
     else {
       this.tradeTeam2 = this.draftOrder[index];
       this.draftOrder[index] = this.tradeTeam1;
-      this.imageArr[index] = `../../assets/${this.tradeTeam1}Logo.gif`;
       this.draftOrder[this.tradeTeam1Index] = this.tradeTeam2;
-      this.imageArr[this.tradeTeam1Index] = `../../assets/${this.tradeTeam2}Logo.gif`;
       this.tradeTeam1 = '';
       this.tradeIsActive = false;
     }

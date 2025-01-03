@@ -9,8 +9,9 @@
         public string? Height { get; set; }
         public int Weight { get; set; }
         public string? College { get; set; }
-        public bool IsStar { get; set; }
-        public bool IsBust { get; set; }
+        public bool? IsStar { get; set; }
+        public bool? IsBust { get; set; }
         public string? PlayerClass { get; set; }
+        public string? Note { get; set; }
     }
 }

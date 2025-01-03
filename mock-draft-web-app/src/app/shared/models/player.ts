@@ -1,10 +1,12 @@
 export class Player {
-    rank!: number;
+    playerRank!: number;
+    playerId!: number;
     playerName!: string;
     position!: string;
-    heightWeight!: string;
+    height!: string;
+    weight!: number;
     college!: string;
-    class!: string;
+    playerClass!: string;
     isStar!: boolean;
     isBust!: boolean;
     notes!: boolean;

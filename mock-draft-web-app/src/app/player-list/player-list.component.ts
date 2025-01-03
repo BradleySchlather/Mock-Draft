@@ -25,7 +25,7 @@ export class PlayerListComponent implements OnInit {
   public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
-  public displayedColumns: string[] = ['rank', 'playerName', 'position', 'heightWeight', 'college', 'class', 'bustOrGem', 'notes'];
+  public displayedColumns: string[] = ['playerRank', 'playerName', 'position', 'heightWeight', 'college', 'playerClass', 'bustOrGem', 'notes'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
 
@@ -53,14 +53,14 @@ export class PlayerListComponent implements OnInit {
     if (!this.isFiltered) {
       let rank = 1;
       players.forEach(element => {
-        element.rank = rank;
+        element.playerRank = rank;
         rank++;
       });
     }
     else {
       let rankArr: number[] = [];
       players.forEach(element => {
-        rankArr.push(element.rank);
+        rankArr.push(element.playerRank);
       });
       rankArr.sort((a, b) => a - b);
       let lowerIndex = 0;
@@ -74,7 +74,7 @@ export class PlayerListComponent implements OnInit {
         higherIndex = previousIndex;
       }
       for (let index = lowerIndex; index < higherIndex + 1; index++) {
-        this.filterPlayers[index].rank = rankArr[index];
+        this.filterPlayers[index].playerRank = rankArr[index];
       }
       this.setDataSource(this.filterPlayers)
       this.masterPlayers = this.reorderPlayerArr(this.masterPlayers);
@@ -86,7 +86,7 @@ export class PlayerListComponent implements OnInit {
     let tempPlayerArr: Player[] = [];
     while (rank < this.masterPlayers.length + 1) {
       playerArr.forEach(element => {
-        element.rank == rank ? tempPlayerArr.push(element) : null;
+        element.playerRank == rank ? tempPlayerArr.push(element) : null;
       });
       rank++;
     }

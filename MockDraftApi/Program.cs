@@ -3,6 +3,7 @@ using MockDraftApi.Models;
 using MockDraftApi.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using MockDraftApi.Services;
 
 namespace MockDraftApi
 {
@@ -16,6 +17,7 @@ namespace MockDraftApi
 
             builder.Services.AddControllers();
             builder.Services.AddTransient<MockDraftRepository>();
+            builder.Services.AddScoped<MockDraftService>();
             builder.Services.AddHealthChecks();
             builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

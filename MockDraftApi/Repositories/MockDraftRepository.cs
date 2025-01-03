@@ -19,41 +19,6 @@ namespace MockDraftApi.Repositories
             _conn = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public async Task<IEnumerable<Player>> GetPlayers()
-        {
-            var players = new List<Player>();
-
-            using (var connection = new MySqlConnection(_conn))
-            {
-                await connection.OpenAsync();
-
-                using (var command = new MySqlCommand("get_players", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            players.Add(new Player
-                            {
-                                PlayerId = reader.GetInt32("player_id"),
-                                PlayerName = reader.GetString("player_name"),
-                                PlayerRank = reader.GetInt32("player_rank"),
-                                Position = reader.GetString("player_position"),
-                                Height = reader.GetString("height"),
-                                Weight = reader.GetInt32("weight"),
-                                College = reader.GetString("college"),
-                                PlayerClass = reader.GetString("player_class")
-                            });
-                        }
-                    }
-
-                }
-                return players;
-            }
-        }
-
         public async void CreateUser(User user)
         {
             using (var connection = new MySqlConnection(_conn))
@@ -136,9 +101,9 @@ namespace MockDraftApi.Repositories
             }
         }
 
-        public async Task<IEnumerable<UserSelections>> GetUserSelections(int userId)
+        public async Task<UserSelections> GetUserSelections(int userId)
         {
-            var userSelections = new List<UserSelections>();
+            var userSelections = new UserSelections();
 
             using (var connection = new MySqlConnection(_conn))
             {
@@ -154,7 +119,7 @@ namespace MockDraftApi.Repositories
                     {
                         while (await reader.ReadAsync())
                         {
-                            userSelections.Add(new UserSelections
+                            userSelections = (new UserSelections
                             {
                                 TeamsDraftOrderNotAdjusted = reader.GetString("teams_draft_order"),
                                 PlayersListOrderNotAdjusted = reader.GetString("players_list_order"),

@@ -8,7 +8,7 @@
     <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
     matSortActive="ranking" matSortDirection="asc">
 
-        <ng-container matColumnDef="rank">
+        <ng-container matColumnDef="playerRank">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>RK</th>
             <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.rank}} </td>
         </ng-container>
@@ -32,7 +32,7 @@
 
         <ng-container matColumnDef="heightWeight">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>H/W</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.heightWeight}} </td>
+            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.height}} / {{element.weight}} </td>
         </ng-container>
 
         <ng-container matColumnDef="college">

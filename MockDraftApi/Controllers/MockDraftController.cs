@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MockDraftApi.Models;
 using MockDraftApi.Repositories;
 using MockDraftApi.Configuration;
+using MockDraftApi.Services;
 
 namespace MockDraftApi.Controllers
 {
@@ -12,18 +13,13 @@ namespace MockDraftApi.Controllers
     {
         private readonly ILogger<MockDraftController> _logger;
         private readonly MockDraftRepository _repo;
+        private readonly MockDraftService _service;
 
-        public MockDraftController(ILogger<MockDraftController> logger, MockDraftRepository repo)
+        public MockDraftController(ILogger<MockDraftController> logger, MockDraftRepository repo, MockDraftService service)
         {
             _logger = logger;
             _repo = repo;
-        }
-
-        [HttpGet]
-        public async Task<IEnumerable<Player>> GetPlayers()
-        {
-            var data = await _repo.GetPlayers();
-            return data;
+            _service = service;
         }
 
         [HttpGet]
@@ -37,7 +33,7 @@ namespace MockDraftApi.Controllers
         public async Task<IEnumerable<UserSelections>> GetUserSelections(int userId)
         {
             var data = await _repo.GetUserSelections(userId);
-            return data;
+            return (IEnumerable<UserSelections>)data;
         }
 
         [HttpGet]
@@ -104,5 +100,11 @@ namespace MockDraftApi.Controllers
             _repo.SetPlayerIsBustOrStar(data);
         }
 
+        [HttpGet]
+        public Player[] GetPlayerList (int userId)
+        {
+            var data = _service.GetPlayerList(userId);
+            return data;
+        }
     }
 }
