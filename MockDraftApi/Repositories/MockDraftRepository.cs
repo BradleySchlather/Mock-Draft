@@ -69,7 +69,6 @@ namespace MockDraftApi.Repositories
             }
         }
 
-        //To do: need to get the default team data from the database and tie that data to the users selections in a service
         public async Task<IEnumerable<Team>> GetDefaultTeamData()
         {
             var teams = new List<Team>();
@@ -131,7 +130,6 @@ namespace MockDraftApi.Repositories
                 return userSelections;
             }
         }
-        //To do: need to get the default player data from the database and tie that data to the users selections in a service
         public async Task<IEnumerable<Player>> GetDefaultPlayerData()
         {
             var players = new List<Player>();

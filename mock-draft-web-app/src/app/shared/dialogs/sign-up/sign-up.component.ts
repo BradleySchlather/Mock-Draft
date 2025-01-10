@@ -20,10 +20,6 @@ export class SignUpComponent {
   constructor(
     private dialogRef: MatDialogRef<SignUpComponent>) { }
 
-  public logIn(): void {
-    //To Do: login logic
-  }
-
   public close(): void {
     this.dialogRef.close(false);
   }
