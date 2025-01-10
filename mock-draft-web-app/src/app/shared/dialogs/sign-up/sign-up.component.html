@@ -24,7 +24,7 @@
     <div class="submit-cancel">
         <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
       
-        <div class="submit"><button mat-raised-button color="success" (click)="logIn()" 
+        <div class="submit"><button mat-raised-button color="success" (click)="this.createUser()" 
           [disabled]="!this.userName || !this.email || !this.password">Submit</button></div>
     </div>
 </div>

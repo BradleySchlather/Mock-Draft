@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { User } from '../../models/user';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,10 +20,18 @@ export class SignUpComponent {
   //Email user on account creation. This will contain a link to confirm their account.
 
   constructor(
-    private dialogRef: MatDialogRef<SignUpComponent>) { }
+    private dialogRef: MatDialogRef<SignUpComponent>, private apiService: ApiService) { }
 
   public close(): void {
     this.dialogRef.close(false);
+  }
+
+  public createUser(): void {
+    let user: User = {userName: this.userName, email: this.email, password: this.password};
+    this.apiService.createUser(user).subscribe(data => {
+      //To Do: Create user message that says the account was created. Please login.
+      this.confirm();
+    })
   }
 
   public confirm(): void {

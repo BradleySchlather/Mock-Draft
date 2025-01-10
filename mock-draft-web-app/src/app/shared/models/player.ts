@@ -9,5 +9,5 @@ export class Player {
     playerClass!: string;
     isStar!: boolean;
     isBust!: boolean;
-    notes!: boolean;
+    note!: string;
 }

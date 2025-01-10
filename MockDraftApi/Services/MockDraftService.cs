@@ -45,6 +45,7 @@ namespace MockDraftApi.Services
                     }
                 }
             }
+            Array.Sort(playerListToReturn, (x, y) => x.PlayerRank.CompareTo(y.PlayerRank));
 
             return playerListToReturn;
         }

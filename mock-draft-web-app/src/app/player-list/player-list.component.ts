@@ -8,6 +8,8 @@ import { ApiService } from '../shared/services/api.service';
 import { elementAt, filter } from 'rxjs';
 import { NotesComponent } from '../shared/dialogs/notes/notes.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PlayerNotes } from '../shared/models/playerNotes';
+import { SetUsersPlayersOrTeams } from '../shared/models/setUsersPlayersOrTeams';
 
 @Component({
   selector: 'app-player-list',
@@ -17,7 +19,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class PlayerListComponent implements OnInit {
 
   //To Do: Add Drag and Drop Icon
-  //To Do: Add Notes Section for comments
   //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
   //To Do: Currently there's a bug that's preventing the filter from working unless a player is moved on the list. The list is probably not being set initially
@@ -38,6 +39,7 @@ export class PlayerListComponent implements OnInit {
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    //To Do: Once I setup the userService, I need to actually read the userId and input into the getPlayerList
     this.apiService.getPlayerList(1).subscribe(data => {
       this.masterPlayers = data;
       this.filterPlayers = data;
@@ -54,10 +56,15 @@ export class PlayerListComponent implements OnInit {
   public resetRank(players: Player[], previousIndex: number, currentIndex: number): void {
     if (!this.isFiltered) {
       let rank = 1;
+      let playerIdsSorted: number[] = [];
       players.forEach(element => {
         element.playerRank = rank;
         rank++;
+        playerIdsSorted.push(element.playerId);
       });
+      //To Do: Need to get userId from the service
+      let userPlayerList: SetUsersPlayersOrTeams = {userId: 1, playersOrTeams: playerIdsSorted.toString()};
+      this.apiService.setUsersPlayerList(userPlayerList).subscribe(rsp => {});
     }
     else {
       let rankArr: number[] = [];
@@ -80,6 +87,8 @@ export class PlayerListComponent implements OnInit {
       }
       this.setDataSource(this.filterPlayers)
       this.masterPlayers = this.reorderPlayerArr(this.masterPlayers);
+      //TO DO NEXT: iterate through masterPlayers and push id to an array similar to playerIdsSorted above.
+      //Then make API call
     }
   }
 
@@ -124,6 +133,7 @@ export class PlayerListComponent implements OnInit {
       player.isBust = true;
       player.isStar = false;
     }
+    this.setStarOrBustInDatabase(player);
   }
 
   public changeColorToStar(player: Player): void {
@@ -133,20 +143,26 @@ export class PlayerListComponent implements OnInit {
       player.isStar = true;
       player.isBust = false;
     }
+    this.setStarOrBustInDatabase(player);
+  }
+
+  public setStarOrBustInDatabase(player: Player) {
+    //To Do: Need to get userId from the service
+    let notes: PlayerNotes = {userId: 1, playerId: player.playerId, isStar: player.isStar, isBust: player.isBust}
+    this.apiService.setPlayerIsBustOrStar(notes).subscribe(rsp => {
+    })
   }
 
   public openNotesDialog(player: Player): void {
     this.dialog.open(NotesComponent, {
       width: '600px',
       data: player
-    }).afterClosed().subscribe(confirmed => {
-      if (confirmed) {
-        //To Do: 'Create Account Successful' Message to user
+    }).afterClosed().subscribe(note => {
+      if (note) {
+        player.note = note;
       }
     })
   }
 
-  /* To Do: Need a save button and onSave() function that sends the list of player names as a string to the api and database to a separate table that holds all user predictions. One
-  column will be userId, one will be players as a string, one will be draft picks */
   //To Do: Will need to pull the list and organize for each user dynamically.
 }
