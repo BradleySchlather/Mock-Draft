@@ -82,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,15 +90,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MockDraftRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\MockDraftRepository.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs*",
-              "RelativeToolTip": "Repositories\\MockDraftRepository.cs*",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAjwJkAAABMAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "MockDraftController.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MockDraftController.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
+              "RelativeToolTip": "Controllers\\MockDraftController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAwGYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.62Z",
+              "WhenOpened": "2024-10-12T21:46:29.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Models\\Player.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
+              "RelativeToolTip": "Models\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T21:46:29.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MockDraftService.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
+              "RelativeDocumentMoniker": "Services\\MockDraftService.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
+              "RelativeToolTip": "Services\\MockDraftService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T17:31:55.339Z",
               "EditorCaption": ""
             },
             {
@@ -115,42 +139,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MockDraftController.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MockDraftController.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
-              "RelativeToolTip": "Controllers\\MockDraftController.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAwGYAAAARAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MockDraftRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MockDraftRepository.cs",
+              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
+              "RelativeToolTip": "Repositories\\MockDraftRepository.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAjwJkAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
-              "RelativeDocumentMoniker": "Models\\Player.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
-              "RelativeToolTip": "Models\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MockDraftService.cs",
-              "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
-              "RelativeDocumentMoniker": "Services\\MockDraftService.cs",
-              "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
-              "RelativeToolTip": "Services\\MockDraftService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T17:31:55.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T21:46:29.62Z"
             },
             {
               "$type": "Document",
@@ -162,8 +159,7 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T17:18:02.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T17:18:02.128Z"
             },
             {
               "$type": "Document",
@@ -175,8 +171,7 @@
               "RelativeToolTip": "Models\\UserSelections.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T17:53:41.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T17:53:41.644Z"
             },
             {
               "$type": "Document",

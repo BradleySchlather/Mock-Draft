@@ -26,23 +26,29 @@ export class DraftComponent implements OnInit {
 
   //Option: Ensure save button populates on the bottom of the page and stays there as the user scrolls when user makes a change
 
+  //To Do Right Now: alter below code to pull data from the database
+  //Need to make edits in case user wants to trade with a team that doensn't have first round pick
   ngOnInit(): void {
     this.apiService.getPlayers().subscribe(data => {
       this.players = data;
     })
     this.apiService.getTeams().subscribe(data => {
+      debugger;
       this.teams = data;
       let indexForPicks = 0;
       this.teams.forEach(element => {
-        element.pickNumbers.forEach(pickNumbersElement => {
-          if (pickNumbersElement == indexForPicks) {
+        element.pickNumbers.forEach(pickNumber => {
+          if (pickNumber== indexForPicks) {
             this.draftOrder.push(element.name);
+            this.imageArr.push(`../../assets/${element.name}Logo.gif`);
           }
           indexForPicks++;
         })
       });
     })
   }
+
+
 
   public trade(index: number) {
     if (this.tradeTeam1 == '') {

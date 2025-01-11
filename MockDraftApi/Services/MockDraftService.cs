@@ -49,6 +49,14 @@ namespace MockDraftApi.Services
 
             return playerListToReturn;
         }
+
+        //To Do: Return a large object to send to fe. Still need to create model.
+        public  GetMockDraftData(int userId)
+        {
+            //To Do: I need string array of player names
+            //To Do: I need defaultTeamData
+            //To Do: I need user selections for draft team order and draft player order
+        }
         
     }
 }

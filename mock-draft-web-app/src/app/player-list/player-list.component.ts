@@ -54,17 +54,14 @@ export class PlayerListComponent implements OnInit {
   }
 
   public resetRank(players: Player[], previousIndex: number, currentIndex: number): void {
+    
     if (!this.isFiltered) {
       let rank = 1;
-      let playerIdsSorted: number[] = [];
       players.forEach(element => {
         element.playerRank = rank;
         rank++;
-        playerIdsSorted.push(element.playerId);
       });
-      //To Do: Need to get userId from the service
-      let userPlayerList: SetUsersPlayersOrTeams = {userId: 1, playersOrTeams: playerIdsSorted.toString()};
-      this.apiService.setUsersPlayerList(userPlayerList).subscribe(rsp => {});
+      this.setRankInDatabase(players);
     }
     else {
       let rankArr: number[] = [];
@@ -87,9 +84,22 @@ export class PlayerListComponent implements OnInit {
       }
       this.setDataSource(this.filterPlayers)
       this.masterPlayers = this.reorderPlayerArr(this.masterPlayers);
-      //TO DO NEXT: iterate through masterPlayers and push id to an array similar to playerIdsSorted above.
-      //Then make API call
+      this.setRankInDatabase(this.masterPlayers);
     }
+  }
+
+  //To Do: Need to get userId from the service
+  private setRankInDatabase(player: Player[]) {
+    let playerIdsSorted: number[] = [];
+    for (let i = 0; i < this.masterPlayers.length; i++) {
+      const element = this.masterPlayers[i];
+      if (element.playerRank == i + 1) {
+        playerIdsSorted.push(element.playerId);
+        continue;
+      }
+    }
+    let userPlayerList: SetUsersPlayersOrTeams = {userId: 1, playersOrTeams: playerIdsSorted.toString()};
+    this.apiService.setUsersPlayerList(userPlayerList).subscribe(rsp => {});
   }
 
   private reorderPlayerArr(playerArr: Player[]): Player[] {
