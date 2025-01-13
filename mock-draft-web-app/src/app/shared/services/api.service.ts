@@ -8,6 +8,7 @@ import { Scoreboard } from '../models/scoreboard';
 import { SetUsersPlayersOrTeams } from '../models/setUsersPlayersOrTeams';
 import { PlayerNotes } from '../models/playerNotes';
 import { User } from '../models/user';
+import { MockDraft } from '../models/mockDraft';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,10 @@ export class ApiService {
 
   public createUser(user: User) {
     return this.http.post<any>(`${environment.apiUrl}/createuser`, user);
+  }
+
+  public getMockDraft(userId: number) {
+    return this.http.get<MockDraft>(`${environment.apiUrl}/getmockdraft?userId=${userId}`)
   }
 
 

@@ -43,6 +43,32 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetMockDraft",
+    "RelativePath": "api/getmockdraft",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MockDraftApi.Models.MockDraft",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetPlayerList",
     "RelativePath": "api/getplayerlist",
     "HttpMethod": "GET",

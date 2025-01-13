@@ -106,5 +106,12 @@ namespace MockDraftApi.Controllers
             var data = _service.GetPlayerList(userId);
             return data;
         }
+
+        [HttpGet]
+        public MockDraft GetMockDraft (int userId)
+        {
+            var data = _service.GetMockDraftData(userId);
+            return data;
+        }
     }
 }

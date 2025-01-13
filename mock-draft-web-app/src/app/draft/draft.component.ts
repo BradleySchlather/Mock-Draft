@@ -11,6 +11,7 @@ import { Pick } from '../shared/models/pick';
 })
 export class DraftComponent implements OnInit {
 
+
   public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
   public players: Player[] = [];
   public teams!: Team[];
@@ -29,23 +30,27 @@ export class DraftComponent implements OnInit {
   //To Do Right Now: alter below code to pull data from the database
   //Need to make edits in case user wants to trade with a team that doensn't have first round pick
   ngOnInit(): void {
-    this.apiService.getPlayers().subscribe(data => {
-      this.players = data;
-    })
-    this.apiService.getTeams().subscribe(data => {
+    // this.apiService.getPlayers().subscribe(data => {
+    //   this.players = data;
+    // })
+    //change argument to get from actual userId
+    this.apiService.getMockDraft(1).subscribe(data => {
       debugger;
-      this.teams = data;
-      let indexForPicks = 0;
-      this.teams.forEach(element => {
-        element.pickNumbers.forEach(pickNumber => {
-          if (pickNumber== indexForPicks) {
-            this.draftOrder.push(element.name);
-            this.imageArr.push(`../../assets/${element.name}Logo.gif`);
-          }
-          indexForPicks++;
-        })
-      });
+      //To Do Right Now: Assign data to variables and get component setup
     })
+    // this.apiService.getTeams().subscribe(data => {
+    //   this.teams = data;
+    //   let indexForPicks = 0;
+    //   this.teams.forEach(element => {
+    //     element.pickNumbers.forEach(pickNumber => {
+    //       if (pickNumber== indexForPicks) {
+    //         this.draftOrder.push(element.name);
+    //         this.imageArr.push(`../../assets/${element.name}Logo.gif`);
+    //       }
+    //       indexForPicks++;
+    //     })
+    //   });
+    // })
   }
 
 

@@ -51,11 +51,18 @@ namespace MockDraftApi.Services
         }
 
         //To Do: Return a large object to send to fe. Still need to create model.
-        public  GetMockDraftData(int userId)
+        public MockDraft GetMockDraftData(int userId)
         {
             //To Do: I need string array of player names
-            //To Do: I need defaultTeamData
-            //To Do: I need user selections for draft team order and draft player order
+            var defaultPlayerData = _repo.GetDefaultPlayerData().Result.ToArray();
+            var defaultTeamData = _repo.GetDefaultTeamData().Result.ToArray();
+            var userSelections = _repo.GetUserSelections(userId).Result;
+
+            var MockDraft = new MockDraft() { 
+                Players = defaultPlayerData, 
+                Teams = defaultTeamData, 
+                UserSelections = userSelections };
+            return MockDraft;
         }
         
     }
