@@ -40,6 +40,7 @@ export class PlayerListComponent implements OnInit {
 
   ngOnInit(): void {
     //To Do: Once I setup the userService, I need to actually read the userId and input into the getPlayerList
+    //To Do: Need loading spinner
     this.apiService.getPlayerList(1).subscribe(data => {
       this.masterPlayers = data;
       this.filterPlayers = data;

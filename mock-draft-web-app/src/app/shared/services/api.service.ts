@@ -65,12 +65,6 @@ export class ApiService {
     return this.http.get<MockDraft>(`${environment.apiUrl}/getmockdraft?userId=${userId}`)
   }
 
-
-
-  //To do: getDefaultTeamData
-  //To do: getUserSelections
-  //To do: getDefaultPlayerData
-
   //An option for later: I need to make a getAllUserSelectionsAndData request that gets everything from the user in a big object. Then I will
   //request each portion of the data for the components that need them within the components.
 

@@ -17,6 +17,7 @@ export class DraftComponent implements OnInit {
   public teams!: Team[];
   public draftOrder: string[] = [];
   public imageArr: string[] = [];
+  public playersNamesOnly: string[] = [];
   public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
   private tradeTeam1 = '';
   private tradeTeam2 = '';
@@ -27,33 +28,28 @@ export class DraftComponent implements OnInit {
 
   //Option: Ensure save button populates on the bottom of the page and stays there as the user scrolls when user makes a change
 
-  //To Do Right Now: alter below code to pull data from the database
   //Need to make edits in case user wants to trade with a team that doensn't have first round pick
   ngOnInit(): void {
-    // this.apiService.getPlayers().subscribe(data => {
-    //   this.players = data;
-    // })
     //change argument to get from actual userId
     this.apiService.getMockDraft(1).subscribe(data => {
-      debugger;
-      //To Do Right Now: Assign data to variables and get component setup
+      this.players = data.players;
+      this.players.forEach(player => {
+        this.playersNamesOnly.push(player.playerName);
+      })
+      this.teams = data.teams;
+      for (let i = 0; i < this.picks.length; i++) {
+        const playerName = this.players[this.players.findIndex(x => x.playerId == data.userSelections.playerDraftOrder[i])]?.playerName;
+        playerName == undefined ? this.picks[i] = '' : this.picks[i] = playerName;
+      }
+
+      for (let i = 0; i < data.userSelections.teamsDraftOrder.length; i++) {
+        const teamName = this.teams[this.teams.findIndex(x => x.id == data.userSelections.teamsDraftOrder[i])]?.name;
+        this.draftOrder[i] = teamName;
+        this.imageArr.push(`../../assets/${teamName}Logo.gif`);
+      }
     })
-    // this.apiService.getTeams().subscribe(data => {
-    //   this.teams = data;
-    //   let indexForPicks = 0;
-    //   this.teams.forEach(element => {
-    //     element.pickNumbers.forEach(pickNumber => {
-    //       if (pickNumber== indexForPicks) {
-    //         this.draftOrder.push(element.name);
-    //         this.imageArr.push(`../../assets/${element.name}Logo.gif`);
-    //       }
-    //       indexForPicks++;
-    //     })
-    //   });
-    // })
+
   }
-
-
 
   public trade(index: number) {
     if (this.tradeTeam1 == '') {
@@ -64,7 +60,9 @@ export class DraftComponent implements OnInit {
     else {
       this.tradeTeam2 = this.draftOrder[index];
       this.draftOrder[index] = this.tradeTeam1;
+      this.imageArr[index] = `../../assets/${this.tradeTeam1}Logo.gif`
       this.draftOrder[this.tradeTeam1Index] = this.tradeTeam2;
+      this.imageArr[this.tradeTeam1Index] = `../../assets/${this.tradeTeam2}Logo.gif`
       this.tradeTeam1 = '';
       this.tradeIsActive = false;
     }

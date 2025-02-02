@@ -102,8 +102,7 @@
               "RelativeToolTip": "Models\\MockDraft.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T02:41:12.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T02:41:12.505Z"
             },
             {
               "$type": "Document",
@@ -113,7 +112,7 @@
               "RelativeDocumentMoniker": "Controllers\\MockDraftController.cs",
               "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
               "RelativeToolTip": "Controllers\\MockDraftController.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAUwG4AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAuwG4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T21:46:29.618Z",
               "EditorCaption": ""
@@ -128,8 +127,7 @@
               "RelativeToolTip": "Models\\Player.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T21:46:29.625Z"
             },
             {
               "$type": "Document",
@@ -141,8 +139,7 @@
               "RelativeToolTip": "Services\\MockDraftService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAIwDoAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T17:31:55.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-03T17:31:55.339Z"
             },
             {
               "$type": "Document",
@@ -154,8 +151,7 @@
               "RelativeToolTip": "Models\\SetUsersPlayersOrTeams.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T16:15:40.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T16:15:40.502Z"
             },
             {
               "$type": "Document",
@@ -167,8 +163,7 @@
               "RelativeToolTip": "Models\\UserSelections.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T17:53:41.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T17:53:41.644Z"
             },
             {
               "$type": "Document",
@@ -180,8 +175,7 @@
               "RelativeToolTip": "Repositories\\MockDraftRepository.cs",
               "ViewState": "AgIAAGUAAAAAAAAAAAAMwMUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T21:46:29.62Z"
             },
             {
               "$type": "Document",
