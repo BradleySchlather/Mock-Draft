@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,11 @@ export class LoginComponent {
   public email = '';
   public password = '';
 
-  constructor(
-    private dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private dialogRef: MatDialogRef<LoginComponent>, private userService: UserService) { }
   //To Do: Need to add auth
 
   public logIn(): void {
-    //To Do: login logic
+    this.userService.getUserData({ userName: this.email, password: this.password});
   }
 
   public close(): void {

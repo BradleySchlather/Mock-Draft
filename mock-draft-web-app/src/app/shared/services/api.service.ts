@@ -55,6 +55,7 @@ export class ApiService {
   }
 
   public getUser(user: User) {
+    debugger;
     return this.http.post<User>(`${environment.apiUrl}/getuser`, user);
   }
 
