@@ -3,6 +3,7 @@ import { Player } from '../shared/models/player';
 import { ApiService } from '../shared/services/api.service';
 import { Team } from '../shared/models/team';
 import { Pick } from '../shared/models/pick';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-draft',
@@ -24,11 +25,12 @@ export class DraftComponent implements OnInit {
   public tradeTeam1Index = 0;
   public tradeIsActive = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private userService: UserService) { }
 
+  //To Do: will send user to account creation screen if user doesn't have an account
   //Option: Ensure save button populates on the bottom of the page and stays there as the user scrolls when user makes a change
 
-  //Need to make edits in case user wants to trade with a team that doensn't have first round pick
+  //Need to make edits in case user wants to trade with a team that doesn't have first round pick
   ngOnInit(): void {
     //change argument to get from actual userId
     this.apiService.getMockDraft(1).subscribe(data => {
@@ -69,9 +71,6 @@ export class DraftComponent implements OnInit {
   }
 
   public onSave(): void {
-    //Will use proc to set picks for user in database. proc will be called from .NET backend. When onSave() is called, picks will be sent to database for that user
-    //To Do: Ensure I capture all data for trades too
-    //To Do: need to prevent player from being added twice when I call onSave()
-    //To Do: will send user to account creation screen if user doesn't have an account
+    
   }
 }

@@ -17,6 +17,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //To Do: Make this a post instead of a get so it's safer
   public getPlayerList(userId: number): Observable<Player[]> {
     return this.http.get<Player[]>(`${environment.apiUrl}/getplayerlist?userId=${userId}`);
   }
@@ -61,11 +62,9 @@ export class ApiService {
     return this.http.post<any>(`${environment.apiUrl}/createuser`, user);
   }
 
+  //To Do: make this a post instead of a get because it's safer
   public getMockDraft(userId: number) {
     return this.http.get<MockDraft>(`${environment.apiUrl}/getmockdraft?userId=${userId}`)
   }
-
-  //An option for later: I need to make a getAllUserSelectionsAndData request that gets everything from the user in a big object. Then I will
-  //request each portion of the data for the components that need them within the components.
 
 }
