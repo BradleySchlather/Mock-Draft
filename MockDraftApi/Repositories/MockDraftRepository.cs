@@ -49,7 +49,7 @@ namespace MockDraftApi.Repositories
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("username_input", signInData.Username);
+                    command.Parameters.AddWithValue("email_input", signInData.Email);
                     command.Parameters.AddWithValue("password_input", signInData.Password);
 
                     using (var reader = await command.ExecuteReaderAsync())

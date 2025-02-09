@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\services\\mockdraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:services\\mockdraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\repositories\\mockdraftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:repositories\\mockdraftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\controllers\\mockdraftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:controllers\\mockdraftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\services\\mockdraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:services\\mockdraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\setusersplayersorteams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:models\\setusersplayersorteams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|solutionrelative:models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{301D5622-F78E-4A17-A3F8-F658C40FAF35}|MockDraftApi.csproj|c:\\users\\brad\\desktop\\mock-draft\\mockdraftapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,20 +94,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MockDraftController.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
               "RelativeDocumentMoniker": "Controllers\\MockDraftController.cs",
               "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Controllers\\MockDraftController.cs",
               "RelativeToolTip": "Controllers\\MockDraftController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAkwEIAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T21:46:29.618Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Player.cs",
               "RelativeDocumentMoniker": "Models\\Player.cs",
@@ -115,23 +115,25 @@
               "RelativeToolTip": "Models\\Player.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T21:46:29.625Z"
+              "WhenOpened": "2024-10-12T21:46:29.625Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "MockDraftService.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
               "RelativeDocumentMoniker": "Services\\MockDraftService.cs",
               "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Services\\MockDraftService.cs",
               "RelativeToolTip": "Services\\MockDraftService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAA5wBMAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBYAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T17:31:55.339Z"
+              "WhenOpened": "2025-01-03T17:31:55.339Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "SetUsersPlayersOrTeams.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\SetUsersPlayersOrTeams.cs",
               "RelativeDocumentMoniker": "Models\\SetUsersPlayersOrTeams.cs",
@@ -143,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserSelections.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\UserSelections.cs",
               "RelativeDocumentMoniker": "Models\\UserSelections.cs",
@@ -155,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Team.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\Team.cs",
               "RelativeDocumentMoniker": "Models\\Team.cs",
@@ -167,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MockDraft.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\MockDraft.cs",
               "RelativeDocumentMoniker": "Models\\MockDraft.cs",
@@ -179,20 +181,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MockDraftRepository.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\MockDraftRepository.cs",
               "ToolTip": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Repositories\\MockDraftRepository.cs",
               "RelativeToolTip": "Repositories\\MockDraftRepository.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAlwMUAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAMwGgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T21:46:29.62Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Brad\\Desktop\\Mock-Draft\\MockDraftApi\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",

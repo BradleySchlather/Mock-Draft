@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, effect, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Player } from '../shared/models/player';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -10,6 +10,7 @@ import { NotesComponent } from '../shared/dialogs/notes/notes.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PlayerNotes } from '../shared/models/playerNotes';
 import { SetUsersPlayersOrTeams } from '../shared/models/setUsersPlayersOrTeams';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-player-list',
@@ -24,6 +25,7 @@ export class PlayerListComponent implements OnInit {
   //To Do: Currently there's a bug that's preventing the filter from working unless a player is moved on the list. The list is probably not being set initially
 
   public loading = true;
+  private userId = this.userService.userId;
   public positionSelected = 'All Pos';
   public isFiltered = false;
   public masterPlayers: Player[] = [];
@@ -36,16 +38,25 @@ export class PlayerListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild("tableContainer", { read: ElementRef }) tableContainer!: ElementRef;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService, private userService: UserService, private dialog: MatDialog) {
+    effect(() => {
+      this.getPlayerList();
+    })
+  }
 
   ngOnInit(): void {
-    //To Do: Once I setup the userService, I need to actually read the userId and input into the getPlayerList
     //To Do: Need loading spinner
-    this.apiService.getPlayerList(1).subscribe(data => {
-      this.masterPlayers = data;
-      this.filterPlayers = data;
-      this.setDataSource(this.filterPlayers);
-    })
+    this.getPlayerList();
+  }
+
+  private getPlayerList(): void {
+    if(this.userId() > 0) {
+      this.apiService.getPlayerList(this.userId()).subscribe(data => {
+        this.masterPlayers = data;
+        this.filterPlayers = data;
+        this.setDataSource(this.filterPlayers);
+      })
+    }
   }
 
   private setDataSource(data: Player[]): void {

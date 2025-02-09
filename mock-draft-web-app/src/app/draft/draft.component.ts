@@ -31,6 +31,7 @@ export class DraftComponent implements OnInit {
   //Option: Ensure save button populates on the bottom of the page and stays there as the user scrolls when user makes a change
 
   //Need to make edits in case user wants to trade with a team that doesn't have first round pick
+  
   ngOnInit(): void {
     //change argument to get from actual userId
     this.apiService.getMockDraft(1).subscribe(data => {

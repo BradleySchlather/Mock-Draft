@@ -18,8 +18,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   //To Do: Make this a post instead of a get so it's safer
-  public getPlayerList(userId: number): Observable<Player[]> {
-    return this.http.get<Player[]>(`${environment.apiUrl}/getplayerlist?userId=${userId}`);
+  public getPlayerList(userId: number): Observable<Player[]>{
+      return this.http.get<Player[]>(`${environment.apiUrl}/getplayerlist?userId=${userId}`);
   }
 
   public getPlayers(): Observable<Player[]> {
@@ -55,7 +55,6 @@ export class ApiService {
   }
 
   public getUser(user: User) {
-    debugger;
     return this.http.post<User>(`${environment.apiUrl}/getuser`, user);
   }
 
