@@ -4,6 +4,10 @@ using MockDraftApi.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using MockDraftApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 namespace MockDraftApi
 {
@@ -24,6 +28,23 @@ namespace MockDraftApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddCors();
+            builder.Services.AddSingleton<TokenService>();
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                var config = builder.Configuration;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    //Fill out the below once appsettings.dev is filled out
+                    ValidIssuer = config["Jwt:Issuer"],
+                    ValidAudience = config["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
+                };
+            });
             //builder.Services.Add(new ServiceDescriptor(typeof(AppDbContext), new AppDbContext(Configuration.Get("DefaultConnection"))));
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -49,6 +70,7 @@ namespace MockDraftApi
                                                     //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins separated with comma
                 .AllowCredentials()); // allow credentials
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

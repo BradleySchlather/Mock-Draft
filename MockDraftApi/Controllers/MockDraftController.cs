@@ -70,6 +70,8 @@ namespace MockDraftApi.Controllers
             return data;
         }
 
+
+
         [HttpPost]
         public void SetUserPlayersDraftOrder (SetUsersPlayersOrTeams data)
         {
@@ -115,3 +117,29 @@ namespace MockDraftApi.Controllers
         }
     }
 }
+
+//To Do: Setup UserService based on below. Mine will be a bit different because I'm not currently using authorization
+//Example of AuthController from chatgpt
+//[ApiController]
+//[Route("api/auth")]
+//public class AuthController : ControllerBase
+//{
+//    private readonly IUserService _userService;
+//    private readonly ITokenService _tokenService;
+
+//    public AuthController(IUserService userService, ITokenService tokenService)
+//    {
+//        _userService = userService;
+//        _tokenService = tokenService;
+//    }
+
+//    [HttpPost("login")]
+//    public IActionResult Login([FromBody] LoginDto loginDto)
+//    {
+//        var user = _userService.Authenticate(loginDto.Username, loginDto.Password);
+//        if (user == null) return Unauthorized(new { message = "Invalid username or password" });
+
+//        var token = _tokenService.GenerateJwtToken(user);
+//        return Ok(new { Token = token });
+//    }
+//}
