@@ -6,7 +6,7 @@ using MockDraftApi.Services;
 namespace MockDraftApi.Controllers
 {
     [ApiController]
-    [Route("api/auth")]
+    [Route("api/auth/[action]")]
 
     public class AuthController : ControllerBase
     {
@@ -19,8 +19,8 @@ namespace MockDraftApi.Controllers
             _repo = repo;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] User user)
+        [HttpPost]
+        public IActionResult Login(User user)
         {
             var userData = _repo.GetUser(user);
             if (user == null) return Unauthorized(new { message = "Invalid username or password" });

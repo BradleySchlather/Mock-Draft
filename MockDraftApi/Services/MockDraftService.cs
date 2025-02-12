@@ -22,7 +22,6 @@ namespace MockDraftApi.Services
 
             var playerListToReturn = defaultPlayerData.Result.ToArray();
             var playerNotesArr = playerNotes.Result.ToArray();
-            //var playerListToReturn = new List<Player>();
 
             foreach (var player in playerListToReturn)
             {
@@ -50,10 +49,8 @@ namespace MockDraftApi.Services
             return playerListToReturn;
         }
 
-        //To Do: Return a large object to send to fe. Still need to create model.
         public MockDraft GetMockDraftData(int userId)
         {
-            //To Do: I need string array of player names
             var defaultPlayerData = _repo.GetDefaultPlayerData().Result.ToArray();
             var defaultTeamData = _repo.GetDefaultTeamData().Result.ToArray();
             var userSelections = _repo.GetUserSelections(userId).Result;

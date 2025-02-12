@@ -73,7 +73,6 @@ C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets\m
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MockDraftApi.props
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MockDraftApi.props
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\MockDraf.71D9A25E.Up2Date
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\MockDraftApi.dll
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\refint\MockDraftApi.dll
@@ -81,3 +80,4 @@ C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\MockDraftApi.pdb
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\MockDraftApi.genruntimeconfig.cache
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\ref\MockDraftApi.dll
 C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Brad\Desktop\Mock-Draft\MockDraftApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

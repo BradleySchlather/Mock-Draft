@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlayerNotes } from '../shared/models/playerNotes';
 import { SetUsersPlayersOrTeams } from '../shared/models/setUsersPlayersOrTeams';
 import { UserService } from '../shared/services/user.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-player-list',
@@ -46,6 +47,9 @@ export class PlayerListComponent implements OnInit {
 
   ngOnInit(): void {
     //To Do: Need loading spinner
+    if(this.userId() == 0 || !this.userId()) {
+      this.userService.getUserDataFromToken();
+    }
     this.getPlayerList();
   }
 

@@ -38,5 +38,8 @@ namespace MockDraftApi.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+
     }
 }

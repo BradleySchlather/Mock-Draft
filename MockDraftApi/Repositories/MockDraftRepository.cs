@@ -69,6 +69,36 @@ namespace MockDraftApi.Repositories
             }
         }
 
+        public async Task<User> GetUserDataFromToken(User tokenData)
+        {
+            var user = new User();
+            using (var connection = new MySqlConnection(_conn))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new MySqlCommand("get_user_from_token", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("email_input", tokenData.Email);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            user = new User
+                            {
+                                UserId = reader.GetInt32("user_id"),
+                                Username = reader.GetString("username"),
+                                Email = reader.GetString("email")
+                            };
+                        }
+                    }
+                }
+                return user;
+            }
+        }
+
         public async Task<IEnumerable<Team>> GetDefaultTeamData()
         {
             var teams = new List<Team>();

@@ -33,16 +33,21 @@ namespace MockDraftApi
             .AddJwtBearer(options =>
             {
                 var config = builder.Configuration;
+                string jwtKey = config["Jwt:Key"];
+                if (string.IsNullOrEmpty(jwtKey))
+                {
+                    throw new Exception("JWT Key is missing in configuration.");
+                }
+                var key = Encoding.UTF8.GetBytes(jwtKey);
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    //Fill out the below once appsettings.dev is filled out
-                    ValidIssuer = config["Jwt:Issuer"],
-                    ValidAudience = config["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
+                    ValidIssuer = config["Jwt:MockDraft"],
+                    ValidAudience = config["Jwt:MockDraftAppUsers"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
             //builder.Services.Add(new ServiceDescriptor(typeof(AppDbContext), new AppDbContext(Configuration.Get("DefaultConnection"))));

@@ -70,6 +70,12 @@ namespace MockDraftApi.Controllers
             return data;
         }
 
+        [HttpPost]
+        public async Task<User> GetUserDataFromToken(User userSignIn)
+        {
+            var data = await _repo.GetUserDataFromToken(userSignIn);
+            return data;
+        }
 
 
         [HttpPost]

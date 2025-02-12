@@ -1,6 +1,7 @@
 import { Component, effect, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,19 +19,20 @@ export class LoginComponent {
   private userId = this.userService.userId;
   private hasIdChanged = false;
 
-  constructor(private dialogRef: MatDialogRef<LoginComponent>, private userService: UserService) {
+  constructor(private dialogRef: MatDialogRef<LoginComponent>, private userService: UserService, private authService: AuthService) {
     effect(() => {
       if(this.userId() > 0 && this.hasIdChanged) {
         this.confirm();
       }
     })
   }
-  //To Do: Need to add auth
 
-  public logIn(): void {
-    this.hasIdChanged = true;
-    this.userService.getUserData({ email: this.email, password: this.password});
-
+  public logIn() {
+    this.authService.login(this.email, this.password).subscribe(response => {
+      alert("Login successful");
+    }, error => {
+      alert("Login failed");
+    });
   }
 
   public close(): void {

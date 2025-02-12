@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NotesComponent } from './shared/dialogs/notes/notes.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     LoginComponent,
     SignUpComponent,
     NotesComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
