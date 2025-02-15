@@ -24,7 +24,7 @@ namespace MockDraftApi.Services
 
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
         };
 
@@ -38,8 +38,6 @@ namespace MockDraftApi.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-
 
     }
 }

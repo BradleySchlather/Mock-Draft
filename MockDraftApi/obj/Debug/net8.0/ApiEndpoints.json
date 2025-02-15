@@ -203,6 +203,32 @@
   },
   {
     "ContainingType": "MockDraftApi.Controllers.MockDraftController",
+    "Method": "GetUserDataFromToken",
+    "RelativePath": "api/getuserdatafromtoken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userSignIn",
+        "Type": "MockDraftApi.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MockDraftApi.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MockDraftApi.Controllers.MockDraftController",
     "Method": "GetUserSelections",
     "RelativePath": "api/getuserselections",
     "HttpMethod": "GET",

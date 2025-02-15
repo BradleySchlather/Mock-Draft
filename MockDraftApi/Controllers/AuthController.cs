@@ -20,12 +20,12 @@ namespace MockDraftApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public async Task<IActionResult> Login(User user)
         {
-            var userData = _repo.GetUser(user);
-            if (user == null) return Unauthorized(new { message = "Invalid username or password" });
+            var userData = await _repo.GetUser(user);
+            if (userData == null) return Unauthorized(new { message = "Invalid username or password" });
 
-            var token = _tokenService.GenerateJwtToken(user);
+            var token = _tokenService.GenerateJwtToken(userData);
             return Ok(new { Token = token });
         }
     }

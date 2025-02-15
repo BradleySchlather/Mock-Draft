@@ -80,7 +80,7 @@ namespace MockDraftApi.Repositories
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("email_input", tokenData.Email);
+                    command.Parameters.AddWithValue("user_id_input", tokenData.UserId);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {

@@ -58,8 +58,8 @@ export class ApiService {
     return this.http.post<User>(`${environment.apiUrl}/getuser`, user);
   }
 
-  public getUserDataFromToken(email: string) {
-    return this.http.post<User>(`${environment.apiUrl}/getuserdatafromtoken`, { email });
+  public getUserDataFromToken(userId: string) {
+    return this.http.post<User>(`${environment.apiUrl}/getuserdatafromtoken`, { userId });
   }
 
   public createUser(user: User) {

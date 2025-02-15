@@ -1,7 +1,8 @@
-import { Component, effect, Inject } from '@angular/core';
+import { Component, effect, inject, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   //To Do: Create a post login and post account creation success message
-
+  private snackBar = inject(MatSnackBar);
   public title = 'Log In';
   public errorExists = false;
   public email = '';
@@ -29,9 +30,9 @@ export class LoginComponent {
 
   public logIn() {
     this.authService.login(this.email, this.password).subscribe(response => {
-      alert("Login successful");
+      this.confirm();
     }, error => {
-      alert("Login failed");
+      this.snackBar.open('Username or Password Incorrect');
     });
   }
 

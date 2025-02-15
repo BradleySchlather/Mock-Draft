@@ -1,24 +1,37 @@
-import { Component, Input } from '@angular/core';
+import { Component, computed, effect, inject, Input, OnInit, Signal, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../shared/dialogs/login/login.component';
 import { SignUpComponent } from '../shared/dialogs/sign-up/sign-up.component';
+import { UserService } from '../shared/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
-  @Input() title: string = "Title Placeholder"
+export class HeaderComponent{
+  @Input() title: string = "Title Placeholder";
+  private snackBar = inject(MatSnackBar);
+  public userService = inject(UserService);
+  public userId = computed(() => {
+    return this.userService.userId();
+  })
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
+
+  public logout(): void {
+    this.userService.logout();
+  }
 
   public openLogin(): void {
     this.dialog.open(LoginComponent, {
       width: '600px',
     }).afterClosed().subscribe(confirmed => {
       if (confirmed) {
-        //To Do: 'Login Successful' Message to user
+        this.snackBar.open('Successfully Logged In', 'X', {
+          duration: 5000
+        });
       }
     })
   }
@@ -28,7 +41,9 @@ export class HeaderComponent {
       width: '600px',
     }).afterClosed().subscribe(confirmed => {
       if (confirmed) {
-        //To Do: 'Create Account Successful' Message to user
+        this.snackBar.open('Account Successfully Created - Please Sign In', 'X', {
+          duration: 5000
+        });
       }
     })
   }

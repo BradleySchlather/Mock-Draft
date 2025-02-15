@@ -12,8 +12,13 @@
             <a><img src="../../assets/AccountCircle.svg"></a>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="this.openLogin()">Login</button>
-            <button mat-menu-item (click)="this.openCreateAccount()">Create Account</button>
+            @if (this.userId() == 0) {
+                <button mat-menu-item (click)="this.openLogin()">Login</button>
+                <button mat-menu-item (click)="this.openCreateAccount()">Create Account</button>
+            }
+            @else {
+                <button mat-menu-item (click)="this.logout()">Logout</button>
+            }
         </mat-menu>
     </div>
 </div>

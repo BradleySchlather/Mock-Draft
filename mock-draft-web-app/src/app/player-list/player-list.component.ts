@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { Player } from '../shared/models/player';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -12,6 +12,7 @@ import { PlayerNotes } from '../shared/models/playerNotes';
 import { SetUsersPlayersOrTeams } from '../shared/models/setUsersPlayersOrTeams';
 import { UserService } from '../shared/services/user.service';
 import { AuthService } from '../shared/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-player-list',
@@ -26,7 +27,6 @@ export class PlayerListComponent implements OnInit {
   //To Do: Currently there's a bug that's preventing the filter from working unless a player is moved on the list. The list is probably not being set initially
 
   public loading = true;
-  private userId = this.userService.userId;
   public positionSelected = 'All Pos';
   public isFiltered = false;
   public masterPlayers: Player[] = [];
@@ -34,6 +34,11 @@ export class PlayerListComponent implements OnInit {
   public displayedColumns: string[] = ['playerRank', 'playerName', 'position', 'heightWeight', 'college', 'playerClass', 'bustOrGem', 'notes'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
+  private snackBar = inject(MatSnackBar);
+  public userId = computed(() => {
+    return this.userService.userId();
+  })
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
