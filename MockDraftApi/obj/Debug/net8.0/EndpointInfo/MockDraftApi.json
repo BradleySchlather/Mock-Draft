@@ -907,6 +907,10 @@
             },
             "nullable": true,
             "readOnly": true
+          },
+          "playerDraftOrderFromFrontend": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

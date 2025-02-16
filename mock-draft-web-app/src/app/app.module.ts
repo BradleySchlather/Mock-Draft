@@ -26,6 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NotesComponent } from './shared/dialogs/notes/notes.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatMenuModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideClientHydration()

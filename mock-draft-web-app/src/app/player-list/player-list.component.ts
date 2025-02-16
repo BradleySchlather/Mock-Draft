@@ -59,11 +59,14 @@ export class PlayerListComponent implements OnInit {
   }
 
   private getPlayerList(): void {
+    this.loading = true;
     if(this.userId() > 0) {
+      this
       this.apiService.getPlayerList(this.userId()).subscribe(data => {
         this.masterPlayers = data;
         this.filterPlayers = data;
         this.setDataSource(this.filterPlayers);
+        this.loading = false;
       })
     }
   }

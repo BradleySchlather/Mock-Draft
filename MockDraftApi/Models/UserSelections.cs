@@ -11,5 +11,6 @@
         public string? PlayerDraftOrderNotAdjusted { get; set; }
         public int[]? PlayerDraftOrder => PlayerDraftOrderNotAdjusted != "" && PlayerDraftOrderNotAdjusted != null ?
             PlayerDraftOrderNotAdjusted.Split(',').Select(int.Parse).ToArray() : null;
+        public string? PlayerDraftOrderFromFrontend { get; set; }
     }
 }

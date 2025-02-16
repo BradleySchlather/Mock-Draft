@@ -1,26 +1,28 @@
-import { AfterViewInit, Component, computed, effect, inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, computed, effect, inject, OnInit } from '@angular/core';
 import { Player } from '../shared/models/player';
 import { ApiService } from '../shared/services/api.service';
 import { Team } from '../shared/models/team';
 import { Pick } from '../shared/models/pick';
 import { UserService } from '../shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-draft',
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
 })
-export class DraftComponent implements AfterViewInit {
+export class DraftComponent implements OnInit {
 
-
+  public loading = true;
   public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
   public players: Player[] = [];
   public teams!: Team[];
   public draftOrder: string[] = [];
   public imageArr: string[] = [];
   public playersNamesOnly: string[] = [];
-  public picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+  public pickIds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  public picks = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
   private tradeTeam1 = '';
   private tradeTeam2 = '';
   public tradeTeam1Index = 0;
@@ -30,14 +32,28 @@ export class DraftComponent implements AfterViewInit {
     return this.userService.userId();
   })
 
-  constructor(private apiService: ApiService, private userService: UserService) {
+  constructor(private apiService: ApiService, private userService: UserService, private cdr: ChangeDetectorRef) {
+    effect(() => {
+      this.setMockDraft();
+      this.loading = false;
+    })
   }
 
   //To Do: will send user to account creation screen if user doesn't have an account
 
   //To Do: Need to make edits in case user wants to trade with a team that doesn't have first round pick
   
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
+    if(this.userId() == 0 || !this.userId()) {
+      this.userService.getUserDataFromToken();
+      this.setMockDraft();
+    }
+    else {
+      this.setMockDraft();
+    }
+  }
+
+  private setMockDraft() {
     if(this.userId() != 0) {
       this.apiService.getMockDraft(this.userId()).subscribe(data => {
         this.players = data.players;
@@ -46,8 +62,15 @@ export class DraftComponent implements AfterViewInit {
         })
         this.teams = data.teams;
         for (let i = 0; i < this.picks.length; i++) {
-          const playerName = this.players[this.players.findIndex(x => x.playerId == data.userSelections.playerDraftOrder[i])]?.playerName;
-          playerName == undefined ? this.picks[i] = '' : this.picks[i] = playerName;
+          const player = this.players[this.players.findIndex(x => x.playerId == data.userSelections.playerDraftOrder[i])];
+          if (player) {
+            this.picks[i] = player.playerName;
+            this.pickIds[i] = player.playerId;
+          }
+          else {
+            this.picks[i] = ' ';
+            this.pickIds[i]= 0
+          }
         }
   
         for (let i = 0; i < data.userSelections.teamsDraftOrder.length; i++) {
@@ -58,7 +81,8 @@ export class DraftComponent implements AfterViewInit {
       })
     }
     else {
-      this.picks = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+      this.picks = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+      this.pickIds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       this.tradeTeam1 = '';
       this.tradeTeam2 = '';
       this.tradeTeam1Index = 0;
@@ -66,6 +90,16 @@ export class DraftComponent implements AfterViewInit {
       this.imageArr = [];
       this.draftOrder = [];
     }
+  }
+
+  public setPick(index: number, event: MatSelectChange): void {
+     let player = this.players.find(player => player.playerName == event.value);
+     if(player) {
+      this.picks[index] = player.playerName;
+      this.pickIds[index] = player.playerId;
+      this.setUsersPlayersDraftOrder();
+      this.cdr.detectChanges();
+     }
   }
 
   public trade(index: number): void {
@@ -90,16 +124,23 @@ export class DraftComponent implements AfterViewInit {
     let teamIdsInOrder: string[] = [];
     this.draftOrder.forEach(teamName => {
       teamIdsInOrder.push(this.teams.find(team => team.name == teamName)?.id.toString() || '');
-      console.log(teamIdsInOrder)
     })
     this.apiService.setUsersTeams({ playersOrTeams: teamIdsInOrder.toString(), userId: this.userId()}).subscribe(data => {
-      this.snackBar.open('Trade Saved');
+      this.snackBar.open('Trade Saved', 'X', {
+        duration: 3000
+      });
     }, err => {this.snackBar.open('Unable to Save Trade')})
   }
 
   public setUsersPlayersDraftOrder(): void {
-    this.apiService.setUsersPlayersDraftOrder({ playersOrTeams: this.picks.toString(), userId: this.userId()}).subscribe(data => {
-      this.snackBar.open('Selection Saved')
+    this.apiService.setUsersPlayersDraftOrder({ playersOrTeams: this.pickIds.toString(), userId: this.userId()}).subscribe(data => {
+      this.snackBar.open('Selection Saved', 'X', {
+        duration: 3000
+      });
     }, err => {this.snackBar.open('Unable to Save Selection')})
+  }
+
+  public trackByIndex(index: number, item: any) {
+    return index;
   }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MockDraftApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63b40ef8c9356cb43110304328e993872a19b4fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e163878a85b8c7aaacddd91e41fdc1e59da9e23")]
 [assembly: System.Reflection.AssemblyProductAttribute("MockDraftApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MockDraftApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,67 +4,74 @@
 
 <h2>2025 Player List (Drag & Drop)</h2>
 
-<div class="table-container" #tableContainer>
-    <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
-    matSortActive="ranking" matSortDirection="asc">
-
-        <ng-container matColumnDef="playerRank">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>RK</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerRank}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="playerName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerName}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              <mat-form-field>
-                <mat-select [(value)]="positionSelected" (selectionChange)="this.filterByPos()">
-                  <mat-option [value]="'All Pos'">All Pos</mat-option>
-                  <mat-option *ngFor="let pos of this.positions" [value]="pos">{{pos}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            </th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.position}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="heightWeight">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>H/W</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.height}} / {{element.weight}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="college">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>College</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.college}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="playerClass">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Class</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerClass}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="bustOrGem">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>HOF / Bust</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
-              <div class="star-bust-buttons">
-                <button mat-raised-button color="primary" class="star" matTooltip="Future Hall of Famer" (click)="this.changeColorToStar(element)">HOF</button>
-                <button mat-raised-button color="primary" class="bust" matTooltip="Future Bust" (click)="this.changeColorToBust(element)">Bust</button>
-              </div>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="notes">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
-            <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
-                <a *ngIf="element.isStar || element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAddWhite.svg"></a>
-                <a *ngIf="!element.isStar && !element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAdd.svg"></a>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
-
-    </table>
-</div>
+@if (!this.loading) {
+    <div class="table-container" #tableContainer>
+        <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
+        matSortActive="ranking" matSortDirection="asc">
+    
+            <ng-container matColumnDef="playerRank">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>RK</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerRank}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="playerName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerName}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  <mat-form-field>
+                    <mat-select [(value)]="positionSelected" (selectionChange)="this.filterByPos()">
+                      <mat-option [value]="'All Pos'">All Pos</mat-option>
+                      <mat-option *ngFor="let pos of this.positions" [value]="pos">{{pos}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.position}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="heightWeight">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>H/W</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.height}} / {{element.weight}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="college">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>College</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.college}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="playerClass">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Class</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerClass}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="bustOrGem">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>HOF / Bust</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
+                  <div class="star-bust-buttons">
+                    <button mat-raised-button color="primary" class="star" matTooltip="Future Hall of Famer" (click)="this.changeColorToStar(element)">HOF</button>
+                    <button mat-raised-button color="primary" class="bust" matTooltip="Future Bust" (click)="this.changeColorToBust(element)">Bust</button>
+                  </div>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="notes">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
+                    <a *ngIf="element.isStar || element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAddWhite.svg"></a>
+                    <a *ngIf="!element.isStar && !element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAdd.svg"></a>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
+    
+        </table>
+    </div>
+}
+@else {
+    <div class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+}

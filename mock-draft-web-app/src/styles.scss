@@ -12,3 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-height: unset !important;
     max-height: 0 !important;
   }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 20vh !important;
+  }
