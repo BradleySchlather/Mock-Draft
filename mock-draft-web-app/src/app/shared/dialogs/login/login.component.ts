@@ -32,7 +32,9 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(response => {
       this.confirm();
     }, error => {
-      this.snackBar.open('Username or Password Incorrect');
+      this.snackBar.open('Username or Password Incorrect', 'X', {
+        duration: 3000
+      });
     });
   }
 

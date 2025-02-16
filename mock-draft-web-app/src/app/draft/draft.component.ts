@@ -6,6 +6,7 @@ import { Pick } from '../shared/models/pick';
 import { UserService } from '../shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelectChange } from '@angular/material/select';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-draft',
@@ -35,7 +36,9 @@ export class DraftComponent implements OnInit {
   constructor(private apiService: ApiService, private userService: UserService, private cdr: ChangeDetectorRef) {
     effect(() => {
       this.setMockDraft();
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
     })
   }
 
@@ -45,15 +48,18 @@ export class DraftComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.userId() == 0 || !this.userId()) {
-      this.userService.getUserDataFromToken();
       this.setMockDraft();
+      this.userService.getUserDataFromToken();
     }
     else {
       this.setMockDraft();
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
     }
   }
 
-  private setMockDraft() {
+  private setMockDraft(): void {
     if(this.userId() != 0) {
       this.apiService.getMockDraft(this.userId()).subscribe(data => {
         this.players = data.players;
@@ -137,7 +143,11 @@ export class DraftComponent implements OnInit {
       this.snackBar.open('Selection Saved', 'X', {
         duration: 3000
       });
-    }, err => {this.snackBar.open('Unable to Save Selection')})
+    }, err => {
+      this.snackBar.open('Unable to Save Selection', 'X', {
+        duration: 3000
+      })
+    });
   }
 
   public trackByIndex(index: number, item: any) {

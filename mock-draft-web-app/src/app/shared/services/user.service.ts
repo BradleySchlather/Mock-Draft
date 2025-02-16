@@ -13,7 +13,6 @@ export class UserService {
   public userId = signal(0);
   public userName = signal('');
   public email = signal('');
-  // public isDialogOpen = signal(false);
 
   public getUserData(user: User): void {
     this.apiService.getUser(user).subscribe(data => {
@@ -23,7 +22,7 @@ export class UserService {
     })
   }
 
-  public getUserDataFromToken(): void {
+  public getUserDataFromToken() {
     const decodedToken = this.authService.getDecodedToken();
     if(decodedToken) {
       let userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
