@@ -19,6 +19,7 @@ export class UserService {
       this.userId.set(data.userId ?? 0);
       this.userName.set(data.userName ?? '');
       this.email.set(data.email ?? '');
+      debugger;
     })
   }
 
@@ -30,6 +31,7 @@ export class UserService {
         this.userId.set(data.userId ?? 0);
         this.userName.set(data.userName ?? '');
         this.email.set(data.email ?? '');
+        debugger;
       })
     }
   }

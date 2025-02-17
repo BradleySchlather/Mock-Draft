@@ -24,7 +24,6 @@ export class PlayerListComponent implements OnInit {
   //To Do: Add Drag and Drop Icon
   //To Do: Add Download to Excel (Maybe)
   //To Do: Add links to other websites that have data about players
-  //To Do: Currently there's a bug that's preventing the filter from working unless a player is moved on the list. The list is probably not being set initially
 
   public loading = true;
   public positionSelected = 'All Pos';
@@ -46,12 +45,14 @@ export class PlayerListComponent implements OnInit {
 
   constructor(private apiService: ApiService, private userService: UserService, private dialog: MatDialog) {
     effect(() => {
-      this.getPlayerList();
+      debugger;
+      if(this.userId() > 0) {
+        this.getPlayerList();
+      }
     })
   }
 
   ngOnInit(): void {
-    //To Do: Need loading spinner
     if(this.userId() == 0 || !this.userId()) {
       this.userService.getUserDataFromToken();
     }
@@ -61,7 +62,6 @@ export class PlayerListComponent implements OnInit {
   private getPlayerList(): void {
     this.loading = true;
     if(this.userId() > 0) {
-      this
       this.apiService.getPlayerList(this.userId()).subscribe(data => {
         this.masterPlayers = data;
         this.filterPlayers = data;
@@ -78,7 +78,6 @@ export class PlayerListComponent implements OnInit {
   }
 
   public resetRank(players: Player[], previousIndex: number, currentIndex: number): void {
-    
     if (!this.isFiltered) {
       let rank = 1;
       players.forEach(element => {
@@ -112,7 +111,6 @@ export class PlayerListComponent implements OnInit {
     }
   }
 
-  //To Do: Need to get userId from the service
   private setRankInDatabase(player: Player[]) {
     let playerIdsSorted: number[] = [];
     for (let i = 0; i < this.masterPlayers.length; i++) {
@@ -122,7 +120,7 @@ export class PlayerListComponent implements OnInit {
         continue;
       }
     }
-    let userPlayerList: SetUsersPlayersOrTeams = {userId: 1, playersOrTeams: playerIdsSorted.toString()};
+    let userPlayerList: SetUsersPlayersOrTeams = {userId: this.userId(), playersOrTeams: playerIdsSorted.toString()};
     this.apiService.setUsersPlayerList(userPlayerList).subscribe(rsp => {});
   }
 
@@ -181,8 +179,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   public setStarOrBustInDatabase(player: Player) {
-    //To Do: Need to get userId from the service
-    let notes: PlayerNotes = {userId: 1, playerId: player.playerId, isStar: player.isStar, isBust: player.isBust}
+    let notes: PlayerNotes = {userId: this.userId(), playerId: player.playerId, isStar: player.isStar, isBust: player.isBust};
     this.apiService.setPlayerIsBustOrStar(notes).subscribe(rsp => {
     })
   }
@@ -197,6 +194,4 @@ export class PlayerListComponent implements OnInit {
       }
     })
   }
-
-  //To Do: Will need to pull the list and organize for each user dynamically.
 }

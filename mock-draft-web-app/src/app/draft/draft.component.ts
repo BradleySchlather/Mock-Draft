@@ -7,13 +7,14 @@ import { UserService } from '../shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelectChange } from '@angular/material/select';
 import { timeout } from 'rxjs';
+import { After } from 'v8';
 
 @Component({
   selector: 'app-draft',
   templateUrl: './draft.component.html',
   styleUrl: './draft.component.scss'
 })
-export class DraftComponent implements OnInit {
+export class DraftComponent implements OnInit{
 
   public loading = true;
   public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
@@ -33,12 +34,14 @@ export class DraftComponent implements OnInit {
     return this.userService.userId();
   })
 
-  constructor(private apiService: ApiService, private userService: UserService, private cdr: ChangeDetectorRef) {
+  constructor(private apiService: ApiService, private userService: UserService) {
     effect(() => {
-      this.setMockDraft();
-      setTimeout(() => {
+      if(this.userId() > 0) {
+        this.setMockDraft();
+        setTimeout(() => {
         this.loading = false;
-      }, 2000);
+        }, 2000);
+      }
     })
   }
 
@@ -48,14 +51,7 @@ export class DraftComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.userId() == 0 || !this.userId()) {
-      this.setMockDraft();
       this.userService.getUserDataFromToken();
-    }
-    else {
-      this.setMockDraft();
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
     }
   }
 
@@ -104,7 +100,6 @@ export class DraftComponent implements OnInit {
       this.picks[index] = player.playerName;
       this.pickIds[index] = player.playerId;
       this.setUsersPlayersDraftOrder();
-      this.cdr.detectChanges();
      }
   }
 
