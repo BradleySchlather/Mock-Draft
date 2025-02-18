@@ -43,6 +43,7 @@ export class AuthService {
 
   public getDecodedToken(): any {
     const token = localStorage.getItem('authToken');
+
     if (!token) return null;
   
     try {

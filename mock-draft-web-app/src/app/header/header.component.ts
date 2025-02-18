@@ -4,6 +4,7 @@ import { LoginComponent } from '../shared/dialogs/login/login.component';
 import { SignUpComponent } from '../shared/dialogs/sign-up/sign-up.component';
 import { UserService } from '../shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../shared/models/user';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +18,9 @@ export class HeaderComponent{
   public userId = computed(() => {
     return this.userService.userId();
   })
-
+  
   constructor(private dialog: MatDialog) {}
-
+  
   public logout(): void {
     this.userService.logout();
   }
@@ -48,5 +49,3 @@ export class HeaderComponent{
     })
   }
 }
-
-//To Do: Change Background of each clickable section of the banner on hover

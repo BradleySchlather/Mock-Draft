@@ -38,16 +38,9 @@ export class DraftComponent implements OnInit{
     effect(() => {
       if(this.userId() > 0) {
         this.setMockDraft();
-        setTimeout(() => {
-        this.loading = false;
-        }, 2000);
       }
     })
   }
-
-  //To Do: will send user to account creation screen if user doesn't have an account
-
-  //To Do: Need to make edits in case user wants to trade with a team that doesn't have first round pick
   
   ngOnInit(): void {
     if(this.userId() == 0 || !this.userId()) {
@@ -80,6 +73,7 @@ export class DraftComponent implements OnInit{
           this.draftOrder[i] = teamName;
           this.imageArr.push(`../../assets/${teamName}Logo.gif`);
         }
+        this.loading = false;
       })
     }
     else {

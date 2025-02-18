@@ -21,10 +21,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PlayerListComponent implements OnInit {
 
-  //To Do: Add Drag and Drop Icon
-  //To Do: Add Download to Excel (Maybe)
-  //To Do: Add links to other websites that have data about players
-
   public loading = true;
   public positionSelected = 'All Pos';
   public isFiltered = false;
@@ -45,7 +41,6 @@ export class PlayerListComponent implements OnInit {
 
   constructor(private apiService: ApiService, private userService: UserService, private dialog: MatDialog) {
     effect(() => {
-      debugger;
       if(this.userId() > 0) {
         this.getPlayerList();
       }

@@ -11,7 +11,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent {
 
-  //To Do: Create a post login and post account creation success message
   private snackBar = inject(MatSnackBar);
   public title = 'Log In';
   public errorExists = false;
@@ -30,6 +29,7 @@ export class LoginComponent {
 
   public logIn() {
     this.authService.login(this.email, this.password).subscribe(response => {
+      this.userService.getUserData({email: this.email, password: this.password});
       this.confirm();
     }, error => {
       this.snackBar.open('Username or Password Incorrect', 'X', {
