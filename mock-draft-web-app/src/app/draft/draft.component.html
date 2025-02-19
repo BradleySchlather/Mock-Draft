@@ -6,28 +6,26 @@
 
 <h1>NFL Draft Predictions</h1>
 
-@if (!this.loading) {
-    <h2>Round 1</h2>
-    <div class="pick" *ngFor="let pick of this.picks; let i = index; trackBy: trackByIndex">
-        <img class="team-logos" [src]="this.imageArr[i]" width="8vh">
-        <mat-form-field class="pick-selector">
-            <mat-label>Pick {{i + 1}}</mat-label>
-            <mat-select [(value)]="this.picks[i]" (selectionChange)="this.setPick(i, $event)">
-                <mat-option style="font-size: 1rem" [value]=" "></mat-option>
-                <mat-option style="font-size: 1rem" *ngFor="let playerSelections of this.players" [value]="playerSelections.playerName">{{playerSelections.playerName}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == i && this.tradeIsActive" [class.trade-button]="this.tradeTeam1Index != i || !this.tradeIsActive" (click)="this.trade(i)">Trade</button>
-    </div>
+<div class="all-picks">
+    @if (!this.loading) {
+        <h2>Round 1</h2>
+        <div class="pick" *ngFor="let pick of this.picks; let i = index; trackBy: trackByIndex">
+            <img class="team-logos" [src]="this.imageArr[i]" width="8vh">
+            <mat-form-field class="pick-selector">
+                <mat-label>Pick {{i + 1}}</mat-label>
+                <mat-select [(value)]="this.picks[i]" (selectionChange)="this.setPick(i, $event)" [disabled]="this.userId() == 0">
+                    <mat-option style="font-size: 1rem" [value]=" "></mat-option>
+                    <mat-option style="font-size: 1rem" *ngFor="let playerSelections of this.players" [value]="playerSelections.playerName">{{playerSelections.playerName}} - {{playerSelections.position}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == i && this.tradeIsActive" [disabled]="this.userId() == 0"
+            [class.trade-button]="this.tradeTeam1Index != i || !this.tradeIsActive" (click)="this.trade(i)">Trade</button>
+        </div>
+    }
     
-    <br>
-    <div class="save-container">
-    <button mat-raised-button color="primary" class="save-button">Save</button>
-    </div>
-}
-
-@else {
-    <div class="loading">
-        <mat-spinner></mat-spinner>
-    </div>
-}
+    @else {
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+    }
+</div>

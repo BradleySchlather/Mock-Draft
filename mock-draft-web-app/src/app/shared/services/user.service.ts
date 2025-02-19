@@ -27,7 +27,6 @@ export class UserService {
     if(decodedToken) {
       let userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
       this.apiService.getUserDataFromToken(userId).subscribe(data => {
-        debugger;
         this.userId.set(data.userId ?? 0);
         this.userName.set(data.userName ?? '');
         this.email.set(data.email ?? '');

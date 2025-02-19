@@ -17,7 +17,6 @@ import { After } from 'v8';
 export class DraftComponent implements OnInit{
 
   public loading = true;
-  public positions = ['QB', 'RB', 'OL', 'C', 'TE', 'WR', 'DL', 'LB', 'DB'];
   public players: Player[] = [];
   public teams!: Team[];
   public draftOrder: string[] = [];
@@ -30,7 +29,13 @@ export class DraftComponent implements OnInit{
   public tradeTeam1Index = 0;
   public tradeIsActive = false;
   private snackBar = inject(MatSnackBar);
+  private userIdLastValue = -1;
   public userId = computed(() => {
+    if(this.userService.userId() == 0 && this.userIdLastValue != 0) {
+      this.setDraftToDefault();
+      this.loading = false;
+    }
+    this.userIdLastValue = this.userService.userId();
     return this.userService.userId();
   })
 
@@ -45,6 +50,9 @@ export class DraftComponent implements OnInit{
   ngOnInit(): void {
     if(this.userId() == 0 || !this.userId()) {
       this.userService.getUserDataFromToken();
+      if(this.userId() == 0) {
+        this.loading = false;
+      }
     }
   }
 
@@ -73,19 +81,22 @@ export class DraftComponent implements OnInit{
           this.draftOrder[i] = teamName;
           this.imageArr.push(`../../assets/${teamName}Logo.gif`);
         }
-        this.loading = false;
+          this.loading = false;
       })
     }
     else {
-      this.picks = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
-      this.pickIds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      this.tradeTeam1 = '';
-      this.tradeTeam2 = '';
-      this.tradeTeam1Index = 0;
-      this.tradeIsActive = false;
-      this.imageArr = [];
-      this.draftOrder = [];
+      this.setDraftToDefault();
     }
+  }
+
+  public setDraftToDefault() {
+    this.picks = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    this.pickIds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.tradeTeam1 = '';
+    this.tradeTeam2 = '';
+    this.tradeTeam1Index = 0;
+    this.tradeIsActive = false;
+    this.draftOrder = [];
   }
 
   public setPick(index: number, event: MatSelectChange): void {

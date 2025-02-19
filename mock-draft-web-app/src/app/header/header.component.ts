@@ -20,6 +20,9 @@ export class HeaderComponent{
   })
   
   constructor(private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+  }
   
   public logout(): void {
     this.userService.logout();

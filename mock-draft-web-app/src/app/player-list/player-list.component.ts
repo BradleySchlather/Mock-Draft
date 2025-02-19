@@ -29,8 +29,14 @@ export class PlayerListComponent implements OnInit {
   public displayedColumns: string[] = ['playerRank', 'playerName', 'position', 'heightWeight', 'college', 'playerClass', 'bustOrGem', 'notes'];
   public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
+  private userIdLastValue = -1;
   private snackBar = inject(MatSnackBar);
   public userId = computed(() => {
+    if(this.userService.userId() == 0 && (this.userIdLastValue !=0)) {
+      this.getDefaultPlayerList();
+      this.loading = false;
+    }
+    this.userIdLastValue = this.userService.userId();
     return this.userService.userId();
   })
   
@@ -55,7 +61,6 @@ export class PlayerListComponent implements OnInit {
   }
 
   private getPlayerList(): void {
-    this.loading = true;
     if(this.userId() > 0) {
       this.apiService.getPlayerList(this.userId()).subscribe(data => {
         this.masterPlayers = data;
@@ -64,6 +69,10 @@ export class PlayerListComponent implements OnInit {
         this.loading = false;
       })
     }
+  }
+
+  public getDefaultPlayerList(): void {
+
   }
 
   private setDataSource(data: Player[]): void {

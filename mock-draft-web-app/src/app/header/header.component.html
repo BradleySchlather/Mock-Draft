@@ -2,10 +2,16 @@
 
 <div class="banner">
     <div class="banner-main-links">
-        <nav><h1><a routerLink="/home"> {{title}} </a></h1></nav> 
-        <nav><h3><a routerLink="/player-list">Player List</a></h3></nav>
-        <nav><h3><a routerLink="/draft">Mock Draft Selection</a></h3></nav>
-        <nav><h3><a routerLink="/scoreboard">Scoreboard</a></h3></nav>
+        <div class="home-link">
+            <nav><h1><a routerLink="/home"> {{title}} </a></h1></nav> 
+        </div>
+        <div class="other-link">
+            <nav><h3><a routerLink="/player-list">Big Board</a></h3></nav>
+        </div>
+        <div class="other-link">
+            <nav><h3><a routerLink="/draft">Mock Draft</a></h3></nav>
+        </div>
+        <!-- <nav><h3><a routerLink="/scoreboard">Scoreboard</a></h3></nav> -->
     </div>
     <div class="user">
         <button mat-button [mat-menu-trigger-for]="menu">
