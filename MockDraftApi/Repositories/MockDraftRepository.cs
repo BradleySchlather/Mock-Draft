@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using MockDraftApi.Configuration;
 using MockDraftApi.Models;
+using MockDraftApi.Services;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Bcpg;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,8 @@ namespace MockDraftApi.Repositories
 
         public async void CreateUser(User user)
         {
+            var hashedPassword = PasswordHasher.HashPassword(user.Password);
+
             using (var connection = new MySqlConnection(_conn))
             {
                 await connection.OpenAsync();
@@ -29,7 +32,7 @@ namespace MockDraftApi.Repositories
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("password_input", user.Password);
+                    command.Parameters.AddWithValue("password_input", hashedPassword);
                     command.Parameters.AddWithValue("username_input", user.Username);
                     command.Parameters.AddWithValue("email_input", user.Email);
 
@@ -41,30 +44,51 @@ namespace MockDraftApi.Repositories
         public async Task<User> GetUser(User signInData)
         {
             var user = new User();
+            var hashedPassword = "";
+            
             using (var connection = new MySqlConnection(_conn))
             {
                 await connection.OpenAsync();
 
-                using (var command = new MySqlCommand("get_user", connection))
+                await using (var command = new MySqlCommand("get_hashed_password", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("email_input", signInData.Email);
-                    command.Parameters.AddWithValue("password_input", signInData.Password);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            user = new User
-                            {
-                                UserId = reader.GetInt32("user_id"),
-                                Username = reader.GetString("username"),
-                                Email = reader.GetString("email")
-                            };
+                            hashedPassword = reader.GetString("password");
                         }
                     }
                 }
+                
+                if(PasswordHasher.VerifyPassword(signInData.Password, hashedPassword)) {
+
+                    using (var command = new MySqlCommand("get_user", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("email_input", signInData.Email);
+                        command.Parameters.AddWithValue("password_input", hashedPassword);
+
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                user = new User
+                                {
+                                    UserId = reader.GetInt32("user_id"),
+                                    Username = reader.GetString("username"),
+                                    Email = reader.GetString("email")
+                                };
+                            }
+                        }
+                    }
+                }
+
                 return user;
             }
         }

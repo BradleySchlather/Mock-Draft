@@ -29,6 +29,7 @@ namespace MockDraftApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddCors();
             builder.Services.AddSingleton<TokenService>();
+            builder.Services.AddTransient<PasswordHasher>();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {

@@ -7,8 +7,7 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  //To Do: I need to hash and salt the passwords prior to them going into the database.
-  //To Do: Fix loading when there is no userId for each component.
+  //To Do: Stop loading when there is no userId for each component.
   //To Do: Add a standard image array from the db when user isn't logged.
   //To Do: Will send user to account creation screen if user doesn't have an account.
   //To Do: Add Drag and Drop Icon to playerlist.
@@ -20,5 +19,4 @@ export class HomeComponent {
   //To Do: Also need to allow them to make predictions prior to season start, such as SB winner, playoff teams, and other things of the like.
   //To Do: Add links to other websites that have data about players.
   //To Do: Add an option to upgrade the user's account for a small subscription fee.
-
 }
