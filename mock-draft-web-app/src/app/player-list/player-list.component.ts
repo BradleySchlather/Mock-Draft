@@ -13,6 +13,7 @@ import { SetUsersPlayersOrTeams } from '../shared/models/setUsersPlayersOrTeams'
 import { UserService } from '../shared/services/user.service';
 import { AuthService } from '../shared/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserTipsComponent } from '../shared/dialogs/user-tips/user-tips.component';
 
 @Component({
   selector: 'app-player-list',
@@ -54,6 +55,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.openUserTips();
     if(this.userId() == 0 || !this.userId()) {
       this.userService.getUserDataFromToken();
     }
@@ -198,4 +200,11 @@ export class PlayerListComponent implements OnInit {
       }
     })
   }
+
+    public openUserTips(): void {
+      this.dialog.open(UserTipsComponent, {
+        width: '600px',
+        data: {title: 'Big Board Tips', message: 'This is your 2025 NFL Big Board. The intent is to rack and stack the players based on who you believe the best players are. Drag and drop to move players into different rankings. There are also HOF (Hall of Fame) and Bust buttons you can select to identify the player as such. You also have the ability to make notes about any player you choose. This will be locked 5 minutes prior to the 2025 NFL draft, but you will be able to view it at any time in the future. Good luck!'}
+      })
+    }
 }

@@ -1,0 +1,41 @@
+.header{
+    display: flex;
+    justify-content: right;
+  
+    h1{
+        font-weight: 700;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .exit{
+      justify-content: right !important;
+      display: flex;
+      margin-top: 1vh;
+      margin-right: 1vh;
+      top: 0;
+    
+      .exit-button{
+        min-width: 1.5vw;
+      }
+    }
+  }
+
+.message{
+    display: flex;
+    justify-content: center;
+    font-weight: 1000;
+}
+
+.ok-button{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+    margin-top: 3vh;
+    margin-left: 3%;
+    margin-right: 3%;
+    .button-color{
+        background-color: rgb(29, 88, 122) !important;
+        color: white;
+    }
+}

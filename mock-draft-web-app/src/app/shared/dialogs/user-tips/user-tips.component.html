@@ -1,0 +1,13 @@
+<div class="userTipsDialog">
+
+    <div class="header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+        <h1 mat-dialog-title>{{data.title}}</h1>
+        <div class="exit"><button class="exit-button" mat-stroked-button color="disabled" (click)="close()">X</button></div>
+    </div>
+    <br>
+    <br>
+
+    <div mat-dialog-content class="message">{{data.message}}</div>
+
+    <div class="ok-button"><button mat-raised-button class="button-color" (click)="this.close()">OK</button></div>
+</div>

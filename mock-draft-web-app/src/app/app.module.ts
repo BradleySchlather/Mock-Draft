@@ -26,7 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NotesComponent } from './shared/dialogs/notes/notes.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserTipsComponent } from './shared/dialogs/user-tips/user-tips.component'
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     ScoreboardComponent,
     LoginComponent,
     SignUpComponent,
-    NotesComponent
+    NotesComponent,
+    UserTipsComponent
   ],
   imports: [
     BrowserModule,

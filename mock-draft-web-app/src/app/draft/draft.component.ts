@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelectChange } from '@angular/material/select';
 import { timeout } from 'rxjs';
 import { After } from 'v8';
+import { UserTipsComponent } from '../shared/dialogs/user-tips/user-tips.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-draft',
@@ -39,7 +41,7 @@ export class DraftComponent implements OnInit{
     return this.userService.userId();
   })
 
-  constructor(private apiService: ApiService, private userService: UserService) {
+  constructor(private apiService: ApiService, private userService: UserService, private dialog: MatDialog) {
     effect(() => {
       if(this.userId() > 0) {
         this.setMockDraft();
@@ -58,6 +60,7 @@ export class DraftComponent implements OnInit{
 
   private setMockDraft(): void {
     if(this.userId() != 0) {
+      this.openUserTips();
       this.apiService.getMockDraft(this.userId()).subscribe(data => {
         this.players = data.players;
         this.players.forEach(player => {
@@ -88,6 +91,13 @@ export class DraftComponent implements OnInit{
       this.setDraftToDefault();
     }
   }
+
+    public openUserTips(): void {
+      this.dialog.open(UserTipsComponent, {
+        width: '600px',
+        data: {title: 'Draft Tips', message: 'This is your 2025 NFL mock draft. Please select a player for each pick. The intent is to correctly guess where the player will be picked, along with the team that will pick them. Trades are also available to correctly predict which team will begin in each slot. These selections will no longer be available 5 minutes prior to the draft taking place. Good luck!'}
+      })
+    }
 
   public setDraftToDefault() {
     this.picks = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
