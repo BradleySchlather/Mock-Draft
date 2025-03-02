@@ -13,7 +13,7 @@ export class NotesComponent implements OnInit {
 
   public title = '';
   public player!: Player;
-  public userName = '';
+  public username = '';
   public note = '';
   public userId!: number;
 

@@ -18,6 +18,9 @@ export class HeaderComponent{
   public userId = computed(() => {
     return this.userService.userId();
   })
+  public username = computed(() => {
+    return this.userService.username();
+  })
   
   constructor(private dialog: MatDialog) {}
 

@@ -14,7 +14,7 @@ export class ScoreboardComponent implements OnInit {
 
   public scoreboard: Scoreboard[] = [];
   public dataSource = new MatTableDataSource(this.scoreboard);
-  public displayedColumns: string[] = ['ranking', 'userName', 'score', 'correctFirstRoundPicks', 'totalFirstRoundPredictions', 'totalPredictionPercentage', 'predictedTrades'];
+  public displayedColumns: string[] = ['ranking', 'username', 'score', 'correctFirstRoundPicks', 'totalFirstRoundPredictions', 'totalPredictionPercentage', 'predictedTrades'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild("tableContainer", { read: ElementRef }) tableContainer!: ElementRef;

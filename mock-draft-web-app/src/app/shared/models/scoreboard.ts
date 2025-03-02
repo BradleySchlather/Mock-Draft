@@ -1,6 +1,6 @@
 export class Scoreboard {
     ranking!: number;
-    userName!: string;
+    username!: string;
     score!: number;
     correctFirstRoundPicks!: number;
     totalFirstRoundPredictions!: number;

@@ -61,6 +61,5 @@ namespace MockDraftApi.Services
                 UserSelections = userSelections };
             return MockDraft;
         }
-        
     }
 }

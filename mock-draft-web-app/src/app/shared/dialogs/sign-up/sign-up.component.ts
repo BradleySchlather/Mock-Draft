@@ -14,7 +14,7 @@ export class SignUpComponent {
   public title = 'Create Account';
   public errorExists = false;
   public email = '';
-  public userName = '';
+  public username = '';
   public password = '';
 
   //Email user on account creation. This will contain a link to confirm their account.
@@ -27,7 +27,7 @@ export class SignUpComponent {
   }
 
   public createUser(): void {
-    let user: User = {userName: this.userName, email: this.email, password: this.password};
+    let user: User = {username: this.username, email: this.email, password: this.password};
     this.apiService.createUser(user).subscribe(data => {
       this.confirm();
     })

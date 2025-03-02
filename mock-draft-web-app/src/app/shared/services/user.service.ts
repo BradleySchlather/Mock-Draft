@@ -11,13 +11,13 @@ export class UserService {
   constructor(private apiService: ApiService, private authService: AuthService) { }
 
   public userId = signal(0);
-  public userName = signal('');
+  public username = signal('');
   public email = signal('');
 
   public getUserData(user: User): void {
     this.apiService.getUser(user).subscribe(data => {
       this.userId.set(data.userId ?? 0);
-      this.userName.set(data.userName ?? '');
+      this.username.set(data.username ?? '');
       this.email.set(data.email ?? '');
     })
   }
@@ -28,7 +28,7 @@ export class UserService {
       let userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
       this.apiService.getUserDataFromToken(userId).subscribe(data => {
         this.userId.set(data.userId ?? 0);
-        this.userName.set(data.userName ?? '');
+        this.username.set(data.username ?? '');
         this.email.set(data.email ?? '');
       })
     }
@@ -37,7 +37,7 @@ export class UserService {
   public logout(): void {
     this.authService.logout();
     this.userId.set(0);
-    this.userName.set('');
+    this.username.set('');
     this.email.set('');
   }
 }

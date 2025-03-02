@@ -10,11 +10,11 @@ import { SignUpComponent } from './shared/dialogs/sign-up/sign-up.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: DraftComponent
   },
   {
     path:'home',
-    component: HomeComponent
+    component: DraftComponent
   },
   {
     path: 'draft',
@@ -27,10 +27,6 @@ const routes: Routes = [
   },
   {
     path: 'scoreboard',
-    component: ScoreboardComponent
-  },
-  {
-    path: 'user',
     component: ScoreboardComponent
   },
   {

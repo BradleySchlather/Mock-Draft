@@ -12,8 +12,8 @@
             <input matInput [(ngModel)]="this.email">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="this.userName">
+            <mat-label>username</mat-label>
+            <input matInput [(ngModel)]="this.username">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
@@ -25,6 +25,6 @@
         <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
       
         <div><button mat-raised-button class="submit" (click)="this.createUser()" 
-          [disabled]="!this.userName || !this.email || !this.password">Submit</button></div>
+          [disabled]="!this.username || !this.email || !this.password">Submit</button></div>
     </div>
 </div>

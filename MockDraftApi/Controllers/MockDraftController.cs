@@ -50,12 +50,12 @@ namespace MockDraftApi.Controllers
             return data;
         }
 
-        [HttpGet]
-        public IEnumerable<Scoreboard> GetScoreboard()
-        {
-            var data = _repo.GetScoreboard();
-            return data;
-        }
+        //[HttpGet]
+        //public IEnumerable<Scoreboard> GetScoreboard()
+        //{
+        //    var data = _repo.GetScoreboard();
+        //    return data;
+        //}
 
         [HttpPost]
         public void CreateUser(User user)
@@ -108,44 +108,18 @@ namespace MockDraftApi.Controllers
             _repo.SetPlayerIsBustOrStar(data);
         }
 
-        [HttpGet]
-        public Player[] GetPlayerList (int userId)
+        [HttpPost]
+        public Player[] GetPlayerList (User user)
         {
-            var data = _service.GetPlayerList(userId);
+            var data = _service.GetPlayerList(user.UserId ?? 0);
             return data;
         }
 
-        [HttpGet]
-        public MockDraft GetMockDraft (int userId)
+        [HttpPost]
+        public MockDraft GetMockDraft (User user)
         {
-            var data = _service.GetMockDraftData(userId);
+            var data = _service.GetMockDraftData(user.UserId ?? 0);
             return data;
         }
     }
 }
-
-//To Do: Setup UserService based on below. Mine will be a bit different because I'm not currently using authorization
-//Example of AuthController from chatgpt
-//[ApiController]
-//[Route("api/auth")]
-//public class AuthController : ControllerBase
-//{
-//    private readonly IUserService _userService;
-//    private readonly ITokenService _tokenService;
-
-//    public AuthController(IUserService userService, ITokenService tokenService)
-//    {
-//        _userService = userService;
-//        _tokenService = tokenService;
-//    }
-
-//    [HttpPost("login")]
-//    public IActionResult Login([FromBody] LoginDto loginDto)
-//    {
-//        var user = _userService.Authenticate(loginDto.Username, loginDto.Password);
-//        if (user == null) return Unauthorized(new { message = "Invalid username or password" });
-
-//        var token = _tokenService.GenerateJwtToken(user);
-//        return Ok(new { Token = token });
-//    }
-//}

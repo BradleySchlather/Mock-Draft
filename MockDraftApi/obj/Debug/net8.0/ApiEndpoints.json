@@ -66,9 +66,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "user",
+        "Type": "MockDraftApi.Models.User",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -92,9 +92,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "user",
+        "Type": "MockDraftApi.Models.User",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
