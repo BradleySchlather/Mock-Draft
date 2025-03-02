@@ -10,10 +10,17 @@
     <div class="table-container" #tableContainer>
         <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="this.dataSource" matSort
         matSortActive="ranking" matSortDirection="asc">
+
+            <ng-container matColumnDef="dragIndicator">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let element">
+                    <a><img src="../../assets/drag-indicator.svg" alt="Drag handle icon"></a></td>
+            </ng-container>
     
             <ng-container matColumnDef="playerRank">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>RK</th>
-                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}"> {{element.playerRank}} </td>
+                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
+                    {{element.playerRank}} </td>
             </ng-container>
     
             <ng-container matColumnDef="playerName">
@@ -50,7 +57,7 @@
     
             <ng-container matColumnDef="bustOrGem">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>HOF / Bust</th>
-                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
+                <td mat-cell *matCellDef="let element">
                   <div class="star-bust-buttons">
                     <button mat-raised-button color="primary" class="star" matTooltip="Future Hall of Famer" (click)="this.changeColorToStar(element)">HOF</button>
                     <button mat-raised-button color="primary" class="bust" matTooltip="Future Bust" (click)="this.changeColorToBust(element)">Bust</button>
@@ -60,7 +67,7 @@
     
             <ng-container matColumnDef="notes">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
-                <td mat-cell *matCellDef="let element" [ngClass] = "{'star': element.isStar, 'bust': element.isBust}">
+                <td mat-cell *matCellDef="let element">
                     <a *ngIf="element.isStar || element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAddWhite.svg"></a>
                     <a *ngIf="!element.isStar && !element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAdd.svg"></a>
                 </td>

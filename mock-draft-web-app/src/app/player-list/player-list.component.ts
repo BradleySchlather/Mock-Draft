@@ -27,8 +27,8 @@ export class PlayerListComponent implements OnInit {
   public isFiltered = false;
   public masterPlayers: Player[] = [];
   public filterPlayers: Player[] = [];
-  public displayedColumns: string[] = ['playerRank', 'playerName', 'position', 'heightWeight', 'college', 'playerClass', 'bustOrGem', 'notes'];
-  public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
+  public displayedColumns: string[] = ['dragIndicator', 'playerRank', 'playerName', 'position', 'heightWeight', 'college', 'playerClass', 'bustOrGem', 'notes'];
+  public positions: string[] = ['QB', 'RB', 'FB', 'WR', 'TE', 'OL', 'C', 'EDGE', 'DT', 'LB', 'CB', 'S', 'K', 'P'];
   public dataSource = new MatTableDataSource(this.filterPlayers);
   private userIdLastValue = -1;
   private snackBar = inject(MatSnackBar);
@@ -204,7 +204,7 @@ export class PlayerListComponent implements OnInit {
     public openUserTips(): void {
       this.dialog.open(UserTipsComponent, {
         width: '600px',
-        data: {title: 'Big Board Tips', message: 'This is your 2025 NFL Big Board. The intent is to rack and stack the players based on who you believe the best players are. Drag and drop to move players into different rankings. There are also HOF (Hall of Fame) and Bust buttons you can select to identify the player as such. You also have the ability to make notes about any player you choose. This will be locked 5 minutes prior to the 2025 NFL draft, but you will be able to view it at any time in the future. Good luck!'}
+        data: {title: 'Big Board Tips', message: 'This is your 2025 NFL Big Board. Your goal is to rack and stack the players based on who you believe the best players are. Drag and drop to move players into different rankings. There are also HOF (Hall of Fame) and Bust buttons you can select to identify players. You also have the ability to make notes about any player you choose. Edits to this page will be locked 5 minutes prior to the 2025 NFL draft, but you will be able to view it at any time in the future. Good luck!'}
       })
     }
 }
