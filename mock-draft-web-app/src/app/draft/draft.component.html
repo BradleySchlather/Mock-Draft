@@ -15,7 +15,8 @@
                 <mat-label>Pick {{i + 1}}</mat-label>
                 <mat-select [(value)]="this.picks[i]" (selectionChange)="this.setPick(i, $event)" [disabled]="this.userId() == 0">
                     <mat-option style="font-size: 1rem" [value]=" "></mat-option>
-                    <mat-option style="font-size: 1rem" *ngFor="let playerSelections of this.players" [value]="playerSelections.playerName">{{playerSelections.playerName}} - {{playerSelections.position}}</mat-option>
+                    <mat-option style="font-size: 1rem" *ngFor="let playerSelections of this.players" [disabled]="this.playerAlreadyPicked(playerSelections.playerId)"
+                    [value]="playerSelections.playerName">{{playerSelections.playerName}} - {{playerSelections.position}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <button mat-raised-button color="primary" [class.first-trade-team]="this.tradeTeam1Index == i && this.tradeIsActive" [disabled]="this.userId() == 0"

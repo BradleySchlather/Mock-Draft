@@ -18,7 +18,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public getPlayerList(userId: number): Observable<Player[]>{
-      return this.http.post<Player[]>(`${environment.apiUrl}/getplayerlist`, userId);
+      return this.http.post<Player[]>(`${environment.apiUrl}/getplayerlist`, { userId });
   }
 
   public getPlayers(): Observable<Player[]> {

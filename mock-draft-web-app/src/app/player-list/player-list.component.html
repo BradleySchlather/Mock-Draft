@@ -4,7 +4,7 @@
 
 <h2>2025 Big Board</h2>
 
-<h4>Drag and drop players to rank your big board.</h4>
+<h4>Drag and drop players to rank your big board</h4>
 
 @if (!this.loading) {
     <div class="table-container" #tableContainer>
@@ -68,8 +68,8 @@
             <ng-container matColumnDef="notes">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
                 <td mat-cell *matCellDef="let element">
-                    <a *ngIf="element.isStar || element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAddWhite.svg"></a>
-                    <a *ngIf="!element.isStar && !element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAdd.svg"></a>
+                    <!-- <a *ngIf="element.isStar || element.isBust" class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAddWhite.svg"></a> -->
+                    <a class="notes" matToolTip="Add/Edit Note" (click)="this.openNotesDialog(element)"><img src="../../assets/NoteAdd.svg"></a>
                 </td>
             </ng-container>
     

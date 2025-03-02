@@ -4,7 +4,6 @@ import { LoginComponent } from '../shared/dialogs/login/login.component';
 import { SignUpComponent } from '../shared/dialogs/sign-up/sign-up.component';
 import { UserService } from '../shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../shared/models/user';
 
 @Component({
   selector: 'app-header',
@@ -24,10 +23,16 @@ export class HeaderComponent{
   
   constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
-  
+  ngOnInit(): void {
+    setTimeout(() => {
+      if(this.userId() == 0) {
+        this.openLogin();
+      }
+    }, 300);
+  }
   public logout(): void {
     this.userService.logout();
+    this.openLogin();
   }
 
   public openLogin(): void {

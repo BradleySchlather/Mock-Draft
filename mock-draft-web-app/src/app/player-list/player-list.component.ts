@@ -49,15 +49,21 @@ export class PlayerListComponent implements OnInit {
   constructor(private apiService: ApiService, private userService: UserService, private dialog: MatDialog) {
     effect(() => {
       if(this.userId() > 0) {
+        this.openUserTips();
         this.getPlayerList();
+      }
+      else {
+        this.setDataSource([]);
       }
     })
   }
 
   ngOnInit(): void {
-    this.openUserTips();
     if(this.userId() == 0 || !this.userId()) {
       this.userService.getUserDataFromToken();
+      if(this.userId() != 0) {
+        this.openUserTips();
+      }
     }
     this.getPlayerList();
   }

@@ -1,8 +1,9 @@
-import { Component, effect, inject, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, computed, effect, inject, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,16 @@ export class LoginComponent {
   public errorExists = false;
   public email = '';
   public password = '';
-  private userId = this.userService.userId;
   private hasIdChanged = false;
+  
+  private userId = computed(() => {
+    if (this.userService.userId() > 0) {
+      this.close();
+    }
+    return this.userService.userId();
+  })
 
-  constructor(private dialogRef: MatDialogRef<LoginComponent>, private userService: UserService, private authService: AuthService) {
+  constructor(private dialogRef: MatDialogRef<LoginComponent>, private userService: UserService, private authService: AuthService, private dialog: MatDialog) {
     effect(() => {
       if(this.userId() > 0 && this.hasIdChanged) {
         this.confirm();
@@ -36,6 +43,18 @@ export class LoginComponent {
         duration: 3000
       });
     });
+  }
+
+  public openCreateAccount(): void {
+    this.dialog.open(SignUpComponent, {
+      width: '600px',
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.snackBar.open('Account Successfully Created - Please Sign In', 'X', {
+          duration: 5000
+        });
+      }
+    })
   }
 
   public close(): void {

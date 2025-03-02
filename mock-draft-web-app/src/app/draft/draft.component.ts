@@ -60,7 +60,9 @@ export class DraftComponent implements OnInit{
 
   private setMockDraft(): void {
     if(this.userId() != 0) {
-      this.openUserTips();
+      if(this.picks.find(pick => pick != ' ')) {
+        this.openUserTips();
+      }
       this.apiService.getMockDraft(this.userId()).subscribe(data => {
         this.players = data.players;
         this.players.forEach(player => {
@@ -110,12 +112,22 @@ export class DraftComponent implements OnInit{
   }
 
   public setPick(index: number, event: MatSelectChange): void {
-     let player = this.players.find(player => player.playerName == event.value);
-     if(player) {
-      this.picks[index] = player.playerName;
-      this.pickIds[index] = player.playerId;
-      this.setUsersPlayersDraftOrder();
-     }
+    if(event.value) {
+      let player = this.players.find(player => player.playerName == event.value);
+      if(player) {
+        this.picks[index] = player.playerName;
+        this.pickIds[index] = player.playerId;
+      }
+    }
+    else {
+      this.picks[index] = ' ';
+      this.pickIds[index] = 0;
+    }
+    this.setUsersPlayersDraftOrder();
+  }
+
+  public playerAlreadyPicked(pickId: number): boolean {
+    return this.pickIds.includes(pickId);
   }
 
   public trade(index: number): void {

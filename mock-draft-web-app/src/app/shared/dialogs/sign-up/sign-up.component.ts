@@ -1,5 +1,5 @@
 import { Component, inject} from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,8 +16,6 @@ export class SignUpComponent {
   public email = '';
   public username = '';
   public password = '';
-
-  //Email user on account creation. This will contain a link to confirm their account.
 
   constructor(
     private dialogRef: MatDialogRef<SignUpComponent>, private apiService: ApiService) { }

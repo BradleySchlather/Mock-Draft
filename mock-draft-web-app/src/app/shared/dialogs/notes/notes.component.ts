@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, computed, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Player } from '../../models/player';
 import { ApiService } from '../../services/api.service';
 import { PlayerNotes } from '../../models/playerNotes';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-notes',
@@ -15,16 +16,15 @@ export class NotesComponent implements OnInit {
   public player!: Player;
   public username = '';
   public note = '';
-  public userId!: number;
-
-  constructor(
-    private dialogRef: MatDialogRef<NotesComponent>, @Inject(MAT_DIALOG_DATA) public data: Player, private apiService: ApiService) { }
+  public userId = computed(() => {
+    return this.userService.userId();
+  })
+  
+  constructor(private dialogRef: MatDialogRef<NotesComponent>, @Inject(MAT_DIALOG_DATA) public data: Player, private apiService: ApiService, private userService: UserService) { }
 
   ngOnInit() {
     this.player = this.data;
     this.title = `${this.player.playerName}`;
-    //To Do: Get user id from service instead of hard coding to 1
-    this.userId = 1;
     this.note = this.player.note;
   }
 
@@ -37,7 +37,8 @@ export class NotesComponent implements OnInit {
   }
 
   public saveNote(): void {
-    let note: PlayerNotes = {userId: this.userId, playerId: this.player.playerId, note: this.note};
+    // let id: number = this.userId();
+    let note: PlayerNotes = {userId: this.userId(), playerId: this.player.playerId, note: this.note};
     this.apiService.setPlayerNotes(note).subscribe(data => {
       this.confirm();
     });

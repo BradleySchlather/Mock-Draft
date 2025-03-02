@@ -7,21 +7,27 @@
     <br>
     <br>
     <div class="inputs">
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput [(ngModel)]="this.email">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="this.password">
-        </mat-form-field>
+        <div class="email-pass">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="this.email">
+            </mat-form-field>
+        </div>
+        <div class="email-pass">
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="this.password">
+            </mat-form-field>
+        </div>
     </div>
 
     <div class="submit-cancel">
         <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
       
-        <p class="error" *ngIf="this.errorExists">Email not found or password is incorrect</p>
-      
+        <div>
+            <button mat-raised-button class="create-account" (click)="this.openCreateAccount()">Create Account</button>
+        </div>
+
         <div><button mat-raised-button class="submit" (click)="logIn()" 
           [disabled]="!this.email || !this.password">Submit</button></div>
     </div>

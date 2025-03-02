@@ -22,16 +22,26 @@
 
 .inputs{
   display: flex;
-  justify-content: center;
-  gap: 2vw;
+  flex-direction: column;
+  gap: 0.5vw;
+  .email-pass {
+    display: flex;
+    justify-content: center;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 .submit-cancel{
   display: flex;
-  gap: 70%;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 2vh;
   margin-top: 3vh;
   margin-left: 3%;
   margin-right: 3%;
+}
+
+.create-account {
+  background-color: rgb(25, 75, 104) !important;
+  color: white;
 }

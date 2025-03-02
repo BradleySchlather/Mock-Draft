@@ -20,13 +20,17 @@
     }
   }
 
-.inputs{
+  .inputs{
     display: flex;
-    justify-content: center;
-    gap: 2vw;
-    margin-left: 2vw;
-    margin-right: 2vw;
-}
+    flex-direction: column;
+    gap: 0.5vw;
+    .email-pass {
+      display: flex;
+      justify-content: center;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
 
 .submit-cancel{
     display: flex;
