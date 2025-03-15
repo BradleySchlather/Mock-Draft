@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,20 +16,34 @@ export class SignUpComponent {
   public errorExists = false;
   public email = '';
   public username = '';
-  public password = '';
+  public passwordForm: FormGroup;
 
   constructor(
-    private dialogRef: MatDialogRef<SignUpComponent>, private apiService: ApiService) { }
+    private dialogRef: MatDialogRef<SignUpComponent>, private apiService: ApiService, private fb: FormBuilder) {
+      this.passwordForm = this.fb.group({
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)
+          ]
+        ]
+      });
+    }
 
   public close(): void {
     this.dialogRef.close(false);
   }
 
   public createUser(): void {
-    let user: User = {username: this.username, email: this.email, password: this.password};
+    let user: User = {username: this.username, email: this.email, password: this.passwordForm.get('password')};
     this.apiService.createUser(user).subscribe(data => {
       this.confirm();
     })
+  }
+
+  public get passwordControl() {
+    return this.passwordForm.get('password');
   }
 
   public confirm(): void {

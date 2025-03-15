@@ -20,10 +20,21 @@
         </mat-form-field>
         </div>
         <div class="email-pass">
-        <mat-form-field>
+        <!-- <mat-form-field>
             <mat-label>Password</mat-label>
             <input matInput type="password" [(ngModel)]="this.password">
-        </mat-form-field>
+        </mat-form-field> -->
+        <form [formGroup]="passwordForm">
+            <mat-form-field>
+            <mat-label for="password">Password</mat-label>
+            <input matInput type="password" id="password" formControlName="password">
+            <div *ngIf="passwordControl?.invalid && passwordControl?.touched">
+              <p *ngIf="passwordControl?.errors?.['pattern']">
+                Password must be at least 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.
+              </p>
+            </div>
+            </mat-form-field>
+          </form>
         </div>
     </div>
 
@@ -31,6 +42,6 @@
         <div class="cancel"><button mat-raised-button color="warn"(click)="close()">Cancel</button></div>
       
         <div><button mat-raised-button class="submit" (click)="this.createUser()" 
-          [disabled]="!this.username || !this.email || !this.password">Submit</button></div>
+          [disabled]="!this.username || !this.email || !this.passwordForm.get('password')">Submit</button></div>
     </div>
 </div>

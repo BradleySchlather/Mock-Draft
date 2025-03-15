@@ -27,7 +27,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NotesComponent } from './shared/dialogs/notes/notes.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UserTipsComponent } from './shared/dialogs/user-tips/user-tips.component'
+import { UserTipsComponent } from './shared/dialogs/user-tips/user-tips.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { UserTipsComponent } from './shared/dialogs/user-tips/user-tips.componen
     MatMenuModule,
     MatDialogModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
