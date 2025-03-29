@@ -9,7 +9,7 @@ import { Router} from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  //To Do: Force the user to have an alpha, numeric, and special character for password (use chatGPT)
+  //To Do: Edit home page
   //To Do: Change Background of each clickable section of the banner on hover
   //To Do: Edit for different screen sizes
   //To Do: Stop showing user tips for big board when the user has already seen it
@@ -26,7 +26,7 @@ export class HomeComponent {
   //Future: Create an after the draft endpoint that allows for user to choose from a 1-10 selector of how good the pick was. Will also allow for user to make notes.
   //Future: Need to add a simulator that allows the user to be a team of his choice.
   //Future: Sign in with google
-  //Future: Also need to add week by week options to pick who they think will win.
+  //Future: Also need to add week by week options to pick who they think will win
   
   public userId = computed(() => {
     return this.userService.userId();

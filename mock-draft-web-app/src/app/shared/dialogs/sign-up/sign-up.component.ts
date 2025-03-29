@@ -36,7 +36,8 @@ export class SignUpComponent {
   }
 
   public createUser(): void {
-    let user: User = {username: this.username, email: this.email, password: this.passwordForm.get('password')};
+    debugger
+    let user: User = {username: this.username, email: this.email, password: this.passwordForm.get('password')?.value};
     this.apiService.createUser(user).subscribe(data => {
       this.confirm();
     })
