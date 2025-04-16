@@ -347,25 +347,5 @@ namespace MockDraftApi.Repositories
 
         //To Do: get_scoreboard
         //To Do: set_scoreboard
-
-        //public IEnumerable<Scoreboard> GetScoreboard()
-        //{
-        //    Scoreboard[] scoreboard = new Scoreboard[12]
-        //        {
-        //        new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
-        //        new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
-        //        new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
-        //        new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
-        //        new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
-        //        new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
-        //        new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
-        //        new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
-        //        new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
-        //        new Scoreboard { Username = "SirIsaacJohnathonMcPanda", Score = 10000000000, CorrectPicks = 32, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 100, PredictedTrades = 2 },
-        //        new Scoreboard { Username = "JordaaanAlvarezTheSecond", Score = 800000000, CorrectPicks = 12, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 28, PredictedTrades = 1 },
-        //        new Scoreboard { Username = "BradfordTheClassless", Score = 1, CorrectPicks = 1, TotalFirstRoundPredictions = 32, TotalPredictionPercentage = 3, PredictedTrades = 0 },
-        //    };
-        //    return scoreboard;
-        //}
     }
 }

@@ -30,7 +30,6 @@ namespace MockDraftApi.Services
                     if (playersListArr[i] == player.PlayerId)
                     {
                         player.PlayerRank = i + 1;
-                        //To do: Can I implement a break here and on the next foreach? Or I can use a while loop
                     }
                 }
 
